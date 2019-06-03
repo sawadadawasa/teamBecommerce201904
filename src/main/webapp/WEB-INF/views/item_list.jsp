@@ -107,7 +107,8 @@
 
                     <c:forEach var="itemList" items="${itemList}">
                         <th>
-                            <a href="item_detail.html"> <img src="../../../img/1.jpg" class="img-responsive img-rounded" width="200" height="600">
+                            <a href="item_detail.html">
+                                <img src="img/<c:out value="${itemList.imagePath}"/>" class="img-responsive img-rounded" width="200" height="600"/>
                             </a>
                             <br>
                             <a href="item_detail.html">${itemList.name}
