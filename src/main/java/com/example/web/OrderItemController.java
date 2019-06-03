@@ -31,16 +31,12 @@ public class OrderItemController {
 		return "order";
 	}
 	
-
 	//商品をカートに追加、cart.jspに移動
 	@RequestMapping("/addItem")
 	public String addItem(OrderItemForm form) {
 		
-		
-
 		return "order";
 	}
-	
 	
 	@RequestMapping("/deleteId")
 	public String deleteItem(@RequestParam int id) {
