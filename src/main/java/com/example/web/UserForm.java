@@ -1,5 +1,7 @@
 package com.example.web;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class UserForm {
 	
 	private int id;
@@ -9,6 +11,8 @@ public class UserForm {
 	private String address;
 	private String telephone;
 	private String pageparam;
+	
+	private String passwordConfirm;
 	
 	
 	public int getId() {
@@ -52,6 +56,12 @@ public class UserForm {
 	}
 	public void setPageparam(String pageparam) {
 		this.pageparam = pageparam;
+	}
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
 	}
 
 }
