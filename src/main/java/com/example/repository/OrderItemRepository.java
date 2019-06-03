@@ -44,6 +44,7 @@ public class OrderItemRepository {
 		
 	private static final RowMapper<OrderItem> ORDERITEM_ROW_MAPPER = (rs, i) -> {
 		OrderItem orderItem = new OrderItem();
+		
 		String name = rs.getString("name");
 		int price = rs.getInt("price");
 		String imagePATH = rs.getString("imagePATH");
