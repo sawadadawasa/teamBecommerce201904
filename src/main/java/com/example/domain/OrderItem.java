@@ -7,7 +7,6 @@ public class OrderItem {
 	private int price; 
 	private String imagePATH;
 	private String piece;
-
 	private int quantity;
 	
 	public String getName() {

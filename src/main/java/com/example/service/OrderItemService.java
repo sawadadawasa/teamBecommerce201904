@@ -39,9 +39,9 @@ public class OrderItemService {
 		}
 	}
 
-//	public List<OrderItem> findByOrderId(int OrderId) {
-//		
-//	}
+	public List<OrderItem> findByOrderId(int orderId) {
+		return orderItemRepository.findAllHistoryDetail(orderId);
+	}
 		
 	public void deleteId(int id) {
 		orderItemRepository.deleteId(id);
