@@ -7,17 +7,6 @@ public class OrderItem {
 	private Integer orderId;  
 	private int quantity;
 	
-	public OrderItem(int id, int itemId, int quantity) {
-		// TODO 自動生成されたコンストラクター・スタブ
-		this.id = id;
-		this.itemId = itemId;
-		this.quantity = quantity;
-	}
-	
-	public OrderItem() {
-		
-	}
-	
 	public int getId() {
 		return id;
 	}

@@ -1,5 +1,8 @@
 package com.example.service;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +19,13 @@ public class OrderItemService {
 
 	@Autowired
 	private HttpSession session;
-
-	public void deleteId(int id) {
-		orderItemRepository.deleteId(id);
+	
+	List<OrderItem> orderItemList = new ArrayList<OrderItem>();
+	
+	public List<OrderItem> findAll(){
+		
+		return orderItemRepository.findAll();
+		
 	}
 
 	public void addItem(int itemId, int quantity) {
@@ -32,6 +39,12 @@ public class OrderItemService {
 		}
 
 	}
+	
+	public void deleteId(int id) {
+		orderItemRepository.deleteId(id);
+	}
+
+
 
 
 }
