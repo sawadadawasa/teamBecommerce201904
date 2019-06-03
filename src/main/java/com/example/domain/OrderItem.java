@@ -2,10 +2,12 @@ package com.example.domain;
 //消していいやつ(真鍋)
 public class OrderItem {
 	
+
 	private String name; //名前
 	private int price; 
 	private String imagePATH;
 	private String piece;
+
 	private int quantity;
 	
 	public String getName() {

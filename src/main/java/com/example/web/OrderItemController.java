@@ -37,6 +37,12 @@ public class OrderItemController {
 		
 		return "order";
 	}
+	//orderHistoryからの遷移
+//	@RequestMapping("/showHistoryDetail")
+//	public String showHistoryDetail(int orderId) {
+//		orderItemService.findByOrderId(orderId);
+//		return "historyDetail";
+//	}
 	
 	@RequestMapping("/deleteId")
 	public String deleteItem(@RequestParam int id) {

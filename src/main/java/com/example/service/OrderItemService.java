@@ -37,14 +37,15 @@ public class OrderItemService {
 		} else {
 			orderItemRepository.saveOnly(itemId, quantity);
 		}
-
 	}
-	
+
+//	public List<OrderItem> findByOrderId(int OrderId) {
+//		
+//	}
+		
 	public void deleteId(int id) {
 		orderItemRepository.deleteId(id);
 	}
-
-
 
 
 }
