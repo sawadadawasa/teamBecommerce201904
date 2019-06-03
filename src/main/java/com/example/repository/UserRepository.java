@@ -38,7 +38,7 @@ public class UserRepository {
 		User user = null;
 		try{
 			// SQLインジェクション対策
-			String sql = "SELECT id,name,email,password FROM members WHERE email = :email and password = :password";
+			String sql = "SELECT id,name,email,password FROM users WHERE email = :email and password = :password";
 			SqlParameterSource param = new MapSqlParameterSource().addValue("email", email).addValue("password",
 					password);
 
