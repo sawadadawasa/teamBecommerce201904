@@ -39,6 +39,12 @@ public class OrderItemController {
 		
 		return "cart";
 	}
+	//orderHistoryからの遷移
+//	@RequestMapping("/showHistoryDetail")
+//	public String showHistoryDetail(int orderId) {
+//		orderItemService.findByOrderId(orderId);
+//		return "historyDetail";
+//	}
 	
 
 }

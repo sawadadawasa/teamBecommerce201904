@@ -2,8 +2,8 @@ package com.example.domain;
 //消していいやつ(真鍋)
 public class OrderItem {
 	
-	private int id; //
-	private int itemId; //商品ID
+	private int name; //
+	private int price; //商品ID
 	private Integer orderId;  
 	private int quantity;
 	

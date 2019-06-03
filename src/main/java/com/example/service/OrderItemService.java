@@ -30,8 +30,9 @@ public class OrderItemService {
 		} else {
 			orderItemRepository.saveOnly(itemId, quantity);
 		}
-
 	}
-
-
+	public List<OrderItem> findByOrderId(int OrderId) {
+		
+	}
+	
 }
