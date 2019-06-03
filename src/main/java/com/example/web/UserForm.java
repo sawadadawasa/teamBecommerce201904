@@ -1,19 +1,20 @@
-package com.example.domain;
+package com.example.web;
 
-public class User {
+public class UserForm {
 	
-	private Integer id;
+	private int id;
 	private String name;
 	private String email;
 	private String password;
+	private String address;
 	private String telephone;
+	private String pageparam;
 	
 	
-	
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -34,17 +35,23 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public String getTelephone() {
 		return telephone;
 	}
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-	
-	
-	
-	
-	
-	
+	public String getPageparam() {
+		return pageparam;
+	}
+	public void setPageparam(String pageparam) {
+		this.pageparam = pageparam;
+	}
 
 }

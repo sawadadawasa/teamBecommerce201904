@@ -16,7 +16,7 @@ public class ItemController {
 
 	@RequestMapping(value="/")
 	public String index(Model model) {
-		service.acFindAll(model);
+		service.itemFindAll(model);
 		return "item_list";
 	}
 }

@@ -19,7 +19,7 @@ public class ItemService {
 	private ItemRepository itemRepository;
 
 
-	public void acFindAll(Model model){
+	public void itemFindAll(Model model){
 		List<Item> itemList = new ArrayList<>();
 		itemList = itemRepository.findAll();
 		model.addAttribute("itemList", itemList);
