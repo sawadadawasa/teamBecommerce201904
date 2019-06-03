@@ -43,7 +43,23 @@ public class OrderItemRepository {
 
 		
 	private static final RowMapper<OrderItem> ORDERITEM_ROW_MAPPER = (rs, i) -> {
+<<<<<<< HEAD
 
+=======
+		OrderItem orderItem = new OrderItem();
+		String name = rs.getString("name");
+		int price = rs.getInt("price");
+		String imagePATH = rs.getString("imagePATH");
+		String piece = rs.getString("piece");
+		int quantity = rs.getInt("quantity");
+		
+		orderItem.setName(name);
+		orderItem.setPrice(price);
+		orderItem.setImagePATH(imagePATH);
+		orderItem.setPiece(piece);
+		orderItem.setQuantity(quantity);
+		return orderItem;
+>>>>>>> 3ee1b5db0a5ed383ed4ed44204b4f861b414c104
 	};
 	
 	@PostConstruct
@@ -54,7 +70,7 @@ public class OrderItemRepository {
 	
 	public List<OrderItem> findAll(){
 		
-		String sql = "SELECT items.name, items.price, items.imagePATH, images.piece, order_items.quantity,  FROM order_items INNER JOIN items ON order_items.item_id = items.id";
+		String sql = "SELECT items.name, items.price, items.imagePATH, images.piece, order_items.quantity  FROM order_items INNER JOIN items ON order_items.item_id = items.id";
 		
 		orderItemList = jdbcTemplate.query(sql, ORDERITEM_ROW_MAPPER);
 		

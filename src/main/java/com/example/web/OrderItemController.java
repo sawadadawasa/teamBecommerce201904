@@ -31,13 +31,10 @@ public class OrderItemController {
 		return "order";
 	}
 	
-
 	//商品をカートに追加、cart.jspに移動
 	@RequestMapping("/addItem")
 	public String addItem(OrderItemForm form) {
 		
-		
-
 		return "order";
 	}
 	//orderHistoryからの遷移
@@ -46,7 +43,6 @@ public class OrderItemController {
 		orderItemService.findByOrderId(orderId);
 		return "historyDetail";
 	}
-	
 	
 	@RequestMapping("/deleteId")
 	public String deleteItem(@RequestParam int id) {
