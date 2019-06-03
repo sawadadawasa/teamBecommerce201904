@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.domain.Item;
+
 
 
 @Repository
@@ -38,6 +38,17 @@ public class ItemRepository {
 		List<Item> itemList = template.query(sql, itemRowMapper);
 		return itemList;
 	}
+	
+	public Item findOne(Integer id) {
+		SqlParameterSource param = new MapSqlParameterSource()
+				.addValue("id",id);
+		Item item = template.queryForObject(
+				"SELECT id, name, description, imagePath, deleted, piece, origin FROM items WHERE id=:id", 
+				param, 
+				itemRowMapper);
+		return item;
+	}
+	
 	/*
 	public ArticleBulletinBoard save(ArticleBulletinBoard articleBulletinBoard){
 		SqlParameterSource param = new BeanPropertySqlParameterSource(articleBulletinBoard);
