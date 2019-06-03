@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.User;
@@ -25,14 +26,20 @@ public class UserController {
 	@Autowired
 	private HttpSession session;
 	
+	//フォームを初期化します。
+	@ModelAttribute
+	public UserForm setUpForm() {
+		return new UserForm();
+	}
+
 	//ログイン画面を表示します。
 	@RequestMapping
 	public String index() {
-		return "loginForm";
+		return "login";
 	}
 	
 	//ログイン処理を行います。
-	@RequestMapping(value="login")
+	@RequestMapping(value="/login")
 	public String login(@Validated UserForm form,
 			BindingResult result) {
 		if(result.hasErrors()) {
@@ -48,7 +55,9 @@ public class UserController {
 			return index();
 		}
 		session.setAttribute("user", user);
-		return "redirect:/home";
+		
+		System.out.println("mmmmmm");
+		return "redirect:/js/login";
 		
 	}
 	
