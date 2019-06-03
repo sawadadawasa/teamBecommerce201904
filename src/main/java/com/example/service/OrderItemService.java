@@ -22,9 +22,9 @@ public class OrderItemService {
 	
 	List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 	
-	public List<OrderItem> findAll(){
+	public List<OrderItem> findAll(Integer orderId){
 		
-		return orderItemRepository.findAll();
+		return orderItemRepository.findAll(orderId);
 		
 	}
 

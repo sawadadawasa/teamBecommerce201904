@@ -65,19 +65,20 @@ public class OrderItemRepository {
 		SimpleJdbcInsert withTableName = simpleJdbcInsert.withTableName("order_items");
 	}
 	
-	public List<OrderItem> findAll(){
+	public List<OrderItem> findAll(Integer orderId){
 		
-		String sql = "SELECT items.name, items.price, items.imagePATH, images.piece, order_items.quantity  FROM order_items INNER JOIN items ON order_items.item_id = items.id";
+		String sql = "SELECT items.name, items.price, items.imagePATH, items.piece, order_items.quantity"
+				 + "FROM order_items INNER JOIN items ON order_items.item_id = items.id WHERE order_id = :orderId";
 		
 		orderItemList = jdbcTemplate.query(sql, ORDERITEM_ROW_MAPPER);
 		
 		return orderItemList;
 		
 	}
-	public List<OrderItem> findAllHistoryDetail(){
+	public List<OrderItem> findAllHistoryDetail(Integer orderId){
 		
 		String sql = "SELECT items.name, items.price, items.imagePATH, items.piece, order_items.quantity"
-		 + "FROM order_items INNER JOIN items ON order_items.item_id = items.id where order_id = :orderId";
+		 + "FROM order_items INNER JOIN items ON order_items.item_id = items.id WHERE order_id = :orderId";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("orderId", orderId);
 		orderItemList = jdbcTemplate.query(sql, ORDERITEM_ROW_MAPPER);
 		
@@ -113,7 +114,7 @@ public class OrderItemRepository {
 	}
 	
 	public void deleteId(int id) {
-		String sql = "delete * from order_items where id = :id";
+		String sql = "DELETE * FROM order_items WHERE id = :id";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id",id);
 		jdbcTemplate.update(sql, param);
 	}

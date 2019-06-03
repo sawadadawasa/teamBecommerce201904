@@ -5,7 +5,7 @@ public class OrderItemForm {
 	private Integer itemId;
 	private Integer quantity;
 	
-	public Integer getId() {
+	public Integer getItemId() {
 		return itemId;
 	}
 	public void setItemId(Integer itemId) {

@@ -1,13 +1,19 @@
 package com.example.web;
 
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.OrderItem;
@@ -16,7 +22,10 @@ import com.example.service.OrderItemService;
 @Controller
 @RequestMapping("/orderItem")
 public class OrderItemController {
-	private OrderItemService orderItemService;
+	private OrderItemService orderItemService;	
+	
+	@Autowired
+	private HttpSession session;
 	
 	List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 	
@@ -24,18 +33,28 @@ public class OrderItemController {
 	@RequestMapping("/")
 	public String showItems(OrderItemForm form, Model model) {
 		
-		orderItemList	= orderItemService.findAll();
+		Integer orderId = (Integer)session.getAttribute("orderId");
+		
+		if(orderId != null) {
+		orderItemList	= orderItemService.findAll(orderId);
+		
+		}
 		
 		model.addAttribute(orderItemList);
 		
 		return "order";
 	}
 	
-	//商品をカートに追加、cart.jspに移動
+	//商品をカートに追加、order.jspに移動
 	@RequestMapping("/addItem")
 	public String addItem(OrderItemForm form) {
 		
-		return "order";
+		Integer itemId = form.getItemId();
+		Integer quantity = form.getQuantity();
+		
+		orderItemService.addItem(itemId, quantity);
+		
+		return "redirect:/orderItem/";
 	}
 	//orderHistoryからの遷移
 	@RequestMapping("/showHistoryDetail")
