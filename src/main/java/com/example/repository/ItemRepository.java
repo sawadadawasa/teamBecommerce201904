@@ -24,12 +24,17 @@ public class ItemRepository {
 		Item item = new Item();
 		item.setId(rs.getInt("id"));
 		item.setName(rs.getString("name"));
-		item.setContent(rs.getString("content"));
+		item.setDescription(rs.getString("description"));
+		item.setImagePath(rs.getString("imagePath"));
+		item.setDeleted(rs.getBoolean("deleted"));
+		item.setPiece(rs.getInt("piece"));
+		item.setOrigin(rs.getString("origin"));
 		return item;
 	};
+
 	
 	public List<Item> findAll(){
-		String sql = "SELECT id, name, content FROM articles ORDER BY id";
+		String sql = "SELECT id, name, description, imagePath, deleted, piece, origin FROM items ORDER BY id";
 		List<Item> itemList = template.query(sql, itemRowMapper);
 		return itemList;
 	}
