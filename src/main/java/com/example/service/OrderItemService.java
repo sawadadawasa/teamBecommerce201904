@@ -11,7 +11,7 @@ public class OrderItemService {
 	@Autowired
 	private OrderItemRepository orderItemRepository;
 	
-	public OrderItem addItem(int itemId) {
+	public void addItem(int itemId) {
 		OrderItem orederItem = new OrderItem();
 		orederItem = orderItemRepository.addItem(itemId);
 		

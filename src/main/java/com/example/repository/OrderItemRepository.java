@@ -16,7 +16,7 @@ import com.example.domain.OrderItem;
 
 @Repository
 @Transactional
-public class OrderItemRepository {
+public class OrderItemRepo]lsitory {
 	
 	@Autowired
 	private org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate jdbcTemplate;
