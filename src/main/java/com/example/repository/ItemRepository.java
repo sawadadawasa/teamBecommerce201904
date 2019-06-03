@@ -49,6 +49,15 @@ public class ItemRepository {
 		return item;
 	}
 	
+	public List<Item> findMatchItem(String code){
+		SqlParameterSource param = new MapSqlParameterSource()
+				.addValue("code","%"+code+"%");
+		
+		String sql = "SELECT id, name, description, imagePath, deleted, piece, origin FROM items WHERE name like :code ORDER BY id";
+		List<Item> itemList = template.query(sql, param, itemRowMapper);
+		return itemList;
+	}
+	
 	/*
 	public ArticleBulletinBoard save(ArticleBulletinBoard articleBulletinBoard){
 		SqlParameterSource param = new BeanPropertySqlParameterSource(articleBulletinBoard);

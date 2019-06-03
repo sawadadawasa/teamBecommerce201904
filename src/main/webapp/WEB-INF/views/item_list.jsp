@@ -72,7 +72,7 @@
                 <div class="panel-body">
 
                     <form
-                        action="${pageContext.request.contextPath}/bulletinBoard/articlePost"
+                        action="${pageContext.request.contextPath}/item/serch"
                         method="post" action="#" class="form-horizontal">
                         <div class="form-group">
                             <label for="code" class="control-label col-sm-2">商品名</label>

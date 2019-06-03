@@ -28,6 +28,12 @@ public class ItemService {
 		return itemRepository.findOne(id);
 	}
 	
+	public void itemFindMatch(Model model, String code ){
+		List<Item> itemList = new ArrayList<>();
+		itemList = itemRepository.findMatchItem(code);
+		model.addAttribute("itemList", itemList);
+	}
+	
 	/*
 	public void articlesSave(String articleName, String articleContent){
 		Date date= new Date();
