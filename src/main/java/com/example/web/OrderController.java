@@ -12,8 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.Order;
-import com.example.demo.OrderService;
+import com.example.domain.Order;
+import com.example.service.OrderService;
 
 @Controller
 @RequestMapping("/order")
