@@ -53,13 +53,16 @@ public class UserRepository {
 	
 	//メンバー情報を保存または更新する
 	public User save(User user) {
+		System.out.println("user.getId() : " + user.getId() + ".");
 		SqlParameterSource param = new BeanPropertySqlParameterSource(user);
 		if (user.getId() == null) {
-			template.update("INSERT INTO users(name,email,password,telephone) values(:name,:email,:password,:telephone)",
-					param);
+			String insertSql="INSERT INTO users(name,email,password,address,telephone) VALUES(:name,:email,:password,:address,:telephone)";
+			
+			template.update(insertSql, param);
 		} else {
-			template.update(
-					"UPDATE users SET name=:name, email=:email, password=:password, telephone=:telephone WHERE id=:id", param);
+			String updateSql=
+					"UPDATE users SET name=:name, email=:email, password=:password, address=:address, telephone=:telephone WHERE id=:id";
+			template.update(updateSql,param);
 		}
 		return user;
 	
