@@ -43,6 +43,7 @@ public class OrderItemRepository {
 
 		
 	private static final RowMapper<OrderItem> ORDERITEM_ROW_MAPPER = (rs, i) -> {
+
 		OrderItem orderItem = new OrderItem();
 		
 		String name = rs.getString("name");
@@ -50,7 +51,6 @@ public class OrderItemRepository {
 		String imagePATH = rs.getString("imagePATH");
 		String piece = rs.getString("piece");
 		int quantity = rs.getInt("quantity");
-		
 		orderItem.setName(name);
 		orderItem.setPrice(price);
 		orderItem.setImagePATH(imagePATH);
@@ -69,6 +69,16 @@ public class OrderItemRepository {
 		
 		String sql = "SELECT items.name, items.price, items.imagePATH, images.piece, order_items.quantity  FROM order_items INNER JOIN items ON order_items.item_id = items.id";
 		
+		orderItemList = jdbcTemplate.query(sql, ORDERITEM_ROW_MAPPER);
+		
+		return orderItemList;
+		
+	}
+	public List<OrderItem> findAllHistoryDetail(){
+		
+		String sql = "SELECT items.name, items.price, items.imagePATH, items.piece, order_items.quantity"
+		 + "FROM order_items INNER JOIN items ON order_items.item_id = items.id where order_id = :orderId";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("orderId", orderId);
 		orderItemList = jdbcTemplate.query(sql, ORDERITEM_ROW_MAPPER);
 		
 		return orderItemList;
