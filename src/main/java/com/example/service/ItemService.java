@@ -59,9 +59,7 @@ public class ItemService {
 		articleRepository.deleteById(articleBulletinBoard);
 	}
 	*/
-	public void deleteItem(int id) {
-		itemRepository.deleteItem(id);
-	}
+
 	
 	
 }

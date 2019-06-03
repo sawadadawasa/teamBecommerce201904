@@ -5,18 +5,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.service.ItemService;
+import com.example.service.OrderItemService;
 
 
 
 @Controller
 @RequestMapping("/orderItem")
 public class OrderItemController {
-	private ItemService itemService;
-	@RequestMapping("/deleteItem")
+	private OrderItemService orderItemService;
+	@RequestMapping("/deleteId")
 	public String deleteItem(@RequestParam int id) {
-		itemService.deleteItem(id);
+		orderItemService.deleteId(id);
 		return "order";
 	}
+	
 	
 
 }
