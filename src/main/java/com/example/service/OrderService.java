@@ -41,4 +41,20 @@ public class OrderService {
 		
 		orderRepository.saveFix(order); 
 	}
+	public void deleteItem(int id) {
+		orderRepository.deleteItem(id);
+	}
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
