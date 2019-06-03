@@ -4,7 +4,7 @@ public class Item {
 	
 	private Integer id; //商品ID
 	private String name; //商品名
-	private String desicription; //説明
+	private String description; //説明
 	private String imagePath; //画像データ
 	private boolean deleted; //削除フラグ
 	private int piece; //パック数
@@ -22,11 +22,11 @@ public class Item {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDesicription() {
-		return desicription;
+	public String getDescription() {
+		return description;
 	}
-	public void setDesicription(String desicription) {
-		this.desicription = desicription;
+	public void setDescription(String desicription) {
+		this.description = desicription;
 	}
 	public String getImagePath() {
 		return imagePath;
