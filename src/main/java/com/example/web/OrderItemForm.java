@@ -2,20 +2,20 @@ package com.example.web;
 
 public class OrderItemForm {
 	
-	private String id;
-	private String itemId;
+	private Integer itemId;
+	private Integer quantity;
 	
 	public Integer getId() {
-		return Integer.parseInt(id);
+		return itemId;
 	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public Integer getItemId() {
-		return Integer.parseInt(itemId);
-	}
-	public void setItemId(String itemId) {
+	public void setItemId(Integer itemId) {
 		this.itemId = itemId;
+	}
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 
 }

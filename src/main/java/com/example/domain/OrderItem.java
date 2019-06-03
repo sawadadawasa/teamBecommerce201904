@@ -2,39 +2,37 @@ package com.example.domain;
 //消していいやつ(真鍋)
 public class OrderItem {
 	
-	private int name; //
-	private int price; //商品ID
-	private Integer orderId;  
+
+	private String name; //名前
+	private int price; 
+	private String imagePATH;
+	private String piece;
+
 	private int quantity;
 	
-	public OrderItem(int id, int itemId, int quantity) {
-		// TODO 自動生成されたコンストラクター・スタブ
-		this.id = id;
-		this.itemId = itemId;
-		this.quantity = quantity;
+	public String getName() {
+		return name;
 	}
-	
-	public OrderItem() {
-		
+	public void setName(String name) {
+		this.name = name;
 	}
-	
-	public int getId() {
-		return id;
+	public int getPrice() {
+		return price;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setPrice(int price) {
+		this.price = price;
 	}
-	public int getItemId() {
-		return itemId;
+	public String getImagePATH() {
+		return imagePATH;
 	}
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
+	public void setImagePATH(String imagePATH) {
+		this.imagePATH = imagePATH;
 	}
-	public Integer getOrderId() {
-		return orderId;
+	public String getPiece() {
+		return piece;
 	}
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
+	public void setPiece(String piece) {
+		this.piece = piece;
 	}
 	public int getQuantity() {
 		return quantity;

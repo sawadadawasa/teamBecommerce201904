@@ -4,6 +4,8 @@ package com.example.repository;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.management.loading.PrivateClassLoader;
@@ -36,12 +38,16 @@ public class OrderItemRepository {
 	
 	@Autowired
 	private HttpSession session;
+	
+	List<OrderItem> orderItemList = new ArrayList<OrderItem>();
+
 		
 	private static final RowMapper<OrderItem> ORDERITEM_ROW_MAPPER = (rs, i) -> {
-		int id = rs.getInt("id");
-		int itemId = rs.getInt("item_id");
+		OrderItem orderItem = new OrderItem();
+
 		int quantity = rs.getInt("quantity");
-		return new OrderItem(id,  itemId, quantity) ;
+		orderItem.setQuantity(quantity);
+		return orderItem;
 	};
 	
 	@PostConstruct
@@ -49,6 +55,17 @@ public class OrderItemRepository {
 		SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert((JdbcTemplate) jdbcTemplate.getJdbcOperations());
 		SimpleJdbcInsert withTableName = simpleJdbcInsert.withTableName("order_items");
 	}
+	
+	public List<OrderItem> findAll(){
+		
+		String sql = "SELECT items.name, items.price, items.imagePATH, images.piece, order_items.quantity,  FROM order_items INNER JOIN items ON order_items.item_id = items.id";
+		
+		orderItemList = jdbcTemplate.query(sql, ORDERITEM_ROW_MAPPER);
+		
+		return orderItemList;
+		
+	}
+
 	
 	public Integer saveAndReturnOrderId(int itemId,  int quantity) {
 		
@@ -68,7 +85,7 @@ public class OrderItemRepository {
 	
 	public void saveOnly (int itemId, int quantity) {
 		
-		SqlParameterSource param = new MapSqlParameterSource().addValue("itemId",itemId).addValue("quantity", quantity).addValue("orderId", session);
+		SqlParameterSource param = new MapSqlParameterSource().addValue("itemId",itemId).addValue("quantity", quantity).addValue("orderId", session.getAttribute("orderId"));
 		
 		String insertSql = "INSERT INTO order_items (item_id, order_id quantity)VALUES (:itemId, :orderId, :quantity)";
 		
