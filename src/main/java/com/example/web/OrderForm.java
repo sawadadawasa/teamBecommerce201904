@@ -11,10 +11,17 @@ public class OrderForm {
 	private String destinationEmail;//宛先Eメール
 	private String destinationAddress;//宛先住所
 	private String destinationTel;//宛先TEL
-	private String deliveryTime;//配達時間
+	private String deliveryTime;//配達日
+	private Integer deliveryHour;//配達時間
 	private String paymentMethod;//支払い方法
 	private String postalCode;
 
+	public Integer getDeliveryHour() {
+		return deliveryHour;
+	}
+	public void setDeliveryHour(Integer deliveryHour) {
+		this.deliveryHour = deliveryHour;
+	}
 	public String getPostalCode() {
 		return postalCode;
 	}

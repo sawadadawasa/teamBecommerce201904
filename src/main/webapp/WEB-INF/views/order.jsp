@@ -46,7 +46,14 @@
 	<td>TEL</td><td><form:input path="destinationTel"/></td>
 </tr>
 <tr>
-	<td>配達時間</td><td><form:input path="deliveryTime"/></td>
+	<td>配達日</td><td><form:input path="deliveryTime"/></td>
+</tr>
+<tr>
+	<td>配達時間</td>
+	<td><form:select path="deliveryHour">
+			<form:options items="${hourList}"/>
+		</form:select>
+	</td>
 </tr>
 <tr>
 	<td>支払い方法</td><td><form:input path="paymentMethod"/></td>

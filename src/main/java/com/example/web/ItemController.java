@@ -48,15 +48,13 @@ public class ItemController {
 		service.findOne(model,id);
 		return "item_detail";
 	}
-<<<<<<< HEAD
+
 	
 	//商品詳細画面に遷移
 	@RequestMapping(value = "/serch")
 	public String serch(@RequestParam String code, Model model) {
-		service.itemFindMatch(model, code);
+//		service.itemFindMatch(model, code);
 		return "item_list";
 	}
 	
-=======
->>>>>>> 5112b857a9ec4822502fc1a42bb13799ecdf3e32
 }

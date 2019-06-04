@@ -68,5 +68,12 @@ public class OrderRepository {
 		jdbcTemplate.update(sql, param);
 		jdbcTemplate.update(sql2, param);
 	}
+	
+	public Integer booleanDeleteOrNot(int orderId,Date now) {
+		String sql = "select id from orders where delivery_time + '-3days' > :now and id = :orderId;";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("orderId",orderId).addValue("now",now);	
+		return jdbcTemplate.queryForObject(sql,param,Integer.class);
+	}
+	
 }
 
