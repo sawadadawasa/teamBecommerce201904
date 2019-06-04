@@ -77,7 +77,7 @@ public class OrderItemController {
 		List<OrderItem> orderItemList = orderItemService.findByOrderId(orderId);
 		redirectAttributes.addFlashAttribute("orderItemList",orderItemList);
 		redirectAttributes.addFlashAttribute("orderId",orderId);
-		return "redirect:/order/booleanDeleteOrNot";
+		return "redirect:/order/booleanDeleteOrNot";//注文を削除するボタンを出力するかどうか決めるためのリダイレクト
 	}
 	
 	@RequestMapping("/deleteId/{Id}")
