@@ -31,7 +31,7 @@ public class LoginController {
 	}
 
 	// ログイン画面を表示します。
-	@RequestMapping
+	@RequestMapping(value="/")
 	public String index() {
 		return "login";
 	}
