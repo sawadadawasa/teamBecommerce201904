@@ -96,7 +96,6 @@ public class OrderController {
 		String deleteOrNotMessage;
 		if(deleteOrNot !=null) deleteOrNotMessage = null;//30分以内でした
 		else deleteOrNotMessage = "削除する" ;
-	
 		model.addAttribute("deleteOrNotMessage",deleteOrNotMessage);
 		System.out.println(orderId);
 		return "historyDetail";
