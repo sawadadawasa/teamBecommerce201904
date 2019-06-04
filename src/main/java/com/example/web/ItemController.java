@@ -22,7 +22,7 @@ public class ItemController {
 	}
 
 	//商品一覧を表示
-	@RequestMapping
+	@RequestMapping(value = "/")
 	public String listAll(Model model) {
 
 		service.itemFindAll(model);
@@ -32,7 +32,7 @@ public class ItemController {
 	}
 
 	//商品詳細画面に遷移
-	@RequestMapping(value = "/serch")
+	@RequestMapping(value = "/search")
 	public String serch(@RequestParam String code, @RequestParam String origin, @RequestParam String piece, Model model) {
 		service.itemOriginList(model);
 		service.itemPieceList(model);

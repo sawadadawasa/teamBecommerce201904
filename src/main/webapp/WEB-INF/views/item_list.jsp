@@ -72,7 +72,7 @@
                 <div class="panel-body">
 
                     <form
-                        action="${pageContext.request.contextPath}/item/serch"
+                        action="${pageContext.request.contextPath}/item/search"
                         method="post" action="#" class="form-horizontal">
                         <div class="form-group">
                             <label for="code" class="control-label col-sm-2">商品名</label>
@@ -118,7 +118,7 @@
                     <c:forEach var="itemList" items="${itemList}">
                         <th>
                             <a href="${pageContext.request.contextPath}/item/show/${itemList.id}">
-                                <img src="img/<c:out value="${itemList.imagePath}"/>" class="img-responsive img-rounded" width="200" height="600"/>
+                                <img src="img/<c:out value="${itemList.imagePath}/"/>" class="img-responsive img-rounded" width="200" height="600"/>
                             </a>
                             <br>
                             <a href="${pageContext.request.contextPath}/item/show/${itemList.id}"><c:out value="${itemList.name}" />
