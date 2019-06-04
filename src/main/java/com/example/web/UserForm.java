@@ -1,44 +1,47 @@
 package com.example.web;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
+
 
 public class UserForm {
 	
 	private Integer id;
 	
 	//名前
-//	@NotBlank(message = "名前は必須です。")
-//	@Size(min=1,max=50, message="名前は1文字以上50文字以内で記入してください。(全角半角可)")
+	@NotBlank(message = "名前は必須です。")
+	@Size(min=1,max=50, message="名前は1文字以上50文字以内で記入してください。(全角半角可)")
 	private String name;
 	
 	//メールアドレス
-//	@NotBlank(message = "メールアドレスは必須です。")
-//	@Email(message = "Eメールの形式が不正です。")
+	@NotBlank(message = "メールアドレスは必須です。")
+	@Email(message = "Eメール形式が不正です。")
 	private String email;
 	
 	//パスワード
-//	@NotBlank(message = "パスワードは必須です。")
-//	@Size(min=6,max=12, message="パスワードは半角英数字で6文字以上12文字以内で記入してください。")
-//	@Pattern(regexp = "[a-zA-Z0-9]*")
+	@NotBlank(message = "パスワードは必須です。")
+	@Size(min=6,max=12, message="パスワードは半角英数字で6文字以上12文字以内で記入してください。")
+	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String password;
 	
 	//住所
-//	@NotBlank(message = "住所は必須です。")
+	@NotBlank(message = "住所は必須です。")
 	private String address;
 	
 	//電話番号
-//	@NotBlank(message = "電話番号は必須です。")
+	@NotBlank(message = "電話番号は必須です。")
+	@Size(min=10,max=11, message = "電話番号は10~11桁の半角文字で記入してください。")
+	@Pattern(regexp = "[0-9]*")
 	private String telephone;
 	
 	
 	private String pageparam;
 	
 	//確認用パスワード
-//	@NotBlank(message = "確認用パスワードは必須です。")
+	@NotBlank(message = "確認用パスワードは必須です。")
 	private String passwordConfirm;
 	
 	

@@ -103,6 +103,6 @@ public class UserController {
 		User user = new User();
 		BeanUtils.copyProperties(form, user);
 		user=userService.save(user);
-		return "redirect:/tea/login";
+		return "redirect:/tea/";
 	}
 }
