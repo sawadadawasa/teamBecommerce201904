@@ -5,8 +5,8 @@
 	<div class="span8">
 		<img src="img/header_logo_bk.png/" >
 		<div class="row">
-		<form:errors path="userForm." cssStyle="color:red"/>
-		<form:form modelAttribute="userForm" action="${pageContext.request.contextPath}/tea/login">
+		<form:errors path="loginForm" cssStyle="color:red"/>
+		<form:form modelAttribute="loginForm" action="${pageContext.request.contextPath}/tea/login">
 			<table class="table table-striped">
 			  <tr>
 			    <th>
@@ -14,7 +14,7 @@
 			    </th>
 			    <td>
 			    	<form:input path="email" placeholder="Email"/>
-			    	<form:errors path="email" />
+			    	<form:errors path="email" cssStyle="color:red"/>
 			    </td>
 			  </tr>
 			  <tr>
@@ -23,7 +23,7 @@
 			    </th>
 			    <td>
 			    	<form:password path="password" placeholder="Password"/>
-			    	<form:errors path="password" />
+			    	<form:errors path="password" cssStyle="color:red"/>
 			    </td>
 			  </tr>
 			  <tr>
@@ -34,7 +34,7 @@
 			  </tr>
 			</table>
 		  </form:form>
-		  <a href="${pageContext.request.contextPath}/tea/form" id="toInsertMember">メンバー登録はこちらから</a>
+		  <a href="${pageContext.request.contextPath}/user/form" id="toInsertMember">メンバー登録はこちらから</a>
 		</div>
 	</div>
 </div>
