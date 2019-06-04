@@ -43,17 +43,6 @@ public class ItemController {
 	//商品詳細画面に遷移
 	@RequestMapping(value = "/show/{itemId}")
 	public String show(@PathVariable("itemId") Integer id, Model model) {
-		
-		
-		Integer quantityList[] = new Integer[10];
-		
-		for (int i = 0; i < quantityList.length ; i++) {
-			quantityList[i] = i+1 ;
-		}
-
-		model.addAttribute("quantityList", quantityList);
-		
-		
 		service.findOne(model,id);
 		return "item_detail";
 	}
