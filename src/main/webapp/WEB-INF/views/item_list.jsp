@@ -81,6 +81,20 @@
                                     class="form-control input-sm" />
                             </div>
                         </div>
+                        <div>
+                        	原産地 : 
+	                         <select name="origin">
+                        		<c:forEach var="originList" items="${originList}">
+							    	<option value="${originList}">${originList}</option>
+						  		</c:forEach>
+							</select>
+                        	パック数 : 
+	                         <select name="piece">
+                        		<c:forEach var="pieceList" items="${pieceList}">
+							    	<option value="${pieceList}">${pieceList}</option>
+						  		</c:forEach>
+							</select>
+						</div>
                         <div class="text-center">
                             <button type="submit" value="検索" class="btn btn-primary">検索</button>
                             <button type="reset" value="クリア" class="btn btn-default">クリア</button>
@@ -108,9 +122,9 @@
                             <a href="${pageContext.request.contextPath}/item/show/${itemList.id}"><c:out value="${itemList.name}" />
                             </a>
                             <br>
-                            数量 : <c:out value="${itemList.piece}" />パック
+                            	数量 : <c:out value="${itemList.piece}" />パック
                             <br>
-                            原産地 : <c:out value="${itemList.origin}" />
+                           	 	原産地 : <c:out value="${itemList.origin}" />
                             <br>
                         </th>
                     </c:forEach>
