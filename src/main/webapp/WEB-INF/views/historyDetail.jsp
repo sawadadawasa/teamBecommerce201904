@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<!--  ここに澤田君のものをコピー-->
 </body>
 </html>

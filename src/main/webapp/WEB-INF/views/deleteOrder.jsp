@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-オーダーが確定しました。
+注文を取り消しました。
 <a　href ="${pageContet.request.contetPath}/item/">商品一覧に戻る</a>
 </body>
 </html>

@@ -66,9 +66,11 @@ public class OrderItemController {
 	}
 	//orderHistoryからの遷移
 	@RequestMapping("/showHistoryDetail")
-	public String showHistoryDetail(@RequestParam int orderId) {
-		orderItemService.findByOrderId(orderId);
-		return "historyDetail";
+	public String showHistoryDetail(@RequestParam int orderId,RedirectAttributes redirectAttributes) {
+		List<OrderItem> orderItemList = orderItemService.findByOrderId(orderId);
+		redirectAttributes.addFlashAttribute("orderItemList",orderItemList);
+		redirectAttributes.addFlashAttribute("orderId",orderId);
+		return "redirect:/order/booleanDeleteOrNot";
 	}
 	
 	@RequestMapping("/deleteId")
@@ -76,8 +78,5 @@ public class OrderItemController {
 		orderItemService.deleteId(id);
 		return "redirect:/orderItem/";
 	}
-	
-
-	
-
+		
 }

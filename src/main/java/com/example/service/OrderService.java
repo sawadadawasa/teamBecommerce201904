@@ -35,11 +35,17 @@ public class OrderService {
 		java.sql.Date orderDate = new java.sql.Date(new GregorianCalendar().getTime().getTime());
 		order.setOrderDate(orderDate);
 		
-		SimpleDateFormat sdf  = new SimpleDateFormat("yyyy/mm/hh");
+		SimpleDateFormat sdf  = new SimpleDateFormat("yyyy/mm/dd/mm");
 		java.util.Date formatDate = sdf.parse(orderForm.getDeliveryTime());
 		order.setDeliveryTime(new Timestamp(formatDate.getTime()));
 		
+		
 		orderRepository.saveFix(order); 
 	}
+	public void booleanDeleteOrNot(int orderId) {
+		GregorianCalendar now = new GregorianCalendar();
+//		orderRepository.deleteOrder(orderId,now);
+	}
+	
 
 }

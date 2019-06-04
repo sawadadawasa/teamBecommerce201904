@@ -40,5 +40,4 @@ public class ItemController {
 		return "item_list";
 	}
 	
-	
 }

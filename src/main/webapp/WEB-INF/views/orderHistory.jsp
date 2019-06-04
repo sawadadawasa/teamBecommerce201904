@@ -25,8 +25,10 @@
 	<td>宛先TEL</td>
 	<td>配達時間</td>
 	<td>支払い方法</td>
-	<td></td>
+	<td><!-- 詳細情報 --></td>
+	
 </tr>
+
 <tr>
 	<td><c:out value="${orderHistory.id}"/></td>
 	<td><c:out value="${orderHistory.userId}"/></td>
@@ -36,7 +38,7 @@
 	<td><c:out value="${orderHistory.destinationEmail}"/></td>
 	<td><c:out value="${orderHistory.destinationAddress}"/></td>
 	<td><c:out value="${orderHistory.destinationTel}"/></td>
-	<td><c:out value="${orderHistory.deliveryTime}"/></td>
+	<td><fmt:formatDate value="${orderHistory.deliveryTime}" pattern="yyyy/MM/dd"/></td>
 	<td><c:out value="${orderHistory.paymentMethod}"/></td>
 	<td><a href ="${pageContext.request.contextPath}/orderItem/showHistoryDetail?orderId=${orderHistory.id}">詳細情報</a></td>
 </tr>

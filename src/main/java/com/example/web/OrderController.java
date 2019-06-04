@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.domain.Order;
+import com.example.domain.OrderItem;
 import com.example.service.OrderService;
 
 @Controller
@@ -74,4 +75,20 @@ public class OrderController {
 
 		return "orderCompletion";
 	}
+	//注文削除した後の画面へ移行
+	@RequestMapping(value="/deleteOrder")
+	public String deleteOrder(int orderId) {
+		orderService.deleteOrder(orderId);
+		return "deleteOrder";
+	}
+	//注文が30分以内であることを確認する(削除ボタンを出力する)
+	@RequestMapping("/booleanDeleteOrNot")
+	public String booleanDeleteOrNot(@ModelAttribute("orderId")Integer orderId) {
+		Boolean deleteOrNot = orderService.booleanDeleteOrNot(orderId);
+		System.out.println(orderId);
+		return "historyDetail";
+	}
+	
+	
+	
 }
