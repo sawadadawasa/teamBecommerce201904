@@ -46,17 +46,19 @@
 	<td>TEL</td><td><form:input path="destinationTel"/></td>
 </tr>
 <tr>
-	<td>配達日</td><td><form:input path="deliveryTime"/></td>
+	<td>配達日</td><td><form:input path="deliveryTime"/></td><!-- 後でdeliveryHourと合わせる -->
 </tr>
 <tr>
 	<td>配達時間</td>
 	<td><form:select path="deliveryHour">
 			<form:options items="${hourList}"/>
 		</form:select>
+	時
 	</td>
 </tr>
 <tr>
-	<td>支払い方法</td><td><form:input path="paymentMethod"/></td>
+	<td>支払い方法</td>
+	<td><form:radiobuttons path="paymentMethod" items="${paymentMethodList}" /></td>
 </tr>
 <br>
 	<input type="submit" value="注文を確定する">
