@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html lang = "ja">
 <head>
@@ -63,11 +65,11 @@
 
 <tr>
 	<td><c:out value="${orderItem.name}"/></td>
-	<td><c:out value="${orderItem.price}"/></td>
+	<td><fmt:formatNumber value="${orderItem.price }" pattern="###,###,###" /></td>
 	<td><img src="img/<c:out value="${orderItem.imagePATH}"/>"/></td>
 	<td><c:out value="${orderItem.piece}"/></td>
 	<td><c:out value="${orderItem.quantity}"/></td>
-	<td><c:out value="${orderItem.subTotalPrice}"/></td>
+	<td><fmt:formatNumber value="${orderItem.subTotalPrice }" pattern="###,###,###" /></td>
 
 	<td><a href ="${pageContext.request.contextPath}/}"></a></td>
 </tr>
