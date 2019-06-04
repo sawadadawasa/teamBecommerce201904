@@ -117,7 +117,7 @@
 
                     <c:forEach var="itemList" items="${itemList}">
                         <th>
-                            <a href="item_detail.html">
+                            <a href="${pageContext.request.contextPath}/item/show/${itemList.id}">
                                 <img src="img/<c:out value="${itemList.imagePath}"/>" class="img-responsive img-rounded" width="200" height="600"/>
                             </a>
                             <br>
