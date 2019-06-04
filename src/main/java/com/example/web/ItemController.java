@@ -2,7 +2,6 @@ package com.example.web;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,9 +22,9 @@ public class ItemController {
 	}
 	
 	//商品一覧を表示
-	@RequestMapping(value="/")
+	@RequestMapping
 	public String listAll(Model model) {
-
+	
 		service.itemFindAll(model);
 		service.itemOriginList(model);
 		service.itemPieceList(model);
@@ -42,9 +41,8 @@ public class ItemController {
 	}
 	
 	//商品詳細画面に遷移
-	@RequestMapping(value = "show/{itemId}")
+	@RequestMapping(value = "/show/{itemId}")
 	public String show(@PathVariable("itemId") Integer id, Model model) {
-		
 		service.findOne(model,id);
 		return "item_detail";
 	}

@@ -1,10 +1,6 @@
 package com.example.web;
 
-import java.lang.ProcessBuilder.Redirect;
-import java.lang.reflect.Member;
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,60 +11,24 @@ import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.example.domain.User;
 import com.example.service.UserService;
 
 @Controller
-@RequestMapping(value = "/tea")
+@RequestMapping(value = "/user")
 @Transactional
 public class UserController {
 
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private HttpSession session;
-
 	//フォームを初期化します。
 	@ModelAttribute
 	public UserForm setUpForm() {
 		return new UserForm();
 	}
-
-	// ログイン画面を表示します。
-	@RequestMapping
-	public String index() {
-		return "login";
-	}
-
-	// ログイン処理を行います。
-	// 入力値チェックを行います。
-	@RequestMapping(value = "/login")
-	public String login(@Validated UserForm form, BindingResult result) {
-		if(result.hasErrors()) {
-			return index();
-		}
-		String email = form.getEmail();
-		String password = form.getPassword();
-		System.out.println(email);
-		System.out.println(password);
-		User user = userService.findOneByEmailAndPassword(email, password);
-		
-		if (user == null) {
-			ObjectError error = new ObjectError("loginerror", "メールアドレスまたはパスワードが違います。");
-			result.addError(error);
-			return index();
-		}
-
-		session.setAttribute("user", user);
-		System.out.println("aaa");
-		return "redirect:/item/";
-	}
-
 	// ユーザー登録画面
-	@RequestMapping(value = "/form")
+	@RequestMapping(value = "form")
 	public String form() {
 		return "newAccount";
 	}
@@ -86,7 +46,6 @@ public class UserController {
 			if ((user.getEmail()).equals(form.getEmail())) {
 				ObjectError error = new ObjectError("addresserror", "このメールアドレスは既に登録されています。");
 				result.addError(error);
-				System.out.println("77777");
 				return form();
 			}
 		}
@@ -99,10 +58,9 @@ public class UserController {
 			result.addError(error);
 			return form();
 		}
-
 		User user = new User();
 		BeanUtils.copyProperties(form, user);
 		user=userService.save(user);
-		return "redirect:/tea/";
+		return "redirect:/tea/login";
 	}
 }

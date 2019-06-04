@@ -14,7 +14,7 @@
 	<div class="span8">
 		<div class="row">
 		<form:errors path="userForm" cssStyle="color:red" />
-		<form:form modelAttribute="userForm" action="${pageContext.request.contextPath}/tea/create">
+		<form:form modelAttribute="userForm" action="${pageContext.request.contextPath}/user/create">
 			<table class="table table-striped">
 			  <tr>
 			    <th>
