@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.OrderItem;
@@ -35,7 +36,7 @@ public class OrderItemController {
 	}
 	
 	List<OrderItem> orderItemList = new ArrayList<OrderItem>();
-	
+	 
 	//商品の詳細を表示
 	@RequestMapping
 	public String showItems(OrderItemForm form, Model model) {
@@ -79,9 +80,11 @@ public class OrderItemController {
 		return "redirect:/order/booleanDeleteOrNot";
 	}
 	
-	@RequestMapping("/deleteId")
-	public String deleteItem(@RequestParam int id) {
+	@RequestMapping("/deleteId/{Id}")
+	public String deleteItem(@PathVariable("Id") Integer id) {
+		System.out.println("idは" + id);
 		orderItemService.deleteId(id);
+		
 		return "redirect:/orderItem";
 	}
 

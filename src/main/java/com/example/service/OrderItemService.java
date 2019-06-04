@@ -49,6 +49,7 @@ public List<OrderItem> findByOrderId(int orderId) {
 }
 
 public void deleteId(int id) {
+	System.out.println("こちらService。IDは" + id);
 	orderItemRepository.deleteId(id);
 }
 
