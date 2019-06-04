@@ -3,6 +3,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 <title>新規登録</title>
 </head>
 <body>
@@ -15,7 +18,7 @@
 			<table class="table table-striped">
 			  <tr>
 			    <th>
-			     	 氏名
+			     	 お名前
 			    </th>
 			    <td>
 			    	<form:input path="name"  placeholder="Name"/>
@@ -33,16 +36,26 @@
 			  </tr>
 			  <tr>
 			  	<th>
-			  		住所
+			  		郵便番号
 			  	</th>
-			  	<td>
+				<td>
+					<form:input path="postalCode" placeholder="1234567"/> &nbsp;&nbsp;
+					<button id="btn" type="button">住所検索</button>
+				</td>
+			  </tr>
+			  <tr>
+				<th>
+				住所
+				</th>
+				<td>
 			  		<form:input path="address" placeholder="Address"/>
 			  		<form:errors path="address" cssStyle="color:red" element="div"/>
 			  	</td>
 			  </tr>
+			  	
 			  <tr>
 			  	<th>
-			  		電話番号
+			  		TEL
 			  	</th>
 			  	<td>
 			  		<form:input path="telephone" placeholder="Telephone"/>
@@ -75,7 +88,23 @@
 			  </tr>
 			</table>
 		  </form:form>
-		</div>
+				<script
+					src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+				<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+				<script>
+					$(function() {
+						console.log("debug");
+						$("#btn").on(
+								"click",
+								function() {
+									AjaxZip3.zip2addr('postalCode', '',
+											'address',
+											'address')
+								});
+					});
+				</script>
+
+			</div>
 	</div>
 </div>
 </body>
