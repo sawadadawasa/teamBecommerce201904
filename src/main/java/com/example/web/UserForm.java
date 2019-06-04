@@ -20,24 +20,24 @@ public class UserForm {
 //	@Email(message = "Eメールの形式が不正です。")
 	private String email;
 	
-//	//パスワード
+	//パスワード
 //	@NotBlank(message = "パスワードは必須です。")
 //	@Size(min=6,max=12, message="パスワードは半角英数字で6文字以上12文字以内で記入してください。")
 //	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String password;
 	
-//	//住所
+	//住所
 //	@NotBlank(message = "住所は必須です。")
 	private String address;
 	
-//	//電話番号
+	//電話番号
 //	@NotBlank(message = "電話番号は必須です。")
 	private String telephone;
 	
 	
 	private String pageparam;
 	
-//	//確認用パスワード
+	//確認用パスワード
 //	@NotBlank(message = "確認用パスワードは必須です。")
 	private String passwordConfirm;
 	

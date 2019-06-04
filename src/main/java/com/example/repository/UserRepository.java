@@ -37,12 +37,15 @@ public class UserRepository {
 	public User findOneByEmailAndPassword(String email,String password) {
 		User user = null;
 		try{
+			System.out.println(email);
+			System.out.println(password);
 			// SQLインジェクション対策
-			String sql = "SELECT id,name,email,password FROM users WHERE email = :email and password = :password";
+			String sql = "SELECT id,name,email,password, telephone FROM users WHERE email = :email and password = :password";
 			SqlParameterSource param = new MapSqlParameterSource().addValue("email", email).addValue("password",
 					password);
 
 			user = template.queryForObject(sql, param, User_ROW_MAPPER);
+
 			return user;
 
 		} catch (DataAccessException e) {
@@ -53,7 +56,6 @@ public class UserRepository {
 	
 	//メンバー情報を保存または更新する
 	public User save(User user) {
-		System.out.println("user.getId() : " + user.getId() + ".");
 		SqlParameterSource param = new BeanPropertySqlParameterSource(user);
 		if (user.getId() == null) {
 			String insertSql="INSERT INTO users(name,email,password,address,telephone) VALUES(:name,:email,:password,:address,:telephone)";
@@ -71,8 +73,8 @@ public class UserRepository {
 	
 	//メールアドレスを取得
 	public List<User> findAll() {
-		List<User> user=template.query("SELECT * FROM users",User_ROW_MAPPER);
-		return user;
+		List<User> users=template.query("SELECT * FROM users",User_ROW_MAPPER);
+		return users;
 		
 	}
 	

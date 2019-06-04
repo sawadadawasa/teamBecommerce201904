@@ -3,10 +3,10 @@
 <body>
 <div class="container">
 	<div class="span8">
-		<img src="img/header_logo_bk.png" >
+		<img src="img/header_logo_bk.png/" >
 		<div class="row">
-		<form:errors path="userForm.*" />
-		<form:form modelAttribute="userForm" action="${pageContext.request.contextPath}/login">
+		<form:errors path="userForm.*" cssStyle="color:red"/>
+		<form:form modelAttribute="userForm" action="${pageContext.request.contextPath}/tea/login">
 			<table class="table table-striped">
 			  <tr>
 			    <th>
