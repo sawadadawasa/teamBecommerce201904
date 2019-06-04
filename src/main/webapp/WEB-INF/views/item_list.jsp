@@ -84,12 +84,14 @@
                         <div>
                         	原産地 : 
 	                         <select name="origin">
+	                         	<option value="0">原産地</option>
                         		<c:forEach var="originList" items="${originList}">
 							    	<option value="${originList}">${originList}</option>
 						  		</c:forEach>
 							</select>
                         	パック数 : 
 	                         <select name="piece">
+	                         	<option value="0">パック数</option>
                         		<c:forEach var="pieceList" items="${pieceList}">
 							    	<option value="${pieceList}">${pieceList}</option>
 						  		</c:forEach>
@@ -128,50 +130,6 @@
                             <br>
                         </th>
                     </c:forEach>
-                        <th>
-                            <a href="item_detail.html"> <img src="img/1.jpg" class="img-responsive img-rounded" width="200" height="600">
-                            </a>
-                            <br>
-                            <a href="item_detail.html">じゃがバターベーコン</a>
-                            <br>
-                            <span class="price">&nbsp;М&nbsp;</span>&nbsp;&nbsp;1,380円(税抜)<br>
-                            <span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;2,380円(税抜)<br>
-                        </th>
-                        <th>
-                            <a href="item_detail.html"> <img src="img/1.jpg" class="img-responsive img-rounded" width="200" height="600">
-                            </a><br>
-                            <a href="item_detail.html">じゃがバターベーコン
-                            </a><br>
-                            <span class="price">&nbsp;М&nbsp;</span>&nbsp;&nbsp;1,380円(税抜)<br>
-                            <span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;2,380円(税抜)<br>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <a href="item_detail.html">
-                                <img src="img/1.jpg" class="img-responsive img-rounded" width="200" height="600">
-                            </a>
-                            <br>
-                            <a href="item_detail.html">じゃがバターベーコン</a><br>
-                            <span class="price">&nbsp;М&nbsp;</span>&nbsp;&nbsp;1,380円(税抜)<br>
-                            <span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;2,380円(税抜)<br>
-                        </th>
-                            <th>
-                            <a href="item_detail.html">
-                            <img src="img/1.jpg" class="img-responsive img-rounded" width="200" height="600">
-                            </a><br>
-                            <a href="item_detail.html">じゃがバターベーコン</a><br>
-                            <span class="price">&nbsp;М&nbsp;</span>&nbsp;&nbsp;1,380円(税抜)<br>
-                            <span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;2,380円(税抜)<br>
-                            </th>
-                            <th>
-                                <a href="item_detail.html">
-                                <img src="img/1.jpg" class="img-responsive img-rounded" width="200" height="600">
-                                </a><br>
-                                <a href="item_detail.html">じゃがバターベーコン</a><br>
-                                <span class="price">&nbsp;М&nbsp;</span>&nbsp;&nbsp;1,380円(税抜)<br>
-                                <span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;2,380円(税抜)<br>
-                        </th>
                     </tr>
                 </tbody>
             </table>

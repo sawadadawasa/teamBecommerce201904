@@ -61,11 +61,33 @@ public class ItemRepository {
 		return item;
 	}
 	
-	public List<Item> findMatchItem(String code){
-		SqlParameterSource param = new MapSqlParameterSource()
-				.addValue("code","%"+code+"%");
+	public List<Item> findMatchItem(String code, String origin, String piece){
+		String sql = "";
+		SqlParameterSource param = new MapSqlParameterSource();
 		
-		String sql = "SELECT id, name, description, imagePath, deleted, piece, origin FROM items WHERE name like :code ORDER BY id";
+		if( origin.equals("0") && piece.equals("0") ) {
+			sql = "SELECT id, name, description, imagePath, deleted, piece, origin FROM items WHERE name like :code ORDER BY id";
+			param = new MapSqlParameterSource()
+					.addValue("code","%"+code+"%");
+		}else if( origin.equals("0") && !(piece.equals("0")) ) {
+			//パック数のみが入ってる
+			sql = "SELECT id, name, description, imagePath, deleted, piece, origin FROM items WHERE name like :code AND piece =:piece ORDER BY id";
+			param = new MapSqlParameterSource()
+					.addValue("code","%"+code+"%").addValue("piece", Integer.parseInt(piece));
+		}else if( !(origin.equals("0")) && piece.equals("0") ) {
+			//原産地のみが入っている
+			sql = "SELECT id, name, description, imagePath, deleted, piece, origin FROM items WHERE name like :code AND origin =:origin ORDER BY id";
+			param = new MapSqlParameterSource()
+					.addValue("code","%"+code+"%").addValue("origin", origin);;
+		}else if(!(origin.equals("0")) && !(piece.equals("0")) ) {
+			//原産地とパック数が入っている
+			sql = "SELECT id, name, description, imagePath, deleted, piece, origin FROM items WHERE name like :code AND origin =:origin AND piece =:piece ORDER BY id";
+			param = new MapSqlParameterSource()
+					.addValue("code","%"+code+"%").addValue("origin", origin).addValue("piece", Integer.parseInt(piece));;
+		}
+		
+		
+		
 		List<Item> itemList = template.query(sql, param, itemRowMapper);
 		return itemList;
 	}

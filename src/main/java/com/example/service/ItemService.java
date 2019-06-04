@@ -49,9 +49,9 @@ public class ItemService {
 	}
 	
 	//商品名あいまい検索
-	public void itemFindMatch(Model model, String code ){
+	public void itemFindMatch( String code, String origin, String piece, Model model ){
 		List<Item> itemList = new ArrayList<>();
-		itemList = itemRepository.findMatchItem(code);
+		itemList = itemRepository.findMatchItem(code, origin, piece);
 		model.addAttribute("itemList", itemList);
 	}
 	
