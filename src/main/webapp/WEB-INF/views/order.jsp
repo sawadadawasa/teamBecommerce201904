@@ -16,7 +16,7 @@
 <table border="1">
 <form:form modelAttribute="orderForm" action="${pageContet.request.contetPath}/order/fix">
 
-	<form:hidden path="userId" value="1"/><!-- 一次的にvalue 1に -->
+	<form:hidden path="userId" value="2"/><!-- 一次的にvalue 1に -->
 
 <tr>
 	<td>お名前</td><td><form:input path="destinationName"/></td>

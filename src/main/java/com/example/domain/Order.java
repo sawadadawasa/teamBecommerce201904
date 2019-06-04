@@ -15,11 +15,18 @@ public class Order {
 	private String destinationTel;//宛先TEL
 	private Timestamp deliveryTime;//配達時間
 	private Integer paymentMethod;//支払い方法
+	private String postalCode;
 	
+	public String getPostalCode() {
+		return postalCode;
+	}
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
 	public Order(){};
 	public Order(Integer id, Integer userId, Integer totalPrice, Date orderDate, 
 					String destinationName, String destinationEmail, String destinationAddress,
-					String destinationTel, Timestamp deliveryTime,Integer paymentMethod) {
+					String destinationTel, Timestamp deliveryTime,Integer paymentMethod,String postalCode) {
 		this.Id = id;
 		this.userId = userId;
 		this.totalPrice = totalPrice;
@@ -30,6 +37,7 @@ public class Order {
 		this.destinationTel = destinationTel;
 		this.deliveryTime = deliveryTime;
 		this.paymentMethod = paymentMethod;
+		this.postalCode = postalCode;
 	}
 	public Integer getId() {
 		return Id;

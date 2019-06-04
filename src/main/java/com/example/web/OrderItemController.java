@@ -66,7 +66,7 @@ public class OrderItemController {
 	}
 	//orderHistoryからの遷移
 	@RequestMapping("/showHistoryDetail")
-	public String showHistoryDetail(int orderId) {
+	public String showHistoryDetail(@RequestParam int orderId) {
 		orderItemService.findByOrderId(orderId);
 		return "historyDetail";
 	}

@@ -40,9 +40,10 @@ public class OrderRepository {
 		String destinationTel = rs.getString("destination_tel");
 		Timestamp deliveryTime = rs.getTimestamp("delivery_time");
 		Integer paymentMethod = rs.getInt("payment_method");
+		String postalCode = rs.getString("postal_code");
 		return new Order( id,  userId,  totalPrice, orderDate, 
 				 destinationName, destinationEmail, destinationAddress,
-				 destinationTel, deliveryTime, paymentMethod) ;
+				 destinationTel, deliveryTime, paymentMethod,postalCode) ;
 
 	};
 
@@ -54,9 +55,9 @@ public class OrderRepository {
 	public void saveFix(Order order) {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(order);
 		String sql = "insert into orders (user_id,total_price,order_date,destination_name,destination_email,"+
-					   "destination_address,destination_tel,delivery_time,payment_method)"+
+					   "destination_address,destination_tel,delivery_time,payment_method,postal_code)"+
 					  "values(:userId,:totalPrice,:orderDate,:destinationName,:destinationEmail,"+
-	                      ":destinationAddress,:destinationTel,:deliveryTime,:paymentMethod)";
+	                      ":destinationAddress,:destinationTel,:deliveryTime,:paymentMethod,:postalCode)";
 		
 		jdbcTemplate.update(sql,param);		
 	}
