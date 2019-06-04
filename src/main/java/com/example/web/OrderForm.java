@@ -13,8 +13,14 @@ public class OrderForm {
 	private String destinationTel;//宛先TEL
 	private String deliveryTime;//配達時間
 	private String paymentMethod;//支払い方法
+	private String postalCode;
 
-
+	public String getPostalCode() {
+		return postalCode;
+	}
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
 	public Integer getTotalPrice() {
 		return totalPrice;
 	}
