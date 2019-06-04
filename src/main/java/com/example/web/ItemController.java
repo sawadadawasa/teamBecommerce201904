@@ -57,11 +57,4 @@ public class ItemController {
 	}
 
 	
-	//商品詳細画面に遷移
-	@RequestMapping(value = "/serch")
-	public String serch(@RequestParam String code, Model model) {
-//		service.itemFindMatch(model, code);
-		return "item_list";
-	}
-	
 }

@@ -31,11 +31,9 @@ public class OrderItemService {
 	public void addItem(int itemId, int quantity) {
 
 	 if (session.getAttribute("orderId") != null){
-		 System.out.println("orderIdはnullじゃない");
 		orderItemRepository.saveOnly(itemId, quantity);
 		
 	} else if(session.getAttribute("orderId") == null) {
-		System.out.println("orderIdはnull");
 		
 	Integer orderId = orderItemRepository.saveAndReturnOrderId(itemId, quantity);
 	
@@ -48,9 +46,23 @@ public List<OrderItem> findByOrderId(int orderId) {
 	return orderItemRepository.findAllHistoryDetail(orderId);
 }
 
+//ショッピングカートの中身を消すメソッド
 public void deleteId(int id) {
-	System.out.println("こちらService。IDは" + id);
 	orderItemRepository.deleteId(id);
+}
+
+//合計金額を計算するメソッド
+public Integer calcTotalPrice(List<OrderItem> orderItemList) {
+	
+	Integer totalPrice = 0;
+	
+	for(OrderItem orderItem : orderItemList ) {
+		totalPrice += orderItem.getSubTotalPrice();
+		
+	}
+	
+	return totalPrice;
+	
 }
 
 

@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,29 +42,35 @@ public class OrderItemController {
 	@RequestMapping
 	public String showItems(OrderItemForm form, Model model) {
 		
-		System.out.println("OrdeItem");
-		
 		Integer orderId = (Integer)session.getAttribute("orderId");
-		
-		System.out.println("とってきたorderIdは、" + orderId);
 		
 		if(orderId != null) {
 		orderItemList	= orderItemService.findAll(orderId);
 		
 		}
 		
-		model.addAttribute(orderItemList);
+		//合計金額
+		Integer totalPrice = orderItemService.calcTotalPrice(orderItemList);
 		
-		System.out.println(orderItemList);		
+		//消費税
+		Integer taxOfTotalPrice = (int)(totalPrice*0.08);
+		
+		NumberFormat nfNum = NumberFormat.getNumberInstance();
+		
+		String viewTotalPrice = nfNum.format(totalPrice);
+		String viewTaxOfTotalPrice = nfNum.format(taxOfTotalPrice);
+		
+		model.addAttribute("orderItemList", orderItemList)
+		.addAttribute("viewTotalPrice", viewTotalPrice).
+		addAttribute("viewTaxOfTotalPrice", viewTaxOfTotalPrice);
+				
 		return "cart_list";
 	}
 	
 	//商品をカートに追加、cart_list.jspに移動
 	@RequestMapping("/addItem")
 	public String addItem(OrderItemForm form) {
-		
-		System.out.println("additem");
-		
+				
 		Integer itemId = form.getItemId();
 		Integer quantity = form.getQuantity();
 		
@@ -82,7 +89,7 @@ public class OrderItemController {
 	
 	@RequestMapping("/deleteId/{Id}")
 	public String deleteItem(@PathVariable("Id") Integer id) {
-		System.out.println("idは" + id);
+
 		orderItemService.deleteId(id);
 		
 		return "redirect:/orderItem";

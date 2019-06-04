@@ -64,7 +64,6 @@
 
 					<c:forEach items="${orderItemList}" var="orderItem">
 
-
 						<tr>
 
 							<td><c:out value="${orderItem.name}" /></td>
@@ -97,8 +96,8 @@
 		<div class="row">
 			<div class="col-xs-offset-2 col-xs-8">
 				<div class="form-group text-center">
-					<span id="total-price">消費税：8,000円</span><br> <span
-						id="total-price">ご注文金額合計：38,000 (税込)</span>
+					<span id="total-price">消費税：<c:out value="${viewTaxOfTotalPrice}" />円</span><br> 
+					<span id="total-price">ご注文金額合計：<c:out value="${viewTotalPrice}" />円(税込)</span>
 				</div>
 			</div>
 		</div>
