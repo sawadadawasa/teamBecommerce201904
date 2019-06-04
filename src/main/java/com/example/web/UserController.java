@@ -31,7 +31,7 @@ public class UserController {
 	@Autowired
 	private HttpSession session;
 
-	// フォームを初期化します。
+	//フォームを初期化します。
 	@ModelAttribute
 	public UserForm setUpForm() {
 		return new UserForm();
@@ -44,27 +44,30 @@ public class UserController {
 	}
 
 	// ログイン処理を行います。
+	// 入力値チェックを行います。
 	@RequestMapping(value = "/login")
 	public String login(@Validated UserForm form, BindingResult result) {
-//		if (result.hasErrors()) {
-//			return index();
-//		}
-//		// 入力値チェックを行います。
-//		String email = form.getEmail();
-//		String password = form.getPassword();
-//		User user = userService.findOneByEmailAndPassword(email, password);
-//		if (user == null) {
-//			ObjectError error = new ObjectError("loginerror", "メールアドレスまたはパスワードが違います。");
-//			result.addError(error);
+		if(result.hasErrors()) {
+			return index();
+		}
+		String email = form.getEmail();
+		String password = form.getPassword();
+		System.out.println(email);
+		System.out.println(password);
+		User user = userService.findOneByEmailAndPassword(email, password);
+		
+		if (user == null) {
+			ObjectError error = new ObjectError("loginerror", "メールアドレスまたはパスワードが違います。");
+			result.addError(error);
 			return index();
 		}
 
-//		session.setAttribute("user", user);
+		session.setAttribute("user", user);
+		System.out.println("aaa");
+		return "redirect:/item/";
+	}
 
-//		return "redirect:/tea/login";
-//	}
-
-	// メンバー登録画面
+	// ユーザー登録画面
 	@RequestMapping(value = "/form")
 	public String form() {
 		return "newAccount";
@@ -74,28 +77,28 @@ public class UserController {
 	@RequestMapping(value = "create")
 	public String create(@Validated UserForm form, BindingResult result) {
 
-//		if (result.hasErrors()) {
-//			return form();
-//		}
-//
-//		List<User> users = userService.findAll();
-//		for (User user : users) {
-//			if ((user.getEmail()).equals(form.getEmail())) {
-//				ObjectError error = new ObjectError("addresserror", "このメールアドレスは既に登録されています。");
-//				result.addError(error);
-//				System.out.println("77777");
-//				return form();
-//			}
-//		}
-//
-//		// 確認用パスワードとパスワードが一致しなければエラー
-//		String password = form.getPassword();
-//		String passwordConfirm = form.getPasswordConfirm();
-//		if (!passwordConfirm.equals(password)) {
-//			ObjectError error = new ObjectError("loginerror", "パスワードと確認用パスワードが一致しません。");
-//			result.addError(error);
-//			return form();
-//		}
+		if (result.hasErrors()) {
+			return form();
+		}
+
+		List<User> users = userService.findAll();
+		for (User user : users) {
+			if ((user.getEmail()).equals(form.getEmail())) {
+				ObjectError error = new ObjectError("addresserror", "このメールアドレスは既に登録されています。");
+				result.addError(error);
+				System.out.println("77777");
+				return form();
+			}
+		}
+
+		// 確認用パスワードとパスワードが一致しなければエラー
+		String password = form.getPassword();
+		String passwordConfirm = form.getPasswordConfirm();
+		if (!passwordConfirm.equals(password)) {
+			ObjectError error = new ObjectError("loginerror", "パスワードと確認用パスワードが一致しません。");
+			result.addError(error);
+			return form();
+		}
 
 		User user = new User();
 		BeanUtils.copyProperties(form, user);
