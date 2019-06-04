@@ -52,12 +52,14 @@ public class OrderItemRepository {
 		String piece = rs.getString("piece");
 		int quantity = rs.getInt("quantity");
 		int subTotalPrice = rs.getInt("subTotalPrice");
+		int id = rs.getInt("id");
 		orderItem.setName(name);
 		orderItem.setPrice(price);
 		orderItem.setImagePATH(imagePATH);
 		orderItem.setPiece(piece);
 		orderItem.setQuantity(quantity);
 		orderItem.setSubTotalPrice(subTotalPrice);
+		orderItem.setId(id);
 		return orderItem;
 	};
 
@@ -69,7 +71,7 @@ public class OrderItemRepository {
 
 	public List<OrderItem> findAll(Integer orderId){
 
-		String sql = "SELECT items.name, items.price, items.imagePATH, items.piece, order_items.quantity,"
+		String sql = "SELECT order_items.id, items.name, items.price, items.imagePATH, items.piece, order_items.quantity,"
 				+ " items.price * order_items.quantity AS subTotalPrice"
 				+ " FROM order_items INNER JOIN items ON order_items.item_id = items.id WHERE order_id = :orderId";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("orderId", orderId);
@@ -80,7 +82,7 @@ public class OrderItemRepository {
 	}
 	public List<OrderItem> findAllHistoryDetail(Integer orderId){
 
-		String sql = "SELECT items.name, items.price, items.imagePATH, items.piece, order_items.quantity,"
+		String sql = "SELECT order_items.id, items.name, items.price, items.imagePATH, items.piece, order_items.quantity,"
 				+ " items.price * order_items.quantity AS subTotalPrice"
 				+ " FROM order_items INNER JOIN items ON order_items.item_id = items.id WHERE order_id = :orderId";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("orderId", orderId);
@@ -92,7 +94,7 @@ public class OrderItemRepository {
 
 	public Integer saveAndReturnOrderId(int itemId,  int quantity) {
 
-		String selectSql = "SELECT max(id)+1 FROM order_items";
+		String selectSql = "SELECT max(order_id)+1 FROM order_items";
 
 		Integer orderId = jdbcTemplate2.queryForObject(selectSql,  Integer.class);
 
@@ -124,8 +126,11 @@ public class OrderItemRepository {
 	}
 
 	public void deleteId(int id) {
-		String sql = "DELETE * FROM order_items WHERE id = :id";
+		
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id",id);
+		
+		String sql = "DELETE FROM order_items WHERE id = :id";
+		
 		jdbcTemplate.update(sql, param);
 	}
 

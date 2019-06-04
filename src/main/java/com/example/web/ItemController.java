@@ -16,22 +16,22 @@ import com.example.service.ItemService;
 public class ItemController {
 	@Autowired
 	private ItemService service;
-	
+
 	@ModelAttribute
 	public OrderItemForm setUpForm() {
 		return new OrderItemForm();
 	}
-	
+
 	//商品一覧を表示
 	@RequestMapping
 	public String listAll(Model model) {
-	
+
 		service.itemFindAll(model);
 		service.itemOriginList(model);
 		service.itemPieceList(model);
 		return "item_list";
 	}
-	
+
 	//商品詳細画面に遷移
 	@RequestMapping(value = "/serch")
 	public String serch(@RequestParam String code, @RequestParam String origin, @RequestParam String piece, Model model) {
@@ -40,21 +40,21 @@ public class ItemController {
 		service.itemFindMatch(code, origin, piece, model);
 		return "item_list";
 	}
-	
+
 	//商品詳細画面に遷移
 	@RequestMapping(value = "/show/{itemId}")
 	public String show(@PathVariable("itemId") Integer id, Model model) {
-		
-		
+
+
 		Integer quantityList[] = new Integer[10];
-		
+
 		for (int i = 0; i < quantityList.length ; i++) {
 			quantityList[i] = i+1 ;
 		}
 
 		model.addAttribute("quantityList", quantityList);
-		
-		
+
+
 		service.findOne(model,id);
 		return "item_detail";
 	}
