@@ -39,7 +39,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <p class="navbar-text navbar-right">
                     <a
-                        href="${pageContext.request.contextPath}/logout/sessionInvalidate"
+                        href="${pageContext.request.contextPath}/orderItem/cart"
                         class="navbar-link">ショッピングカート
                     </a>&nbsp;&nbsp;
                     <a
