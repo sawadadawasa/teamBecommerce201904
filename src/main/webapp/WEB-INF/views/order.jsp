@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 <title>Insert title here</title>
 </head>
 
@@ -22,13 +24,23 @@
 <tr>
 	<td>メールアドレス</td><td><form:input path="destinationEmail"/></td>
 </tr>
-	
+<tr>	
 	<form:hidden path="totalPrice" value="10"/><!-- valueの10は後でtotalPriceに -->
 
-<tr>
 </tr>
 <tr>
-	<td>住所</td><td><form:input path="destinationAddress"/></td>
+	<td>郵便番号</td>
+	<td>
+		<form:input  path="postalCode" />
+         &nbsp;&nbsp;
+        <button id="btn" type="button">住所検索</button>
+	</td>
+</tr>
+<tr>
+	<td>住所</td>
+	<td>
+        <form:input path="destinationAddress"/>
+	</td>
 </tr>
 <tr>	
 	<td>TEL</td><td><form:input path="destinationTel"/></td>
@@ -43,7 +55,17 @@
 	<input type="submit" value="注文を確定する">
 </form:form>
 </table>
-
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+<script>
+	$(function(){
+		console.log("debug");
+    	$("#btn").on("click", function(){AjaxZip3.zip2addr('postalCode','','destinationAddress','destinationAddress')});
+	});
+</script>
+<br>
 </body>
 </html>
+	
 	

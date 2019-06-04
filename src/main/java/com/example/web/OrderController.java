@@ -58,13 +58,13 @@ public class OrderController {
 	
 
 	
-	@RequestMapping(value = "/mail/send", method = {RequestMethod.POST} )
+	@RequestMapping(value = "/mail/send", method = {RequestMethod.GET} )
 	public String send(@ModelAttribute("destinationEmail")String destinationEmail) {
 		
 		
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
 
-	    mailMessage.setTo("test.bayashi.dev@gmail.com");
+	    mailMessage.setTo("destinationEmail");
 	    mailMessage.setReplyTo("test.bayashi.dev@gmail.com");
 	    mailMessage.setFrom(destinationEmail);
 	    mailMessage.setSubject("テストメール");
