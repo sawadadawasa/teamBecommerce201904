@@ -35,10 +35,10 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
-						<a href="cart_list.html" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
-						<a href="order_history.html" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
-						<a href="login.html" class="navbar-link">ログイン</a>&nbsp;&nbsp;
-						<a href="item_list.html" class="navbar-link">ログアウト</a>
+						<a href="orderItem/cart" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
+						<a href="order_history.jsp" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
+						<a href="login.jsp" class="navbar-link">ログイン</a>&nbsp;&nbsp;
+						<a href="item_list.jsp" class="navbar-link">ログアウト</a>
 					</p>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -64,13 +64,19 @@
 <tr>
 	<td><c:out value="${orderItem.name}"/></td>
 	<td><c:out value="${orderItem.price}"/></td>
-	<td><c:out value="${orderItem.imagePATH}"/></td>
+	<td><img src="img/<c:out value="${orderItem.imagePATH}"/>"/></td>
 	<td><c:out value="${orderItem.piece}"/></td>
 	<td><c:out value="${orderItem.quantity}"/></td>
-	<td>price * quantity </td>
+	<td><c:out value="${orderItem.subTotalPrice}"/></td>
 
 	<td><a href ="${pageContext.request.contextPath}/}"></a></td>
 </tr>
+					<form action="${pageContext.request.contextPath}/orderItem/deleteId">
+						<input class="form-control btn btn-warning btn-block"
+							type="submit" value="削除">
+					</form>
+
+
 </c:forEach>
 </table>
 </div>
@@ -89,7 +95,7 @@
 		<div class="row">
 			<div class="col-xs-offset-5 col-xs-3">
 				<div class="form-group">
-					<form action="order_list.html">
+					<form action="${pageContext.request.contextPath}/order/view">
 						<input class="form-control btn btn-warning btn-block"
 							type="submit" value="注文に進む">
 					</form>

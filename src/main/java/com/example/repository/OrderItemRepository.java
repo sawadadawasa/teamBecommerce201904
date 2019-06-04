@@ -29,94 +29,105 @@ import com.example.service.OrderItemService;
 @Repository
 @Transactional
 public class OrderItemRepository {
-	
+
 	@Autowired
 	private NamedParameterJdbcTemplate jdbcTemplate;
-	
+
 	@Autowired
 	private JdbcTemplate jdbcTemplate2;
-	
+
 	@Autowired
 	private HttpSession session;
-	
+
 	List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 
-		
+
 	private static final RowMapper<OrderItem> ORDERITEM_ROW_MAPPER = (rs, i) -> {
 
 		OrderItem orderItem = new OrderItem();
-		
+
 		String name = rs.getString("name");
 		int price = rs.getInt("price");
 		String imagePATH = rs.getString("imagePATH");
 		String piece = rs.getString("piece");
 		int quantity = rs.getInt("quantity");
+		int subTotalPrice = rs.getInt("subTotalPrice");
 		orderItem.setName(name);
 		orderItem.setPrice(price);
 		orderItem.setImagePATH(imagePATH);
 		orderItem.setPiece(piece);
 		orderItem.setQuantity(quantity);
+		orderItem.setSubTotalPrice(subTotalPrice);
 		return orderItem;
 	};
-	
+
 	@PostConstruct
 	public void init() {
 		SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert((JdbcTemplate) jdbcTemplate.getJdbcOperations());
 		SimpleJdbcInsert withTableName = simpleJdbcInsert.withTableName("order_items");
 	}
-	
+
 	public List<OrderItem> findAll(Integer orderId){
-		
-		String sql = "SELECT items.name, items.price, items.imagePATH, items.piece, order_items.quantity"
-				 + " FROM order_items INNER JOIN items ON order_items.item_id = items.id WHERE order_id = :orderId";
+
+		String sql = "SELECT items.name, items.price, items.imagePATH, items.piece, order_items.quantity,"
+				+ " items.price * order_items.quantity AS subTotalPrice"
+				+ " FROM order_items INNER JOIN items ON order_items.item_id = items.id WHERE order_id = :orderId";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("orderId", orderId);
 		orderItemList = jdbcTemplate.query(sql, param, ORDERITEM_ROW_MAPPER);
-		
+
 		return orderItemList;
-		
+
 	}
 	public List<OrderItem> findAllHistoryDetail(Integer orderId){
-		
-		String sql = "SELECT items.name, items.price, items.imagePATH, items.piece, order_items.quantity"
-		 + " FROM order_items INNER JOIN items ON order_items.item_id = items.id WHERE order_id = :orderId";
+
+		String sql = "SELECT items.name, items.price, items.imagePATH, items.piece, order_items.quantity,"
+				+ " items.price * order_items.quantity AS subTotalPrice"
+				+ " FROM order_items INNER JOIN items ON order_items.item_id = items.id WHERE order_id = :orderId";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("orderId", orderId);
 		orderItemList = jdbcTemplate.query(sql, param, ORDERITEM_ROW_MAPPER);
-		
+
 		return orderItemList;
-		
+
 	}
 
 	public Integer saveAndReturnOrderId(int itemId,  int quantity) {
-		
+
 		String selectSql = "SELECT max(id)+1 FROM order_items";
-		
+
 		Integer orderId = jdbcTemplate2.queryForObject(selectSql,  Integer.class);
-		
+
+		System.out.println(orderId);
+
+		if(orderId == null) {
+			orderId = 1;
+			System.out.println(orderId);
+		}
+
 		SqlParameterSource param = new MapSqlParameterSource().addValue("itemId",itemId).addValue("quantity", quantity).addValue("orderId", orderId);
-		
+
 		String insertSql = "INSERT INTO order_items (item_id, order_id, quantity)VALUES (:itemId, :orderId, :quantity)";
-		
+
 		jdbcTemplate.update(insertSql, param);
-		
+
 		return orderId;
-		
+
 	}
-	
+
 	public void saveOnly (int itemId, int quantity) {
-		
+
 		SqlParameterSource param = new MapSqlParameterSource().addValue("itemId",itemId).addValue("orderId", session.getAttribute("orderId")).addValue("quantity", quantity);
-		
+
 		String insertSql = "INSERT INTO order_items (item_id, order_id, quantity) VALUES (:itemId, :orderId, :quantity)";
-		
+
 		jdbcTemplate.update(insertSql, param);
-		
+
 	}
-	
+
 	public void deleteId(int id) {
 		String sql = "DELETE * FROM order_items WHERE id = :id";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id",id);
 		jdbcTemplate.update(sql, param);
 	}
-	
+
 
 }

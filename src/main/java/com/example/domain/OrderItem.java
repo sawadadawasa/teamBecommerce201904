@@ -3,10 +3,11 @@ package com.example.domain;
 public class OrderItem {
 
 	private String name; //名前
-	private int price; 
-	private String imagePATH;
-	private String piece;
-	private int quantity;
+	private int price; //値段
+	private String imagePATH; //画像パス
+	private String piece; //パック数
+	private int quantity; //個数
+	private int subTotalPrice; //小計
 	
 	public String getName() {
 		return name;
@@ -37,6 +38,12 @@ public class OrderItem {
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	public int getSubTotalPrice() {
+		return subTotalPrice;
+	}
+	public void setSubTotalPrice(int subTotalPrice) {
+		this.subTotalPrice = subTotalPrice;
 	}
 
 }

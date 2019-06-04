@@ -13,39 +13,41 @@
 <link href="css/piza.css" rel="stylesheet">
 </head>
 <body>
-	<div class="row">
-		<table class="table table-striped">
-			<tr>
-				<th>商品名</th>
-				<td><c:out value="${item.name}" /></td>
-			</tr>
-			<tr>
-				<th>説明</th>
-				<td><c:out value="${item.description}" /></td>
-			</tr>
-			<tr>
-				<th>パック数</th>
-				<td><c:out value="${viewPiece}" /></td>
-			</tr>
-			<tr>
-				<th>原産地</th>
-				<td><c:out value="${item.origin}" /></td>
-			</tr>
-			<tr>
-				<th>画像</th>
-				<td><img src="img/<c:out value="${item.imagePath}"/>" /></td>
-			</tr>
-			<tr>
-				<th>在庫数</th>
-				<td><form action="/book/update" method="post">
-						<input type="text" name="stock"
-							value="<c:out value="${item.id}"/>"> <input type="hidden"
-							name="id" value="<c:out value="${item.id}"/>"> <input
-							class="btn" type="submit" value="更新">
-					</form></td>
-			</tr>
-		</table>
-	</div>
+<form:form modelAttribute ="orderItemForm" 
+action="${pageContext.request.contextPath}/orderItem/addItem">
+		<div class="row">
+			<table class="table table-striped">
+				<tr>
+					<th>商品名</th>
+					<td><c:out value="${item.name}" /></td>
+				</tr>
+				<tr>
+					<th>説明</th>
+					<td><c:out value="${item.description}" /></td>
+				</tr>
+				<tr>
+					<th>パック数</th>
+					<td><c:out value="${item.piece}" /></td>
+				</tr>
+				<tr>
+					<th>原産地</th>
+					<td><c:out value="${item.origin}" /></td>
+				</tr>
+				
+				<tr>
+					<th>画像</th>
+					<td><img src="img/<c:out value="${item.imagePath}"/>" /></td>
+				</tr>
+				<tr>
+					<th>個数</th>
+					<td><form:select path="quantity" items="${quantityList}" /></td>
+				</tr>
+			</table>
+				<input type="hidden" name="itemId" value="${item.id}">
+				<input type="submit" value="カートに入れる">
+		</div>
+</form:form>
+	
 	<!-- end container -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
