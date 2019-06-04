@@ -19,33 +19,33 @@ public class OrderItemService {
 
 	@Autowired
 	private HttpSession session;
-	
+
 	List<OrderItem> orderItemList = new ArrayList<OrderItem>();
-	
+
 	public List<OrderItem> findAll(Integer orderId){
-		
+
 		return orderItemRepository.findAll(orderId);
-		
+
 	}
 
 	public void addItem(int itemId, int quantity) {
 
-		if(session.getAttribute("orderId") == null) {
-			Integer orderId = orderItemRepository.saveAndReturnOrderId(itemId, quantity);
-			session.setAttribute("orderId", orderId);
-			
-		} else {
-			orderItemRepository.saveOnly(itemId, quantity);
-		}
-	}
-
-	public List<OrderItem> findByOrderId(int orderId) {
-		return orderItemRepository.findAllHistoryDetail(orderId);
-	}
+	 if (session.getAttribute("orderId") != null){
+		orderItemRepository.saveOnly(itemId, quantity);
 		
-	public void deleteId(int id) {
-		orderItemRepository.deleteId(id);
+	} else if(session.getAttribute("orderId") == null) {
+	Integer orderId = orderItemRepository.saveAndReturnOrderId(itemId, quantity);
+	session.setAttribute("orderId", orderId);
 	}
+}
+
+public List<OrderItem> findByOrderId(int orderId) {
+	return orderItemRepository.findAllHistoryDetail(orderId);
+}
+
+public void deleteId(int id) {
+	orderItemRepository.deleteId(id);
+}
 
 
 }

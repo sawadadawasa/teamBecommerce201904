@@ -22,6 +22,8 @@ import com.example.service.OrderItemService;
 @Controller
 @RequestMapping("/orderItem")
 public class OrderItemController {
+	
+	@Autowired
 	private OrderItemService orderItemService;	
 	
 	@Autowired
@@ -30,8 +32,12 @@ public class OrderItemController {
 	List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 	
 	//商品の詳細を表示
-	@RequestMapping("/")
+	@RequestMapping
 	public String showItems(OrderItemForm form, Model model) {
+		
+		orderItemService.addItem(6, 6);
+		
+		System.out.println("OrdeItem");
 		
 		Integer orderId = (Integer)session.getAttribute("orderId");
 		
@@ -42,12 +48,14 @@ public class OrderItemController {
 		
 		model.addAttribute(orderItemList);
 		
-		return "order";
+		return "cart_list";
 	}
 	
-	//商品をカートに追加、order.jspに移動
+	//商品をカートに追加、cart_list.jspに移動
 	@RequestMapping("/addItem")
 	public String addItem(OrderItemForm form) {
+		
+		System.out.println("additem");
 		
 		Integer itemId = form.getItemId();
 		Integer quantity = form.getQuantity();
@@ -66,7 +74,7 @@ public class OrderItemController {
 	@RequestMapping("/deleteId")
 	public String deleteItem(@RequestParam int id) {
 		orderItemService.deleteId(id);
-		return "order";
+		return "redirect:/orderItem/";
 	}
 	
 

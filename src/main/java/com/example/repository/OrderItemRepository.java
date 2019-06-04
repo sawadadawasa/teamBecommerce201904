@@ -68,9 +68,9 @@ public class OrderItemRepository {
 	public List<OrderItem> findAll(Integer orderId){
 		
 		String sql = "SELECT items.name, items.price, items.imagePATH, items.piece, order_items.quantity"
-				 + "FROM order_items INNER JOIN items ON order_items.item_id = items.id WHERE order_id = :orderId";
-		
-		orderItemList = jdbcTemplate.query(sql, ORDERITEM_ROW_MAPPER);
+				 + " FROM order_items INNER JOIN items ON order_items.item_id = items.id WHERE order_id = :orderId";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("orderId", orderId);
+		orderItemList = jdbcTemplate.query(sql, param, ORDERITEM_ROW_MAPPER);
 		
 		return orderItemList;
 		
@@ -78,24 +78,23 @@ public class OrderItemRepository {
 	public List<OrderItem> findAllHistoryDetail(Integer orderId){
 		
 		String sql = "SELECT items.name, items.price, items.imagePATH, items.piece, order_items.quantity"
-		 + "FROM order_items INNER JOIN items ON order_items.item_id = items.id WHERE order_id = :orderId";
+		 + " FROM order_items INNER JOIN items ON order_items.item_id = items.id WHERE order_id = :orderId";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("orderId", orderId);
-		orderItemList = jdbcTemplate.query(sql, ORDERITEM_ROW_MAPPER);
+		orderItemList = jdbcTemplate.query(sql, param, ORDERITEM_ROW_MAPPER);
 		
 		return orderItemList;
 		
 	}
 
-	
 	public Integer saveAndReturnOrderId(int itemId,  int quantity) {
 		
-		String selectSql = "SELECT max(id)+1 FROM order";
+		String selectSql = "SELECT max(id)+1 FROM order_items";
 		
 		Integer orderId = jdbcTemplate2.queryForObject(selectSql,  Integer.class);
 		
 		SqlParameterSource param = new MapSqlParameterSource().addValue("itemId",itemId).addValue("quantity", quantity).addValue("orderId", orderId);
 		
-		String insertSql = "INSERT INTO order_items (item_id, order_id quantity)VALUES (:itemId, :orderId, :quantity)";
+		String insertSql = "INSERT INTO order_items (item_id, order_id, quantity)VALUES (:itemId, :orderId, :quantity)";
 		
 		jdbcTemplate.update(insertSql, param);
 		
@@ -105,9 +104,9 @@ public class OrderItemRepository {
 	
 	public void saveOnly (int itemId, int quantity) {
 		
-		SqlParameterSource param = new MapSqlParameterSource().addValue("itemId",itemId).addValue("quantity", quantity).addValue("orderId", session.getAttribute("orderId"));
+		SqlParameterSource param = new MapSqlParameterSource().addValue("itemId",itemId).addValue("orderId", session.getAttribute("orderId")).addValue("quantity", quantity);
 		
-		String insertSql = "INSERT INTO order_items (item_id, order_id quantity)VALUES (:itemId, :orderId, :quantity)";
+		String insertSql = "INSERT INTO order_items (item_id, order_id, quantity) VALUES (:itemId, :orderId, :quantity)";
 		
 		jdbcTemplate.update(insertSql, param);
 		
