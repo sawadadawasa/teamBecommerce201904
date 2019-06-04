@@ -22,7 +22,7 @@ public class LogoutController {
 	public String logout(User user
 			, SessionStatus sessionStatus) {
 		sessionStatus.setComplete();
-		return "redirect:/";
+		return "redirect:/logout/";
 	}
 
 }

@@ -47,7 +47,7 @@
                         class="navbar-link">注文履歴
                     </a>&nbsp;&nbsp;
                     <a
-                        href="${pageContext.request.contextPath}/logout/sessionInvalidate"
+                        href="${pageContext.request.contextPath}/tea/login"
                         class="navbar-link">ログイン
                     </a>&nbsp;&nbsp;
                     <a

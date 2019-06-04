@@ -1,5 +1,9 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<html>
+<head>
+<title>ログインフォーム</title>
+</head>
 <body>
 <div class="container">
 	<div class="span8">
