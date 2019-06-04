@@ -1,9 +1,11 @@
 package com.example.web;
 
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +54,13 @@ public class OrderController {
 		return "redirect:/order/mail/send";
 	}
 
-	@RequestMapping("/view")//後で澤田君の作ったのと合わせた後に消す
-	public String view() {
+	@RequestMapping("/view")
+	public String view(Model model) {
+		Map<Integer,Integer> hourList = new LinkedHashMap<>();
+		for(int i =10;i <= 18;i++) {
+			hourList.put(i,i);
+		}
+		model.addAttribute("hourList",hourList);
 		return "order";	
 	}
 	
@@ -81,10 +88,16 @@ public class OrderController {
 		orderService.deleteOrder(orderId);
 		return "deleteOrder";
 	}
+	
 	//注文が30分以内であることを確認する(削除ボタンを出力する)
 	@RequestMapping("/booleanDeleteOrNot")
-	public String booleanDeleteOrNot(@ModelAttribute("orderId")Integer orderId) {
-		Boolean deleteOrNot = orderService.booleanDeleteOrNot(orderId);
+	public String booleanDeleteOrNot(@ModelAttribute("orderId")Integer orderId,Model model) {
+		Integer deleteOrNot = orderService.booleanDeleteOrNot(orderId);
+		String deleteOrNotMessage;
+		if(deleteOrNot !=null) deleteOrNotMessage = null;//30分以内でした
+		else deleteOrNotMessage = "削除する" ;
+	
+		model.addAttribute("deleteOrNotMessage",deleteOrNotMessage);
 		System.out.println(orderId);
 		return "historyDetail";
 	}

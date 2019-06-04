@@ -35,16 +35,27 @@ public class OrderService {
 		java.sql.Date orderDate = new java.sql.Date(new GregorianCalendar().getTime().getTime());
 		order.setOrderDate(orderDate);
 		
-		SimpleDateFormat sdf  = new SimpleDateFormat("yyyy/mm/dd/mm");
-		java.util.Date formatDate = sdf.parse(orderForm.getDeliveryTime());
+		//deliveryTimeとdeliveryHourを結合させる
+		StringBuffer deliveryTime = new StringBuffer();
+		deliveryTime.append(orderForm.getDeliveryTime());
+		deliveryTime.append("/");
+		deliveryTime.append(orderForm.getDeliveryHour());
+		
+		String strDeliveryTime = new String(deliveryTime); 
+		
+		SimpleDateFormat sdf  = new SimpleDateFormat("yyyy/mm/dd/HH");
+		java.util.Date formatDate = sdf.parse(strDeliveryTime);
 		order.setDeliveryTime(new Timestamp(formatDate.getTime()));
 		
 		
 		orderRepository.saveFix(order); 
 	}
-	public void booleanDeleteOrNot(int orderId) {
-		GregorianCalendar now = new GregorianCalendar();
-//		orderRepository.deleteOrder(orderId,now);
+	public Integer booleanDeleteOrNot(int orderId) {
+		java.sql.Date now = new java.sql.Date(new GregorianCalendar().getTime().getTime());
+		return  orderRepository.booleanDeleteOrNot(orderId,now);
+	}
+	public void deleteOrder(int orderId) {
+		orderRepository.deleteOrder(orderId);
 	}
 	
 

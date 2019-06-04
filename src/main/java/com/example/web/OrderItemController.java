@@ -84,10 +84,7 @@ public class OrderItemController {
 		orderItemService.deleteId(id);
 		return "redirect:/orderItem";
 	}
-<<<<<<< HEAD
-		
-=======
-	
+
 	@RequestMapping("/cart")
 	public String cart() {
 		return "redirect:/orderItem";
@@ -95,5 +92,4 @@ public class OrderItemController {
 
 	
 
->>>>>>> 5112b857a9ec4822502fc1a42bb13799ecdf3e32
 }
