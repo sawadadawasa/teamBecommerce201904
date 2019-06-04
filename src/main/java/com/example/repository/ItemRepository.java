@@ -38,6 +38,18 @@ public class ItemRepository {
 		List<Item> itemList = template.query(sql, itemRowMapper);
 		return itemList;
 	}
+	public List<String> itemOriginList(){
+		String sql = "SELECT DISTINCT origin FROM items ORDER BY origin";
+		SqlParameterSource param = new MapSqlParameterSource();
+		List<String> originList = template.queryForList(sql, param,String.class);
+		return originList;
+	}
+	public List<Integer> itemPieceList(){
+		String sql = "SELECT DISTINCT piece FROM items ORDER BY piece";
+		SqlParameterSource param = new MapSqlParameterSource();
+		List<Integer> pieceList = template.queryForList(sql, param, Integer.class);
+		return pieceList;
+	}
 	
 	public Item findOne(Integer id) {
 		SqlParameterSource param = new MapSqlParameterSource()

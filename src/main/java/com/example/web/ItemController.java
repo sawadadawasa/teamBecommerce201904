@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.domain.Item;
 import com.example.service.ItemService;
 
 @Controller
@@ -23,6 +22,8 @@ public class ItemController {
 	@RequestMapping(value="/")
 	public String index(Model model) {
 		service.itemFindAll(model);
+		service.itemOriginList(model);
+		service.itemPieceList(model);
 		return "item_list";
 	}
 	
