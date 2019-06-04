@@ -29,12 +29,7 @@ public class ItemController {
 	//商品詳細画面に遷移
 	@RequestMapping(value = "show/{itemId}")
 	public String show(@PathVariable("itemId") Integer id, Model model) {
-		Item item = service.findOne(id);
-		NumberFormat nfNum = NumberFormat.getNumberInstance(); 
-		String viewPiece = nfNum.format(item.getPiece());
-        
-        
-		model.addAttribute("item", item).addAttribute("viewPiece", viewPiece);
+		service.findOne(model,id);
 		return "item_detail";
 	}
 	

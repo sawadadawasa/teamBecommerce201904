@@ -1,5 +1,6 @@
 package com.example.service;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +25,13 @@ public class ItemService {
 		model.addAttribute("itemList", itemList);
 	}
 	
-	public Item findOne(Integer id) {
-		return itemRepository.findOne(id);
+	public void findOne(Model model, Integer id) {
+		Item item = new Item();
+		item = itemRepository.findOne(id);
+		NumberFormat nfNum = NumberFormat.getNumberInstance(); 
+		String viewPiece = nfNum.format(item.getPiece());
+		model.addAttribute("item", item).addAttribute("viewPiece", viewPiece);
+		
 	}
 	
 	public void itemFindMatch(Model model, String code ){
