@@ -31,11 +31,16 @@ public class OrderItemService {
 	public void addItem(int itemId, int quantity) {
 
 	 if (session.getAttribute("orderId") != null){
+		 System.out.println("orderIdはnullじゃない");
 		orderItemRepository.saveOnly(itemId, quantity);
 		
 	} else if(session.getAttribute("orderId") == null) {
+		System.out.println("orderIdはnull");
+		
 	Integer orderId = orderItemRepository.saveAndReturnOrderId(itemId, quantity);
-	session.setAttribute("orderId", orderId);
+	
+			session.setAttribute("orderId", orderId);
+		
 	}
 }
 
