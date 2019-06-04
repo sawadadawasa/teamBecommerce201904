@@ -40,12 +40,16 @@ public class ItemService {
 	
 	//商品詳細ページを表示
 	public void findOne(Model model, Integer id) {
+		//商品の詳細
 		Item item = new Item();
 		item = itemRepository.findOne(id);
-		NumberFormat nfNum = NumberFormat.getNumberInstance(); 
-		String viewPiece = nfNum.format(item.getPiece());
-		model.addAttribute("item", item).addAttribute("viewPiece", viewPiece);
 		
+		//個数1~10を表示
+		Integer quantityList[] = new Integer[10];
+		for (int i = 0; i < quantityList.length ; i++) {
+			quantityList[i] = i+1 ;
+		}
+		model.addAttribute("item", item).addAttribute("quantityList", quantityList);;
 	}
 	
 	//商品名あいまい検索
