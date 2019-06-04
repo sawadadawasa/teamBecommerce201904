@@ -29,17 +29,22 @@ public class OrderItemController {
 	@Autowired
 	private HttpSession session;
 	
+	@ModelAttribute
+	public OrderItemForm setUpForm() {
+		return new OrderItemForm();
+	}
+	
 	List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 	
 	//商品の詳細を表示
 	@RequestMapping
 	public String showItems(OrderItemForm form, Model model) {
 		
-		orderItemService.addItem(6, 6);
-		
 		System.out.println("OrdeItem");
 		
 		Integer orderId = (Integer)session.getAttribute("orderId");
+		
+		System.out.println("とってきたorderIdは、" + orderId);
 		
 		if(orderId != null) {
 		orderItemList	= orderItemService.findAll(orderId);
@@ -48,6 +53,7 @@ public class OrderItemController {
 		
 		model.addAttribute(orderItemList);
 		
+		System.out.println(orderItemList);		
 		return "cart_list";
 	}
 	
@@ -62,7 +68,7 @@ public class OrderItemController {
 		
 		orderItemService.addItem(itemId, quantity);
 		
-		return "redirect:/orderItem/";
+		return "redirect:/orderItem";
 	}
 	//orderHistoryからの遷移
 	@RequestMapping("/showHistoryDetail")
@@ -76,7 +82,18 @@ public class OrderItemController {
 	@RequestMapping("/deleteId")
 	public String deleteItem(@RequestParam int id) {
 		orderItemService.deleteId(id);
-		return "redirect:/orderItem/";
+		return "redirect:/orderItem";
 	}
+<<<<<<< HEAD
 		
+=======
+	
+	@RequestMapping("/cart")
+	public String cart() {
+		return "redirect:/orderItem";
+	}
+
+	
+
+>>>>>>> 5112b857a9ec4822502fc1a42bb13799ecdf3e32
 }
