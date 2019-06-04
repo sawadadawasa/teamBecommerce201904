@@ -31,6 +31,9 @@ public class UserForm {
 	@NotBlank(message = "住所は必須です。")
 	private String address;
 	
+	
+	private String postalCode;
+	
 	//電話番号
 	@NotBlank(message = "電話番号は必須です。")
 	@Size(min=10,max=11, message = "電話番号は10~11桁の半角文字で記入してください。")
@@ -92,6 +95,12 @@ public class UserForm {
 	}
 	public void setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
+	}
+	public String getPostalCode() {
+		return postalCode;
+	}
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
 	}
 
 }
