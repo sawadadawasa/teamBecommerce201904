@@ -13,7 +13,7 @@
 	<h3>メンバー登録画面</h3>
 	<div class="span8">
 		<div class="row">
-		<form:errors path="userForm" cssStyle="color:red" />
+		<form:errors path="userForm.*" cssStyle="color:red" />
 		<form:form modelAttribute="userForm" action="${pageContext.request.contextPath}/user/create">
 			<table class="table table-striped">
 			  <tr>
@@ -22,7 +22,6 @@
 			    </th>
 			    <td>
 			    	<form:input path="name"  placeholder="Name"/>
-			    	<form:errors path="name" cssStyle="color:red" element="div"/>
 			    </td>
 			  </tr>
 			  <tr>
@@ -31,7 +30,6 @@
 			    </th>
 			    <td>
 			    	<form:input path="email" placeholder="Email"/>
-			    	<form:errors path="email" cssStyle="color:red" element="div"/>
 			    </td>
 			  </tr>
 			  <tr>
@@ -49,7 +47,6 @@
 				</th>
 				<td>
 			  		<form:input path="address" placeholder="Address"/>
-			  		<form:errors path="address" cssStyle="color:red" element="div"/>
 			  	</td>
 			  </tr>
 			  	
@@ -59,7 +56,6 @@
 			  	</th>
 			  	<td>
 			  		<form:input path="telephone" placeholder="Telephone"/>
-			  		<form:errors path="telephone" cssStyle="color:red" element="div"/>
 			  	</td>
 			  </tr>
 			  <tr>
@@ -68,7 +64,6 @@
 			    </th>
 			    <td>
 			    	<form:password path="password" placeholder="Password"/>
-			    	<form:errors path="password" cssStyle="color:red" element="div"/><br>
 			    </td>
 			  </tr>
 			  
