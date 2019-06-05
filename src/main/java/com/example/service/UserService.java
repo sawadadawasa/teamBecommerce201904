@@ -12,21 +12,23 @@ import com.example.repository.UserRepository;
 public class UserService {
 	
 	@Autowired
-	UserRepository userrepository;
+	UserRepository userRepository;
 	
 	public User findOneByEmailAndPassword(String email,String password) {
-		return userrepository.findOneByEmailAndPassword(email,password);
+		return userRepository.findOneByEmailAndPassword(email,password);
 	}
 	
 	public User save(User user) {
-		return userrepository.save(user);
+		return userRepository.save(user);
 	}
 	
 	public List<User> findAll(){
-		return userrepository.findAll();
+		return userRepository.findAll();
 	}
 	
-	
+	public String findPassword(String email) {
+		return userRepository.findPassword(email);
+	}
 	
 
 }
