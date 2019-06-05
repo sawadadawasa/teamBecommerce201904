@@ -75,6 +75,7 @@ public class UserRepository {
 			
 			template.update(insertSql, param);
 		} else {
+			
 			String updateSql=
 					"UPDATE users SET name=:name, email=:email, password=:password, address=:address, telephone=:telephone WHERE id=:id";
 			template.update(updateSql,param);
