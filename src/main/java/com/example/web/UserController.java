@@ -46,6 +46,7 @@ public class UserController {
 			if ((user.getEmail()).equals(form.getEmail())) {
 				ObjectError error = new ObjectError("addresserror", "このメールアドレスは既に登録されています。");
 				result.addError(error);
+			System.out.println(error);
 				return form();
 			}
 		}

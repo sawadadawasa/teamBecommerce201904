@@ -4,6 +4,7 @@ package com.example.web;
 import java.sql.Timestamp;
 
 public class OrderForm {
+	private Integer id;//注文番号
 	private Integer userId;
 	private Integer totalPrice;//合計金額
 	private String orderDate;//注文日　　　　　　//Orderの時にはDate型
@@ -14,8 +15,15 @@ public class OrderForm {
 	private String deliveryTime;//配達日
 	private Integer deliveryHour;//配達時間
 	private String paymentMethod;//支払い方法
-	private String postalCode;
+	private String postalCode;//郵便番号
 
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public Integer getDeliveryHour() {
 		return deliveryHour;
 	}

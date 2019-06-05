@@ -47,6 +47,7 @@ public class OrderController {
 	public String searchOrHistory(Model model) {
 		User user = (User)session.getAttribute("user");
 		if(user==null) return "redirect:/tea/";
+		
 		List<Order> orderHistoryList = orderService.findByUserId(user.getId());
 		model.addAttribute("orderHistoryList",orderHistoryList);
 		return "orderHistory";
@@ -62,9 +63,10 @@ public class OrderController {
 	//order.jspへ遷移
 	@RequestMapping("/view")
 	public String view(Model model) {
-		User user = (User)session.getAttribute("user");
+		User user = (User)session.getAttribute("user");//ログインしてるか確認
 		if(user==null) return "redirect:/tea/";
 		
+		Integer  orderId = (Integer)session.getAttribute("orderId");
 		
 		Map<Integer,Integer> hourList = new LinkedHashMap<>();
 		for(int i =10;i <= 18;i++) {
@@ -110,12 +112,10 @@ public class OrderController {
 	public String booleanDeleteOrNot(@ModelAttribute("orderId")Integer orderId,Model model) {
 		Integer deleteOrNot = orderService.booleanDeleteOrNot(orderId);
 		String deleteOrNotMessage;
-		if(deleteOrNot !=null) deleteOrNotMessage = "削除する";//配達予定より3日以上前の時点であればdeleteOrNotMessageに削除ボタンを出力
-		else deleteOrNotMessage = "null" ;
+		if(deleteOrNot.intValue() ==1) deleteOrNotMessage = "削除する";//配達予定より3日以上前の時点であればdeleteOrNotMessageに削除ボタンを出力
+		else deleteOrNotMessage = null ;
 		model.addAttribute("deleteOrNotMessage",deleteOrNotMessage);
 		return "historyDetail";
 	}
-	
-	
 	
 }

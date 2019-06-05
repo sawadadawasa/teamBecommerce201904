@@ -43,10 +43,9 @@ public class OrderService {
 		
 		String strDeliveryTime = new String(deliveryTime); 
 		
-		SimpleDateFormat sdf  = new SimpleDateFormat("yyyy/mm/dd/HH");
+		SimpleDateFormat sdf  = new SimpleDateFormat("yyyy/MM/dd/HH");
 		java.util.Date formatDate = sdf.parse(strDeliveryTime);
 		order.setDeliveryTime(new Timestamp(formatDate.getTime()));
-		
 		
 		orderRepository.saveFix(order); 
 	}
