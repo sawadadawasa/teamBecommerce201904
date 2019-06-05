@@ -3,6 +3,7 @@ package com.example.domain;
 public class OrderItem {
 
 	private int id; //ID
+	private int itemId; //商品ID
 	private String name; //名前
 	private int price; //値段
 	private String imagePATH; //画像パス
@@ -51,6 +52,12 @@ public class OrderItem {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public int getItemId() {
+		return itemId;
+	}
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
 	}
 
 }

@@ -2,6 +2,7 @@ package com.example.service;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,6 +24,7 @@ public class OrderItemService {
 	List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 
 	List<Integer> itemIdList = new ArrayList<Integer>();
+	
 
 	public List<OrderItem> findAll(Integer orderId){
 
@@ -49,6 +51,7 @@ public class OrderItemService {
 			if (session.getAttribute("orderId") != null){
 
 				orderItemRepository.saveOnly(itemId, quantity);
+				
 				itemIdList.add(itemId);
 
 			} else if(session.getAttribute("orderId") == null) {
@@ -75,8 +78,10 @@ public class OrderItemService {
 	}
 
 	//ショッピングカートの中身を消すメソッド
-	public void deleteId(int id) {
-		orderItemRepository.deleteId(id);
+	public void deleteId(int itemId, int id) {
+		orderItemRepository.deleteId(itemId, id);
+		System.out.println(itemId);
+		itemIdList.remove(itemIdList.indexOf(itemId));
 	}
 
 	//合計金額を計算するメソッド

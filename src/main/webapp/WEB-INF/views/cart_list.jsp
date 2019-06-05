@@ -38,10 +38,10 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
-						<a href="orderItem/cart" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
-						<a href="order_history.jsp" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
-						<a href="login.jsp" class="navbar-link">ログイン</a>&nbsp;&nbsp; <a
-							href="item_list.jsp" class="navbar-link">ログアウト</a>
+						<a href="${pageContext.request.contextPath}/orderItem/cart" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath}/order/searchOrderHistory" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath}/tea/login" class="navbar-link">ログイン</a>&nbsp;&nbsp; 
+						<a href="${pageContext.request.contextPath}/logout/sessionInvalidate" class="navbar-link">ログアウト</a>
 					</p>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -77,7 +77,7 @@
 									pattern="###,###,###" /></td>
 							<td>
 								<form
-									action="${pageContext.request.contextPath}/orderItem/deleteId/${orderItem.id }"
+									action="${pageContext.request.contextPath}/orderItem/deleteId/${orderItem.itemId}/${orderItem.id}"
 									method="post">
 									<input type="submit" value="削除">
 								</form>

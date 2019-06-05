@@ -87,10 +87,11 @@ public class OrderItemController {
 		return "redirect:/order/booleanDeleteOrNot";//注文を削除するボタンを出力するかどうか決めるためのリダイレクト
 	}
 	
-	@RequestMapping("/deleteId/{Id}")
-	public String deleteItem(@PathVariable("Id") Integer id) {
+	@RequestMapping("/deleteId/{itemId}/{id}")
+	public String deleteItem(@PathVariable("itemId") Integer itemId, @PathVariable("id") Integer id) {
 
-		orderItemService.deleteId(id);
+		System.out.println(itemId);
+		orderItemService.deleteId(itemId, id);
 		
 		return "redirect:/orderItem";
 	}

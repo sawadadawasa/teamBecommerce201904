@@ -53,6 +53,7 @@ public class OrderItemRepository {
 		int quantity = rs.getInt("quantity");
 		int subTotalPrice = rs.getInt("subTotalPrice");
 		int id = rs.getInt("id");
+		int itemId = rs.getInt("item_id");
 		orderItem.setName(name);
 		orderItem.setPrice(price);
 		orderItem.setImagePATH(imagePATH);
@@ -60,6 +61,7 @@ public class OrderItemRepository {
 		orderItem.setQuantity(quantity);
 		orderItem.setSubTotalPrice(subTotalPrice);
 		orderItem.setId(id);
+		orderItem.setItemId(itemId);
 		return orderItem;
 	};
 
@@ -72,7 +74,7 @@ public class OrderItemRepository {
 	public List<OrderItem> findAll(Integer orderId){
 
 		String sql = "SELECT order_items.id, items.name, items.price, items.imagePATH, items.piece, order_items.quantity,"
-				+ " items.price * order_items.quantity AS subTotalPrice"
+				+ " items.id AS item_id, items.price * order_items.quantity AS subTotalPrice"
 				+ " FROM order_items INNER JOIN items ON order_items.item_id = items.id WHERE order_id = :orderId";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("orderId", orderId);
 		orderItemList = jdbcTemplate.query(sql, param, ORDERITEM_ROW_MAPPER);
@@ -83,7 +85,7 @@ public class OrderItemRepository {
 	public List<OrderItem> findAllHistoryDetail(Integer orderId){
 
 		String sql = "SELECT order_items.id, items.name, items.price, items.imagePATH, items.piece, order_items.quantity,"
-				+ " items.price * order_items.quantity AS subTotalPrice"
+				+ " items.id AS item_id, items.price * order_items.quantity AS subTotalPrice"
 				+ " FROM order_items INNER JOIN items ON order_items.item_id = items.id WHERE order_id = :orderId";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("orderId", orderId);
 		orderItemList = jdbcTemplate.query(sql, param, ORDERITEM_ROW_MAPPER);
@@ -97,8 +99,6 @@ public class OrderItemRepository {
 		String selectSql = "SELECT max(order_id)+1 FROM order_items";
 
 		Integer orderId = jdbcTemplate2.queryForObject(selectSql,  Integer.class);
-
-		System.out.println(orderId);
 
 		if(orderId == null) {
 			orderId = 1;
@@ -125,11 +125,11 @@ public class OrderItemRepository {
 
 	}
 
-	public void deleteId(int id) {
+	public void deleteId(int itemId, int id) {
 		
-		SqlParameterSource param = new MapSqlParameterSource().addValue("id",id);
+		SqlParameterSource param = new MapSqlParameterSource().addValue("itemId", itemId).addValue("id", id);
 		
-		String deleteSql = "DELETE FROM order_items WHERE id = :id";
+		String deleteSql = "DELETE FROM order_items WHERE item_id = :itemId AND id = :id";
 		
 		jdbcTemplate.update(deleteSql, param);
 	}
