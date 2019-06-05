@@ -10,6 +10,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a　href="${pageContet.request.contetPath}/order/deleteOrder?orderId=${orderId}"><c:out value="${deleteOrNotMessage}"/></a>
+<a href="${pageContet.request.contetPath}/order/deleteOrder?orderId=${orderId}"><c:out value="${deleteOrNotMessage}"/></a>
 </body>
 </html>
