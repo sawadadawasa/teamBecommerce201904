@@ -8,6 +8,6 @@
 </head>
 <body>
 注文を取り消しました。
-<a　href ="${pageContet.request.contetPath}/item/">商品一覧に戻る</a>
+<a　href ="${pageContext.request.contextPath}/item/">商品一覧に戻る</a>
 </body>
 </html>

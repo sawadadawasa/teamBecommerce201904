@@ -13,11 +13,7 @@
 	<h3>メンバー登録画面</h3>
 	<div class="span8">
 		<div class="row">
-<<<<<<< HEAD
 		<form:errors path ="userForm.*" cssStyle="color:red" />
-=======
-		<form:errors path="userForm.*" cssStyle="color:red" />
->>>>>>> 2055ddef02e78d57ece1714b9637f69a85ead6dd
 		<form:form modelAttribute="userForm" action="${pageContext.request.contextPath}/user/create">
 			<table class="table table-striped">
 			  <tr>

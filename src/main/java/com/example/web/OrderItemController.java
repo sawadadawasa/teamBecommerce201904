@@ -81,9 +81,24 @@ public class OrderItemController {
 	//orderHistoryからの遷移
 	@RequestMapping("/showHistoryDetail")
 	public String showHistoryDetail(@RequestParam int orderId,RedirectAttributes redirectAttributes) {
-		List<OrderItem> orderItemList = orderItemService.findByOrderId(orderId);
+		orderItemList	= orderItemService.findAll(orderId);
+		
+		//合計金額
+		Integer totalPrice = orderItemService.calcTotalPrice(orderItemList);
+		
+		//消費税
+		Integer taxOfTotalPrice = (int)(totalPrice*0.08);
+		
+		NumberFormat nfNum = NumberFormat.getNumberInstance();
+		
+		String viewTotalPrice = nfNum.format(totalPrice);
+		String viewTaxOfTotalPrice = nfNum.format(taxOfTotalPrice);
+		
+		redirectAttributes.addFlashAttribute("viewTotalPrice", viewTotalPrice);
+		redirectAttributes.addFlashAttribute("viewTaxOfTotalPrice", viewTaxOfTotalPrice);
 		redirectAttributes.addFlashAttribute("orderItemList",orderItemList);
 		redirectAttributes.addFlashAttribute("orderId",orderId);
+		
 		return "redirect:/order/booleanDeleteOrNot";//注文を削除するボタンを出力するかどうか決めるためのリダイレクト
 	}
 	

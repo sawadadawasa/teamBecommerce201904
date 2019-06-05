@@ -1,6 +1,7 @@
 package com.example.web;
 
 import java.util.LinkedHashMap;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.domain.Order;
+import com.example.domain.OrderItem;
 import com.example.domain.User;
+import com.example.service.OrderItemService;
 import com.example.service.OrderService;
 
 @Controller
@@ -32,6 +35,8 @@ public class OrderController {
         private OrderService orderService;
         @Autowired
         private HttpSession session;
+        @Autowired
+        private OrderItemService orderItemService;
         
      
         @Autowired
@@ -65,7 +70,30 @@ public class OrderController {
         //order.jspへ遷移
      
         @RequestMapping("/view")
-        public String view(Model model) {
+        public String view(@RequestParam Integer orderId,Model model,RedirectAttributes redirectAttributes) {
+    		
+        	System.out.println("debug");
+        	List<OrderItem> orderItemList	= orderItemService.findAll(orderId);
+    		
+    		//合計金額
+    		Integer totalPrice = orderItemService.calcTotalPrice(orderItemList);
+    		
+    		//消費税
+    		Integer taxOfTotalPrice = (int)(totalPrice*0.08);
+    		
+    		System.out.println("debug");
+    		
+    		NumberFormat nfNum = NumberFormat.getNumberInstance();
+    		
+    		String viewTotalPrice = nfNum.format(totalPrice);
+    		String viewTaxOfTotalPrice = nfNum.format(taxOfTotalPrice);
+    		
+    		redirectAttributes.addFlashAttribute("viewTotalPrice", viewTotalPrice);
+    		redirectAttributes.addFlashAttribute("viewTaxOfTotalPrice", viewTaxOfTotalPrice);
+    		redirectAttributes.addFlashAttribute("orderItemList",orderItemList);
+    		redirectAttributes.addFlashAttribute("orderId",orderId);
+        	
+        	
             User user = (User)session.getAttribute("user");
             if(user==null) return "redirect:/tea/";
             
