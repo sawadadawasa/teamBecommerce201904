@@ -137,6 +137,36 @@
     </div>
 </div>
 
+<div class="container">
+<h1 class="page-header">お問い合わせ</h1>
+<div>
+  <p class="text-center">以下を入力して送信ボタンをクリックしてください。<span class="cred">*</span>は入力必須です。</p>
+  <form class="form-horizontal" name="contactform" role="form" method="post" action="" novalidate>
+    <div class="form-group">
+      <label for="inputName" class="col-sm-3 control-label">お名前 <span class="cred">*</span></label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" name="contact_data[name]" placeholder="お名前" value="">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputEmail" class="col-sm-3 control-label">メールアドレス <span class="cred">*</span></label>
+      <div class="col-sm-9">
+        <input type="email" class="form-control" name="contact_data[email]" placeholder="メールアドレス" value="">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputMessage" class="col-sm-3 control-label">お問い合わせ内容 <span class="cred">*</span></label>
+      <div class="col-sm-9">
+        <textarea class="form-control" name="contact_data[message]" rows="5"></textarea>
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="submit" name="btnSubmit" class="btn btn-success">送信する</button>
+    </div>
+  </form>
+</div>
+</div>
+
 <!-- end container -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
