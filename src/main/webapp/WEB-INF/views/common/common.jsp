@@ -9,6 +9,6 @@
 <base href="/">
 <meta charset="UTF-8">
 <title>お茶で健康</title>
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/piza.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/piza.css" rel="stylesheet">
 </head>
