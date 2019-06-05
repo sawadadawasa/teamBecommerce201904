@@ -70,7 +70,7 @@ public class OrderRepository {
 	}
 	
 	public Integer booleanDeleteOrNot(int orderId,Date now) {
-		String sql = "select id from orders where :now　< delivery_time + '-3days' and id = :orderId;";
+		String sql = "select count(*) from orders where  delivery_time + '-3days' > :now and id = :orderId;";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("orderId",orderId).addValue("now",now);	
 		return jdbcTemplate.queryForObject(sql,param,Integer.class);
 	}
