@@ -28,7 +28,8 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="item_list.html"> <!-- 企業ロゴ --> <img
+					
+					<a class="navbar-brand" href="${pageContext.request.contextPath}/item/"> <!-- 企業ロゴ --> <img
 						alt="main log" src="img/header_logo.png" height="35">
 					</a>
 				</div>
@@ -74,7 +75,6 @@
 							<td><c:out value="${orderItem.quantity}" /></td>
 							<td><fmt:formatNumber value="${orderItem.subTotalPrice }"
 									pattern="###,###,###" /></td>
-							<td><a href="${pageContext.request.contextPath}/}"></a></td>
 							<td>
 								<form
 									action="${pageContext.request.contextPath}/orderItem/deleteId/${orderItem.id }"
