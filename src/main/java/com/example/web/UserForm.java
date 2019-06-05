@@ -36,7 +36,7 @@ public class UserForm {
 	
 	//電話番号
 	@NotBlank(message = "電話番号は必須です。")
-	@Size(min=10,max=11, message = "電話番号は10~11桁の半角数字の「-」無しで記入してください。")
+	@Size(min=10,max=11, message = "電話番号は10~11桁の「-」無しで記入してください。")
 	@Pattern(regexp = "[0-9]*", message = "電話番号は半角数字で記入してください。")
 	private String telephone;
 	
