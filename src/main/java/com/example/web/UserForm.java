@@ -24,7 +24,7 @@ public class UserForm {
 	//パスワード
 	@NotBlank(message = "パスワードは必須です。")
 	@Size(min=6,max=12, message="パスワードは半角英数字で6文字以上12文字以内で記入してください。")
-	@Pattern(regexp = "[a-zA-Z0-9]*")
+	@Pattern(regexp = "[a-zA-Z0-9]*", message = "パスワードは半角英数字で記入してください。")
 	private String password;
 	
 	//住所
@@ -36,8 +36,8 @@ public class UserForm {
 	
 	//電話番号
 	@NotBlank(message = "電話番号は必須です。")
-	@Size(min=10,max=11, message = "電話番号は10~11桁の半角文字で記入してください。")
-	@Pattern(regexp = "[0-9]*")
+	@Size(min=10,max=11, message = "電話番号は10~11桁の「-」無しで記入してください。")
+	@Pattern(regexp = "[0-9]*", message = "電話番号は半角数字で記入してください。")
 	private String telephone;
 	
 	
