@@ -68,9 +68,8 @@ public class OrderController {
 		
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
 
-	    mailMessage.setTo("destinationEmail");
+	    mailMessage.setTo("akt20.takutomato@gmail.com");
 	    mailMessage.setReplyTo("test.bayashi.dev@gmail.com");
-	    mailMessage.setFrom(destinationEmail);
 	    mailMessage.setSubject("テストメール");
 	    mailMessage.setText("テストメールです、\nここから次の行\nおわりです\n");
 
@@ -96,7 +95,4 @@ public class OrderController {
 		System.out.println(orderId);
 		return "historyDetail";
 	}
-	
-	
-	
 }
