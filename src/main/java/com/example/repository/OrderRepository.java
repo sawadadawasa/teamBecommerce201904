@@ -62,8 +62,8 @@ public class OrderRepository {
 		jdbcTemplate.update(sql,param);		
 	}
 	public void deleteOrder(int orderId) {
-		String sql = "delete order_items where order_id =:orderId";
-		String sql2 = "delete orders where id =:orderId";
+		String sql = "delete from order_items where order_id =:orderId";
+		String sql2 = "delete from orders where id =:orderId";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("orderId",orderId);
 		jdbcTemplate.update(sql, param);
 		jdbcTemplate.update(sql2, param);
