@@ -3,6 +3,7 @@ package com.example.web;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -17,7 +18,7 @@ import com.example.service.UserService;
 @RequestMapping(value="/tea")
 @Validated
 public class LoginController {
-	
+
 	@Autowired
 	private UserService userService;
 
@@ -45,14 +46,37 @@ public class LoginController {
 		}
 		String email = form.getEmail();
 		String password = form.getPassword();
-		User user = userService.findOneByEmailAndPassword(email, password);
-		
-		if (user == null) {
+
+		//エンコード用にインスタンス化
+		BCryptPasswordEncoder enco = new BCryptPasswordEncoder();
+		boolean answer = false;
+
+		if(enco.matches(password, userService.findPassword(email))) {
+			answer = true;
+		} 
+
+		if(answer) {
+			User user = userService.findOneByEmailAndPassword(email, userService.findPassword(email));
+			session.setAttribute("user", user);
+			return "redirect:/item/";
+		} else {
 			ObjectError error = new ObjectError("loginerror", "メールアドレスまたはパスワードが違います。");
 			result.addError(error);
 			return index();
+
 		}
-		session.setAttribute("user", user);
-		return "redirect:/item/";
 	}
 }
+
+//		User user = userService.findOneByEmailAndPassword(email, password);
+//		
+//		if (user == null) {
+//			ObjectError error = new ObjectError("loginerror", "メールアドレスまたはパスワードが違います。");
+//			result.addError(error);
+//			return index();
+//		}
+//		session.setAttribute("user", user);
+//		return "redirect:/item/";
+//	}
+//}
+
