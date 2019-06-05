@@ -101,11 +101,12 @@
 				</div>
 			</div>
 		</div>
-
+<c:out value="${orderId }"/>
 		<div class="row">
 			<div class="col-xs-offset-5 col-xs-3">
 				<div class="form-group">
-					<form action="${pageContext.request.contextPath}/order/view">
+					<form action="${pageContext.request.contextPath}/order/view?orderId =${orderId}" method="post">
+						<input type="hidden" name="orderId" value="${orderId}">
 						<input class="form-control btn btn-warning btn-block"
 							type="submit" value="注文に進む">
 					</form>
