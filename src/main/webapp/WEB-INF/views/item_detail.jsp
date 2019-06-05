@@ -11,8 +11,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Insert title here</title>
-  <link href="css/bootstrap.css" rel="stylesheet">
-  <link href="css/piza.css" rel="stylesheet"> </head>
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  <link href="../css/piza.css" rel="stylesheet"> </head>
 <body>
   <div class="container">
     <nav class="navbar navbar-default">
@@ -26,7 +26,7 @@
             	<span class="icon-bar"></span>
 			</button>
           <a class="navbar-brand" href="item_list.html">
-            <!-- 企業ロゴ --><img alt="main log" src="img/header_logo.png" height="35"> </a>
+            <!-- 企業ロゴ --><img alt="main log" src="../img/header_logo.png" height="35"> </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -66,7 +66,7 @@
         </tr>
         <tr>
           <th>画像</th>
-          <td><img src="img/<c:out value=" ${item.imagePath} "/>" /></td>
+          <td><img src="../img/<c:out value=" ${item.imagePath} "/>" /></td>
         </tr>
         <tr>
           <th>個数</th>
@@ -78,6 +78,6 @@
   </form:form>
   <!-- end container -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
 </body>
 </html>

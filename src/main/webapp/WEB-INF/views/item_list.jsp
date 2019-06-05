@@ -9,8 +9,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>item_list</title>
-  <link href="css/bootstrap.css" rel="stylesheet">
-  <link href="css/piza.css" rel="stylesheet"> </head>
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  <link href="../css/piza.css" rel="stylesheet"> </head>
 <body>
     <div class="container">
         <nav class="navbar navbar-default">
@@ -24,7 +24,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="${pageContext.request.contextPath}/logout/sessionInvalidate">
-                <!-- 企業ロゴ --><img alt="main log" src="img/header_logo.png" height="35"> </a>
+                <!-- 企業ロゴ --><img alt="main log" src="../img/header_logo.png" height="35"> </a>
                 </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -86,7 +86,7 @@
                             <c:forEach var="itemList" items="${itemList}">
                                 <th>
                                     <a href="${pageContext.request.contextPath}/item/show/${itemList.id}">
-                                        <img src="img/<c:out value="${itemList.imagePath}/"/>" class="img-responsive img-rounded" width="200" height="600"/>
+                                        <img src="../img/<c:out value="${itemList.imagePath}/"/>" class="img-responsive img-rounded" width="200" height="600"/>
                                     </a>
                                     <br>
                                     <a href="${pageContext.request.contextPath}/item/show/${itemList.id}">
@@ -102,6 +102,6 @@
     </div>
     <!-- end container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
