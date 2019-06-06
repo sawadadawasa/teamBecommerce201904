@@ -4,12 +4,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/order.css"/>
+<head>
+<meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <title>Insert title here</title>
@@ -124,7 +125,7 @@
 		</div>
 
 
-
+<div id ="tabble">
 <table border="1">
 <form:form modelAttribute="orderForm" action="${pageContext.request.contextPath}/order/fix">
     
@@ -185,9 +186,15 @@
         $("#btn").on("click", function(){AjaxZip3.zip2addr('postalCode','','destinationAddress','destinationAddress')});
     });
 </script>
+<br>
+</div>
+
+<div id ="tabble">
+
 
 既に登録されている住所を使用する
-<table >
+
+<table border="1" >
 <form:form modelAttribute="orderForm" action="${pageContext.request.contextPath}/order/fix">
     <form:hidden path="id" value="${orderId}"/>
     <form:hidden path="userId" value="${user.id}"/>
@@ -230,6 +237,7 @@
     <input type="submit" value="注文を確定する">
 </form:form>
 </table>
+
 <script
         src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
@@ -239,8 +247,7 @@
         $("#btn").on("click", function(){AjaxZip3.zip2addr('postalCode','','destinationAddress','destinationAddress')});
     });
 </script>
-
-
+</div>
 
 
 
