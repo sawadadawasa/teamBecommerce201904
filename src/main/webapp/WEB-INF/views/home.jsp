@@ -77,7 +77,7 @@
   <div class="bgImg src2"></div>
   <div class="bgImg src3"></div>
   <div class="bgImg src4"></div>
-  <div class="boxString">神茶<br>~God Tea~</div>
+  <div class="boxString"><center>神茶</center><br>~God Tea~</div>
 
 </div>
 
