@@ -92,7 +92,6 @@
 			</div>
 		</div>
 
-
 		<div class="row">
 			<div class="col-xs-offset-2 col-xs-8">
 				<div class="form-group text-center">
