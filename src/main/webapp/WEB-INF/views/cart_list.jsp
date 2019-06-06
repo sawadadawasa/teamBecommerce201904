@@ -101,7 +101,7 @@
 				</div>
 			</div>
 		</div>
-<c:out value="${orderId }"/>
+
 		<div class="row">
 			<div class="col-xs-offset-5 col-xs-3">
 				<div class="form-group">
