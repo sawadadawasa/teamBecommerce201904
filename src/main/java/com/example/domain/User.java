@@ -8,9 +8,15 @@ public class User {
 	private String telephone;
 	private String address;
 	private String password;
+	private String postalCode;
 	
 	
-	
+	public String getPostalCode() {
+		return postalCode;
+	}
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
 	public Integer getId() {
 		return id;
 	}

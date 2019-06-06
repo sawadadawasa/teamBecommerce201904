@@ -2,6 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css"/>
 <title>ログインフォーム</title>
 </head>
@@ -37,5 +38,12 @@
 			
 		</form:form>
 		</div>
+		<script>
+		function onload(){
+		       if(${registerMessage}){
+		           alert("登録ありがとうございます！\nお手数ですがログインからお願いします。");
+		       }
+		};
+		</script>
 </body>
 </html>

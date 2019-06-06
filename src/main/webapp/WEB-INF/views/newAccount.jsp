@@ -6,15 +6,11 @@
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css"/>
-
-<script>
-
-</script>
 <title>新規登録</title>
 </head>
 <body>
 <div id="form">
-	<p class="form-title">メンバー登録</p>
+	<p class="form-title">会員登録</p>
 		<form:errors path ="userForm" cssStyle="color:red" />
 		<form:form modelAttribute="userForm" action="${pageContext.request.contextPath}/user/create">
 		
@@ -51,19 +47,13 @@
 		    	</form:form>
 		    	
 		       <a href="javascript:history.back();">ログイン画面に戻る</a>
-		  
-				<script>
-					function clickEvent() {
-						alert('ご登録ありがとうございました(^^)/');
-					}
-				</script>
-				
+
+
 				<script
 					src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 				<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 				<script>
 					$(function() {
-						console.log("debug");
 						$("#btn").on(
 								"click",
 								function() {

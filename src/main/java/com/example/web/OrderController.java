@@ -68,10 +68,7 @@ public class OrderController {
             System.out.println("narumi");
             
             
-//            //指定したオブジェクトをセッションスコープから削除する
-//            session.removeAttribute("orderItemList");
-//            session.removeAttribute("orderId");
-//            
+
             return "redirect:/order/mail/send";
         }
         //order.jspへ遷移
