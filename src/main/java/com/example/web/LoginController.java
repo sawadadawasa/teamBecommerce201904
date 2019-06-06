@@ -68,15 +68,3 @@ public class LoginController {
 	}
 }
 
-//		User user = userService.findOneByEmailAndPassword(email, password);
-//		
-//		if (user == null) {
-//			ObjectError error = new ObjectError("loginerror", "メールアドレスまたはパスワードが違います。");
-//			result.addError(error);
-//			return index();
-//		}
-//		session.setAttribute("user", user);
-//		return "redirect:/item/";
-//	}
-//}
-
