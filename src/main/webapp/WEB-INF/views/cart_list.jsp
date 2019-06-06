@@ -136,8 +136,10 @@
 						<input class="form-control btn btn-warning btn-block"
 							type="submit" value="注文に進む">
 					</form>
-					<a href="javascript:history.back();">詳細画面に戻る</a>
+					
 				</div>
+				<a href="javascript:history.back();">詳細画面に戻る</a><br>
+				<a href="${pageContext.request.contextPath}/item/">商品一覧に戻る</a>
 			</div>
 		</div>
 	</div>
