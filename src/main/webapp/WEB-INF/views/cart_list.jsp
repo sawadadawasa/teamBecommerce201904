@@ -29,15 +29,17 @@
 							class="icon-bar"></span>
 					</button>
 
-					<a class="navbar-brand"
-						href="${pageContext.request.contextPath}/item/"> <!-- 企業ロゴ -->
-						<img alt="main log" src="img/header_logo.png" height="35">
-					</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
+					
+										<a class="navbar-brand"
+						href="${pageContext.request.contextPath}/godtea/"> <!-- 企業ロゴ -->
+						<img alt="main log" src="../img/tea_header_logo.png" width="100" height="100">
+					</a>
+					
 					<p class="navbar-text navbar-right">
 						<a href="${pageContext.request.contextPath}/orderItem/cart"
 							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a
@@ -53,6 +55,10 @@
 								href="${pageContext.request.contextPath}/logout/sessionInvalidate"
 								class="navbar-link">ログアウト</a>
 						</c:if>
+						<br>
+						<br>
+						<br>
+						<br>
 					</p>
 				</div>
 
