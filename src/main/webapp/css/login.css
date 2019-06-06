@@ -24,12 +24,16 @@ form p{
     text-align: center;
     }
 
-.mail,.pass,.name{
+.mail,.pass,.name,.address,.postalCode,.telephone,.password{
     margin-bottom: 20px;
     }
 
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="name"],
+input[type="address"],
+input[type="postalcode"],
+input[type="telephone"] {
   width: 300px;
   padding: 4px;
   font-size: 14px;

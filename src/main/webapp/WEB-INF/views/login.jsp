@@ -11,11 +11,12 @@
 		<form:errors path="loginForm" cssStyle="color:red" />
 		<form:form modelAttribute="loginForm"
 			action="${pageContext.request.contextPath}/tea/login">
+			
 			<p>メールアドレス</p>
-			<p class="mail">
-				<form:input path="email" placeholder="Email" />
+				<p class="mail"><form:input path="email" type="email" placeholder="Email" />
 				<form:errors path="email" cssStyle="color:red" />
 			</p>
+			
 			<p>パスワード</p>
 			<p>
 				<p class="pass"><form:password path="password" placeholder="Password" />
