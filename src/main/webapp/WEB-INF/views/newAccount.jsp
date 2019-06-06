@@ -10,64 +10,44 @@
 </head>
 <body>
 <div id="form">
-	<p class="form-title">メンバー登録画面</p>
-		<form:errors path ="userForm.*" cssStyle="color:red" />
+	<p class="form-title">メンバー登録</p>
+		<form:errors path ="userForm" cssStyle="color:red" />
 		<form:form modelAttribute="userForm" action="${pageContext.request.contextPath}/user/create">
+		
 			     	<p> お名前</p>
-
-			    	<form:input path="name"  placeholder="Name"/>
+			    	<form:input path="name" type="name" placeholder="Name"/>
 			    	<form:errors path="name" cssStyle="color:red" element="div"/>
 			    
 			      	<p>メールアドレス</p>
-			    
-			    	<form:input path="email" placeholder="Email"/>
+			    	<form:input path="email" type="email" placeholder="Email"/>
 			    	<form:errors path="email" cssStyle="color:red" element="div"/>
 			   
 			  		<p>郵便番号</p>
-			  	
-					<form:input path="postalCode" placeholder="1234567"/> &nbsp;&nbsp;
+					<form:input path="postalCode" type="postalCode" placeholder="1234567"/> &nbsp;&nbsp;
 					<button id="btn" type="button">住所検索</button>
 				
 				<p>住所</p>
-				
-			  		<form:input path="address" placeholder="Address"/>
+			  		<form:input path="address" type="address" placeholder="Address"/>
 			  		<form:errors path="address" cssStyle="color:red" element="div"/>
 			  	
-			  <tr>
-			  	<th>
-			  		TEL
-			  	</th>
-			  	<td>
-			  		<form:input path="telephone" placeholder="Telephone"/>
+			  	<p>TEL</p>
+			  		<form:input path="telephone" type="telephone" placeholder="Telephone"/>
 			  		<form:errors path="telephone" cssStyle="color:red" element="div"/>
-			  	</td>
-			  </tr>
-			  <tr>
-			    <th>
-			     	 パスワード
-			    </th>
-			    <td>
+			  		
+			    <p> パスワード</p>
 			    	<form:password path="password" placeholder="Password"/>
 			    	<form:errors path="password" cssStyle="color:red" element="div"/><br>
-			    </td>
-			  </tr>
-			  
-			  <tr>
-			    <th>
-			     	 パスワード(確認用)
-			    </th>
-			    <td>
+			    	
+			    <p>パスワード(確認用)</p>
 			    	<form:password path="passwordConfirm" placeholder="PasswordConfirm"/>
-			    </td>
-			  </tr>
-			  
-			  <tr>
-			    <td>
-					<input class="btn" type="submit" value="登録">
-			    </td>
-			  </tr>
-			</table>
-		  </form:form>
+			    	
+			    	<p class="submit">
+			    	<input class="btn" type="submit" value="登録">
+			    	</p>	
+		    	</form:form>
+		    	
+		       <a href="javascript:history.back();">ログイン画面に戻る</a>
+		  
 				<script
 					src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 				<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
@@ -85,7 +65,6 @@
 				</script>
 
 			</div>
-	</div>
-</div>
+
 </body>
 </html>
