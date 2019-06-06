@@ -127,6 +127,61 @@
         $("#btn").on("click", function(){AjaxZip3.zip2addr('postalCode','','destinationAddress','destinationAddress')});
     });
 </script>
+
+既に登録されている住所を使用する
+<table >
+<form:form modelAttribute="orderForm" action="${pageContext.request.contextPath}/order/fix">
+    <form:hidden path="id" value="${orderId}"/>
+	<tr>
+		<td>お名前</td><td><c:out value="${user.name}"/></td><form:hidden path ="destinationName" value="${user.name}"/>
+	</tr>
+	<tr>
+		<td>メールアドレス</td><td><c:out value="${user.email}"/></td><td><form:hidden path ="destinationEmail" value="${user.email}"/></td>
+	</tr>
+
+	<tr>
+		<td>住所</td><td><c:out value="${user.address}"/></td><td><form:hidden path ="destinationAddress" value="${user.address}"/></td>
+	</tr>
+		<tr>
+		<td>TEL</td><td><c:out value="${user.telephone}"/></td><td><form:hidden path ="destinationTel" value="${user.telephone}"/></td>
+	</tr>
+	<tr>
+    <td>配達日(形式:yyyy/mm/dd)</td><td><form:input path="deliveryTime"/></td><!-- 後でdeliveryHourと合わせる -->
+</tr>
+<tr>
+    <td>配達時間</td>
+    <td><form:select path="deliveryHour">
+            <form:options items="${hourList}"/>
+        </form:select>
+    時
+    </td>
+</tr>
+<tr>
+    <td>支払い方法</td>
+    <td><form:radiobuttons path="paymentMethod" items="${paymentMethodList}" /></td>
+</tr>
+<br>
+    <input type="submit" value="注文を確定する">
+</form:form>
+</table>
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+<script>
+    $(function(){
+        console.log("debug");
+        $("#btn").on("click", function(){AjaxZip3.zip2addr('postalCode','','destinationAddress','destinationAddress')});
+    });
+</script>
+
+
+
+
+
+
+
+
+
 <br>
 </body>
 </html>
