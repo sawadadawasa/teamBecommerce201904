@@ -38,11 +38,6 @@ public class UserRepository {
 	public User findOneByEmailAndPassword(String email,String password) {
 		User user = null;
 		try{
-			System.out.println(email);
-			System.out.println(password);
-			
-
-			
 			// SQLインジェクション対策
 			String sql = "SELECT id,name,email,password, telephone FROM users WHERE email = :email and password = :password";
 			SqlParameterSource param = new MapSqlParameterSource()
@@ -101,6 +96,14 @@ public class UserRepository {
 		
 		return template.queryForObject(sql, param, String.class);
 		
+	}
+	
+	//ユーザー情報を削除する
+	public void deleteUserInfo(String email) {
+		String sql = "DELETE FROM users WHERE email = :email";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("email", email);
+
+		template.update(sql, param);
 	}
 	
 	
