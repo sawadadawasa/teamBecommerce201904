@@ -148,5 +148,8 @@ public class OrderController {
 
     		return "orderCompletion";
     	}
-
+    	@RequestMapping(value ="main")
+    	public String main() {
+    		return "orderCompletion";
+    	}
 }
