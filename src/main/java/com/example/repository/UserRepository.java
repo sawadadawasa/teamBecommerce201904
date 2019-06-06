@@ -26,6 +26,8 @@ public class UserRepository {
 		user.setEmail(rs.getString("email"));
 		user.setPassword(rs.getString("password"));
 		user.setTelephone(rs.getString("telephone"));
+		user.setAddress(rs.getString("address"));
+		user.setPostalCode(rs.getString("postal_code"));
 		return user;
 	};
 	
@@ -40,7 +42,7 @@ public class UserRepository {
 		User user = null;
 		try{
 			// SQLインジェクション対策
-			String sql = "SELECT id,name,email,password, telephone FROM users WHERE email = :email and password = :password";
+			String sql = "SELECT * FROM users WHERE email = :email and password = :password";
 			SqlParameterSource param = new MapSqlParameterSource()
 					.addValue("email", email)
 					.addValue("password", password);
@@ -66,7 +68,7 @@ public class UserRepository {
 			template.update(insertSql, param);
 		} else {
 			String updateSql=
-					"UPDATE users SET name=:name, email=:email, password=:password, address=:address, telephone=:telephone WHERE id=:id";
+					"UPDATE users SET name=:name, email=:email, password=:password, address=:address, telephone=:telephone,postal_code =:postalCode WHERE id=:id";
 			template.update(updateSql,param);
 		}
 		return user;
@@ -78,7 +80,7 @@ public class UserRepository {
 		return users;
 	}
 	
-	//メールアドレスからDBにある暗号PWを取得
+	//メールアドレスからDBにある暗号PWを取得.
 	public String findPassword(String email) {
 		try {
 			SqlParameterSource param = new MapSqlParameterSource().addValue("email", email);
