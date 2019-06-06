@@ -132,13 +132,16 @@
 <table >
 <form:form modelAttribute="orderForm" action="${pageContext.request.contextPath}/order/fix">
     <form:hidden path="id" value="${orderId}"/>
+    <form:hidden path="userId" value="${user.id}"/>
 	<tr>
 		<td>お名前</td><td><c:out value="${user.name}"/></td><form:hidden path ="destinationName" value="${user.name}"/>
 	</tr>
 	<tr>
 		<td>メールアドレス</td><td><c:out value="${user.email}"/></td><td><form:hidden path ="destinationEmail" value="${user.email}"/></td>
 	</tr>
-
+	<tr>
+		<td>郵便番号</td><td><c:out value="${user.postalCode}"/></td><td><form:hidden path ="postalCode" value="${user.postalCode}"/></td>
+	</tr>
 	<tr>
 		<td>住所</td><td><c:out value="${user.address}"/></td><td><form:hidden path ="destinationAddress" value="${user.address}"/></td>
 	</tr>
@@ -156,10 +159,15 @@
     時
     </td>
 </tr>
+<tr>    
+    <form:hidden path="totalPrice" value="10"/><!-- valueの10は後でtotalPriceに -->
+
+</tr>
 <tr>
     <td>支払い方法</td>
     <td><form:radiobuttons path="paymentMethod" items="${paymentMethodList}" /></td>
 </tr>
+
 <br>
     <input type="submit" value="注文を確定する">
 </form:form>

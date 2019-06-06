@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
 
-body{
-	background : url('../img/ocha.jpg');
+body {
+	background : url('../img/kyuusu.jpg');
+	background-size: cover;
 }
-	
 	
 }
 

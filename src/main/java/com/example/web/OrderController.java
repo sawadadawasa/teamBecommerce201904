@@ -62,10 +62,11 @@ public class OrderController {
         //注文を確定する.Orders DB更新
         @RequestMapping("/fix")
         public String order(OrderForm orderForm,RedirectAttributes redirectAttributes) throws ParseException {
-            orderService.saveFix(orderForm);
+            
+        	System.out.println(orderForm.getTotalPrice());
+        	orderService.saveFix(orderForm);
             redirectAttributes.addFlashAttribute("destinationEmail",orderForm.getDestinationEmail());
-            System.out.println("debug");
-            System.out.println("narumi");
+    
             
             
 

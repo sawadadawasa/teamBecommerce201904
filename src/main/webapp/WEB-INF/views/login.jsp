@@ -39,11 +39,11 @@
 		</form:form>
 		</div>
 		<script>
-		function onload(){
-		       if(${registerMessage}){
-		           alert("登録ありがとうございます！\nお手数ですがログインからお願いします。");
-		       }
-		};
+		$(function() {
+		    if(${registerMessage}){
+		    	alert("登録ありがとうございます！\nお手数ですがログインからお願いします。");
+			}
+		});
 		</script>
 </body>
 </html>
