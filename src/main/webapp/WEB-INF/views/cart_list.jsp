@@ -87,11 +87,11 @@
 						<td>小計</td>
 						<td>取消</td>
 					</tr>
-
+<c:out value="${orderId }"/>
 					<c:forEach items="${orderItemList}" var="orderItem">
 
 						<tr>
-
+<c:out value="${orderItem.id}"/>
 							<td><c:out value="${orderItem.name}" /></td>
 							<td><fmt:formatNumber value="${orderItem.price }"
 									pattern="###,###,###" /></td>

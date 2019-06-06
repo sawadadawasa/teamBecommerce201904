@@ -35,12 +35,12 @@ public class OrderItemController {
 	public OrderItemForm setUpForm() {
 		return new OrderItemForm();
 	}
-	
-	List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 	 
 	//商品の詳細を表示
 	@RequestMapping
 	public String showItems(OrderItemForm form, Model model) {
+		
+		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		
 		Integer orderId = (Integer)session.getAttribute("orderId");
 		
@@ -60,9 +60,9 @@ public class OrderItemController {
 		String viewTotalPrice = nfNum.format(totalPrice);
 		String viewTaxOfTotalPrice = nfNum.format(taxOfTotalPrice);
 		
-		model.addAttribute("orderItemList", orderItemList)
-		.addAttribute("viewTotalPrice", viewTotalPrice).
-		addAttribute("viewTaxOfTotalPrice", viewTaxOfTotalPrice);
+		session.setAttribute("orderItemList", orderItemList);
+		session.setAttribute("viewTotalPrice", viewTotalPrice);
+		session.setAttribute("viewTaxOfTotalPrice", viewTaxOfTotalPrice);
 				
 		return "cart_list";
 	}
@@ -81,6 +81,8 @@ public class OrderItemController {
 	//orderHistoryからの遷移
 	@RequestMapping("/showHistoryDetail")
 	public String showHistoryDetail(@RequestParam int orderId,RedirectAttributes redirectAttributes) {
+		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
+		
 		orderItemList	= orderItemService.findAll(orderId);
 		
 		//合計金額
@@ -115,7 +117,4 @@ public class OrderItemController {
 	public String cart() {
 		return "redirect:/orderItem";
 	}
-
-	
-
 }

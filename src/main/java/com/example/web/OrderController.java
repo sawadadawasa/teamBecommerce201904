@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.domain.Order;
 import com.example.domain.OrderItem;
@@ -59,13 +60,18 @@ public class OrderController {
             return "orderHistory";
         }
         //注文を確定する.Orders DB更新
-        
         @RequestMapping("/fix")
         public String order(OrderForm orderForm,RedirectAttributes redirectAttributes) throws ParseException {
             orderService.saveFix(orderForm);
             redirectAttributes.addFlashAttribute("destinationEmail",orderForm.getDestinationEmail());
             System.out.println("debug");
             System.out.println("narumi");
+            
+            
+//            //指定したオブジェクトをセッションスコープから削除する
+//            session.removeAttribute("orderItemList");
+//            session.removeAttribute("orderId");
+//            
             return "redirect:/order/mail/send";
         }
         //order.jspへ遷移
@@ -89,10 +95,10 @@ public class OrderController {
     		String viewTotalPrice = nfNum.format(totalPrice);
     		String viewTaxOfTotalPrice = nfNum.format(taxOfTotalPrice);
     		
-    		model.addAttribute("viewTotalPrice", viewTotalPrice);
-    		model.addAttribute("viewTaxOfTotalPrice", viewTaxOfTotalPrice);
-    		model.addAttribute("orderItemList",orderItemList);
-    		model.addAttribute("orderId",orderId);
+    		session.setAttribute("viewTotalPrice", viewTotalPrice);
+    		session.setAttribute("viewTaxOfTotalPrice", viewTaxOfTotalPrice);
+    		session.setAttribute("orderItemList",orderItemList);
+    		session.setAttribute("orderId",orderId);
         	
         	
             User user = (User)session.getAttribute("user");
