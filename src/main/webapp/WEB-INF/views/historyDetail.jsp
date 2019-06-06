@@ -12,8 +12,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/piza.css"/>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/piza.css" />
 </head>
 <body>
 	<div class="container">
@@ -29,15 +31,16 @@
 							class="icon-bar"></span>
 					</button>
 
-					<a class="navbar-brand"
-						href="${pageContext.request.contextPath}/item/"> <!-- 企業ロゴ -->
-						<img alt="main log" src="img/header_logo.png" height="35">
-					</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
+					
+									<a class="navbar-brand"
+						href="${pageContext.request.contextPath}/godtea/"> <!-- 企業ロゴ -->
+						<img alt="main log" src="../img/tea_header_logo.png" width="100" height="100">
+					</a>
 					<p class="navbar-text navbar-right">
 						<a href="${pageContext.request.contextPath}/orderItem/cart"
 							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a
@@ -53,6 +56,10 @@
 								href="${pageContext.request.contextPath}/logout/sessionInvalidate"
 								class="navbar-link">ログアウト</a>
 						</c:if>
+						<br>
+						<br>
+						<br>
+						<br>
 					</p>
 				</div>
 
@@ -62,56 +69,64 @@
 						<c:if test="${user != null}">
 							<c:out value="${user.name}さんでログイン中" />
 						</c:if>
-						<p>
-				
+					</p>
 				</div>
-			</div>
-			</nav>
-		
-		<div class="row">
-			<div
-				class="table-responsive col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
 
-				<table class="table table-striped">
+			</div>
+
+
+		</nav>
+	</div>
+
+	<div class="row">
+		<div
+			class="table-responsive col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+
+			<table class="table table-striped">
+				<tr>
+					<td>商品名</td>
+					<td>値段</td>
+					<td>画像</td>
+					<td>パック数</td>
+					<td>個数</td>
+					<td>小計</td>
+				</tr>
+
+				<c:forEach items="${orderItemList}" var="orderItem">
+
 					<tr>
-						<td>商品名</td>
-						<td>値段</td>
-						<td>画像</td>
-						<td>パック数</td>
-						<td>個数</td>
-						<td>小計</td>
+
+						<td><c:out value="${orderItem.name}" /></td>
+						<td><fmt:formatNumber value="${orderItem.price }"
+								pattern="###,###,###" /></td>
+						<td><img src="img/<c:out value="${orderItem.imagePATH}"/>" /></td>
+						<td><c:out value="${orderItem.piece}" /></td>
+						<td><c:out value="${orderItem.quantity}" /></td>
+						<td><fmt:formatNumber value="${orderItem.subTotalPrice }"
+								pattern="###,###,###" /></td>
+
 					</tr>
 
-					<c:forEach items="${orderItemList}" var="orderItem">
+				</c:forEach>
+			</table>
+		</div>
+	</div>
 
-						<tr>
 
-							<td><c:out value="${orderItem.name}" /></td>
-							<td><fmt:formatNumber value="${orderItem.price }"
-									pattern="###,###,###" /></td>
-							<td><img src="img/<c:out value="${orderItem.imagePATH}"/>" /></td>
-							<td><c:out value="${orderItem.piece}" /></td>
-							<td><c:out value="${orderItem.quantity}" /></td>
-							<td><fmt:formatNumber value="${orderItem.subTotalPrice }"
-									pattern="###,###,###" /></td>
-	
-						</tr>
-
-					</c:forEach>
-				</table>
+	<div class="row">
+		<div class="col-xs-offset-2 col-xs-8">
+			<div class="form-group text-center">
+				<span id="total-price">消費税：<c:out
+						value="${viewTaxOfTotalPrice}" />円
+				</span><br> <span id="total-price">ご注文金額合計：<c:out
+						value="${viewTotalPrice}" />円(税込)
+				</span>
 			</div>
 		</div>
+	</div>
 
-
-		<div class="row">
-			<div class="col-xs-offset-2 col-xs-8">
-				<div class="form-group text-center">
-					<span id="total-price">消費税：<c:out value="${viewTaxOfTotalPrice}" />円</span><br> 
-					<span id="total-price">ご注文金額合計：<c:out value="${viewTotalPrice}" />円(税込)</span>
-				</div>
-			</div>
-		</div>
-		
-<a href="${pageContext.request.contextPath}/order/deleteOrder?orderId=${orderId}"><c:out value="${deleteOrNotMessage}"/></a>
+	<a
+		href="${pageContext.request.contextPath}/order/deleteOrder?orderId=${orderId}"><c:out
+			value="${deleteOrNotMessage}" /></a>
 </body>
 </html>
