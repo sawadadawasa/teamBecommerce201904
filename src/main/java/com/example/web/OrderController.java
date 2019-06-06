@@ -79,7 +79,6 @@ public class OrderController {
         @RequestMapping("/view")
         public String view(@RequestParam Integer orderId,Model model,RedirectAttributes redirectAttributes) {
     		
-        	System.out.println("debug");
         	List<OrderItem> orderItemList	= orderItemService.findAll(orderId);
     		
     		//合計金額
@@ -87,9 +86,7 @@ public class OrderController {
     		
     		//消費税
     		Integer taxOfTotalPrice = (int)(totalPrice*0.08);
-    		
-    		System.out.println("debug");
-    		
+    		    		
     		NumberFormat nfNum = NumberFormat.getNumberInstance();
     		
     		String viewTotalPrice = nfNum.format(totalPrice);

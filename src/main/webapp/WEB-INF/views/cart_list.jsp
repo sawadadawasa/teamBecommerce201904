@@ -80,18 +80,16 @@
 				<table class="table table-striped">
 					<tr>
 						<td>商品名</td>
-						<td>値段</td>
+						<td>値段(税抜)</td>
 						<td>画像</td>
 						<td>パック数</td>
 						<td>個数</td>
-						<td>小計</td>
+						<td>小計(税抜)</td>
 						<td>取消</td>
 					</tr>
-<c:out value="${orderId }"/>
 					<c:forEach items="${orderItemList}" var="orderItem">
 
 						<tr>
-<c:out value="${orderItem.id}"/>
 							<td><c:out value="${orderItem.name}" /></td>
 							<td><fmt:formatNumber value="${orderItem.price }"
 									pattern="###,###,###" /></td>
