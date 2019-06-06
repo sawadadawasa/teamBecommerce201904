@@ -30,5 +30,8 @@ public class UserService {
 		return userRepository.findPassword(email);
 	}
 	
+	public void deleteUserInfo(String email) {
+		userRepository.deleteUserInfo(email);
+	}
 
 }

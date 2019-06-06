@@ -12,7 +12,8 @@ import com.example.domain.User;
 @RequestMapping(value="/logout")
 @SessionAttributes("user")
 public class LogoutController {
-
+	
+	//home.jsp を表示
 	@RequestMapping(value="/")
 	public String index() {
 		return "home";
