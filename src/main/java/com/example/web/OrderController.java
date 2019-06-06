@@ -89,10 +89,10 @@ public class OrderController {
     		String viewTotalPrice = nfNum.format(totalPrice);
     		String viewTaxOfTotalPrice = nfNum.format(taxOfTotalPrice);
     		
-    		redirectAttributes.addFlashAttribute("viewTotalPrice", viewTotalPrice);
-    		redirectAttributes.addFlashAttribute("viewTaxOfTotalPrice", viewTaxOfTotalPrice);
-    		redirectAttributes.addFlashAttribute("orderItemList",orderItemList);
-    		redirectAttributes.addFlashAttribute("orderId",orderId);
+    		model.addAttribute("viewTotalPrice", viewTotalPrice);
+    		model.addAttribute("viewTaxOfTotalPrice", viewTaxOfTotalPrice);
+    		model.addAttribute("orderItemList",orderItemList);
+    		model.addAttribute("orderId",orderId);
         	
         	
             User user = (User)session.getAttribute("user");
@@ -124,7 +124,7 @@ public class OrderController {
         public String booleanDeleteOrNot(@ModelAttribute("orderId")Integer orderId,Model model) {
             Integer deleteOrNot = orderService.booleanDeleteOrNot(orderId);
             String deleteOrNotMessage;
-            if(deleteOrNot.intValue()==1) deleteOrNotMessage = "削除する";//配達予定より3日以上前の時点であればdeleteOrNotMessageに削除ボタンを出力
+            if(deleteOrNot.intValue()==1) deleteOrNotMessage = "注文を取り消す";//配達予定より3日以上前の時点であればdeleteOrNotMessageに削除ボタンを出力
             else deleteOrNotMessage = null;
 
             model.addAttribute("deleteOrNotMessage",deleteOrNotMessage);

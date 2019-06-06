@@ -1,26 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/piza.css" rel="stylesheet">
-</head>
-<body>
-		<div class="row">
-			<div
-				class="table-responsive col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-				<table class="table table-striped">
+<title>Insert title here</title>
+</head>
+
+<body>
+
+<table class="table table-striped">
 					<tr>
 						<td>商品名</td>
 						<td>値段</td>
@@ -53,6 +48,8 @@
 
 						</tr>
 
+
+
 					</c:forEach>
 				</table>
 			</div>
@@ -67,66 +64,69 @@
 				</div>
 			</div>
 		</div>
-		
+
+
+
 <table border="1">
 <form:form modelAttribute="orderForm" action="${pageContext.request.contextPath}/order/fix">
-	
-	<form:hidden path="id" value="${orderId}"/>
-	<form:hidden path="userId" value="${user.id}"/>
+    
+    <form:hidden path="id" value="${orderId}"/>
+    <form:hidden path="userId" value="${user.id}"/>
 <tr>
-	<td>お名前</td><td><form:input path="destinationName"/></td>
+    <td>お名前</td><td><form:input path="destinationName"/></td>
 </tr>
 <tr>
-	<td>メールアドレス</td><td><form:input path="destinationEmail"/></td>
+    <td>メールアドレス</td><td><form:input path="destinationEmail"/></td>
 </tr>
-<tr>	
-	<form:hidden path="totalPrice" value="10"/><!-- valueの10は後でtotalPriceに -->
+<tr>    
+    <form:hidden path="totalPrice" value="10"/><!-- valueの10は後でtotalPriceに -->
 
 </tr>
 <tr>
-	<td>郵便番号</td>
-	<td>
-		<form:input  path="postalCode" />
+    <td>郵便番号</td>
+    <td>
+        <form:input  path="postalCode" />
          &nbsp;&nbsp;
         <button id="btn" type="button">住所検索</button>
-	</td>
+    </td>
 </tr>
 <tr>
-	<td>住所</td>
-	<td>
+    <td>住所</td>
+    <td>
         <form:input path="destinationAddress"/>
-	</td>
+    </td>
 </tr>
-<tr>	
-	<td>TEL</td><td><form:input path="destinationTel"/></td>
-</tr>
-<tr>
-	<td>配達日</td><td><form:input path="deliveryTime"/></td><!-- 後でdeliveryHourと合わせる -->
+<tr>    
+    <td>TEL</td><td><form:input path="destinationTel"/></td>
 </tr>
 <tr>
-	<td>配達時間</td>
-	<td><form:select path="deliveryHour">
-			<form:options items="${hourList}"/>
-		</form:select>
-	時
-	</td>
+    <td>配達日(形式:yyyy/mm/dd)</td><td><form:input path="deliveryTime"/></td><!-- 後でdeliveryHourと合わせる -->
 </tr>
 <tr>
-	<td>支払い方法</td>
-	<td><form:radiobuttons path="paymentMethod" items="${paymentMethodList}" /></td>
+    <td>配達時間</td>
+    <td><form:select path="deliveryHour">
+            <form:options items="${hourList}"/>
+        </form:select>
+    時
+    </td>
+</tr>
+<tr>
+    <td>支払い方法</td>
+    <td><form:radiobuttons path="paymentMethod" items="${paymentMethodList}" /></td>
 </tr>
 <br>
-	<input type="submit" value="注文を確定する">
+    <input type="submit" value="注文を確定する">
 </form:form>
 </table>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 <script>
-	$(function(){
-		console.log("debug");
-    	$("#btn").on("click", function(){AjaxZip3.zip2addr('postalCode','','destinationAddress','destinationAddress')});
-	});
+    $(function(){
+        console.log("debug");
+        $("#btn").on("click", function(){AjaxZip3.zip2addr('postalCode','','destinationAddress','destinationAddress')});
+    });
 </script>
+<br>
 </body>
 </html>
