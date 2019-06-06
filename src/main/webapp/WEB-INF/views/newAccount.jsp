@@ -14,7 +14,7 @@
 </head>
 <body>
 <div id="form">
-	<p class="form-title">メンバー登録</p>
+	<p class="form-title">会員登録</p>
 		<form:errors path ="userForm" cssStyle="color:red" />
 		<form:form modelAttribute="userForm" action="${pageContext.request.contextPath}/user/create">
 		
@@ -54,6 +54,7 @@
 		  
 				<script>
 					function clickEvent() {
+						if(userform.getUserform().equal(user))
 						alert('ご登録ありがとうございました(^^)/');
 					}
 				</script>
