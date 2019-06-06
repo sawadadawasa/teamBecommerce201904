@@ -100,10 +100,14 @@ public class UserRepository {
 	
 	//ユーザー情報を削除する
 	public void deleteUserInfo(String email) {
+		try{
 		String sql = "DELETE FROM users WHERE email = :email";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("email", email);
 
 		template.update(sql, param);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
