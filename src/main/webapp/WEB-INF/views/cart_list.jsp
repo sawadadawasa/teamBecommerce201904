@@ -88,7 +88,7 @@
 						<td>取消</td>
 					</tr>
 					<c:forEach items="${orderItemList}" var="orderItem">
-
+						<c:if test="${orderItemList != null}">
 						<tr>
 							<td><c:out value="${orderItem.name}" /></td>
 							<td><fmt:formatNumber value="${orderItem.price }"
@@ -107,9 +107,7 @@
 							</td>
 
 						</tr>
-
-
-
+						</c:if>
 					</c:forEach>
 				</table>
 			</div>

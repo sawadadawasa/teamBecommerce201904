@@ -110,7 +110,6 @@ public class OrderItemController {
 	@RequestMapping("/deleteId/{itemId}/{id}")
 	public String deleteItem(@PathVariable("itemId") Integer itemId, @PathVariable("id") Integer id) {
 
-		System.out.println(itemId);
 		orderItemService.deleteId(itemId, id);
 		
 		return "redirect:/orderItem";

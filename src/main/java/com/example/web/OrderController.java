@@ -1,5 +1,6 @@
 package com.example.web;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -62,13 +63,10 @@ public class OrderController {
         //注文を確定する.Orders DB更新
         @RequestMapping("/fix")
         public String order(OrderForm orderForm,RedirectAttributes redirectAttributes) throws ParseException {
-            
-        	System.out.println(orderForm.getTotalPrice());
         	orderService.saveFix(orderForm);
+        	session.removeAttribute("orderItemList");
             redirectAttributes.addFlashAttribute("destinationEmail",orderForm.getDestinationEmail());
-    
-            
-            
+            session.removeAttribute("orderItemList");
 
             return "redirect:/order/mail/send";
         }
