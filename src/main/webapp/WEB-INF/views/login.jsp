@@ -23,16 +23,18 @@
 				<form:errors path="password" cssStyle="color:red" />
 			</p>
 
-			<p class="submit">
-		<input class="btn" type="submit" value="ログイン">
-			</p>
+		<p class="submit">
+			<input type="submit" value="ログイン">
+		</p>
 			</form:form>
 			
 		<form:form action="${pageContext.request.contextPath}/user/form"
 			id="toInsertMember">
+			
 			<p class="submit">
-			<input class="btn" type="submit" value="新規登録">
+			<input type="submit" value="新規登録">
 			</p>
+			
 		</form:form>
 		</div>
 </body>

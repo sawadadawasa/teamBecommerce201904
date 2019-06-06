@@ -6,6 +6,10 @@
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css"/>
+
+<script>
+
+</script>
 <title>新規登録</title>
 </head>
 <body>
@@ -42,12 +46,18 @@
 			    	<form:password path="passwordConfirm" placeholder="PasswordConfirm"/>
 			    	
 			    	<p class="submit">
-			    	<input class="btn" type="submit" value="登録">
-			    	</p>	
+			    	<input onclick="clickEvent()" type="submit" value="登録">
+			</p>	
 		    	</form:form>
 		    	
 		       <a href="javascript:history.back();">ログイン画面に戻る</a>
 		  
+				<script>
+					function clickEvent() {
+						alert('ご登録ありがとうございました(^^)/');
+					}
+				</script>
+				
 				<script
 					src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 				<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
