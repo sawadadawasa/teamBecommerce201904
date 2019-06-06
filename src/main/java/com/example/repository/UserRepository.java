@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -90,12 +91,23 @@ public class UserRepository {
 	//メールアドレスからDBにある暗号PWを取得
 	public String findPassword(String email) {
 		
-		SqlParameterSource param = new MapSqlParameterSource().addValue("email", email);
+		try {
+			
+			SqlParameterSource param = new MapSqlParameterSource().addValue("email", email);
+			
+			String sql = "SELECT password FROM users WHERE email = :email";
+			
+			return template.queryForObject(sql, param, String.class);
+			
+			
+		} catch (EmptyResultDataAccessException e) {
+			
+			return null;
+			
+			// TODO: handle exception
+		}
 		
-		String sql = "SELECT password FROM users WHERE email = :email";
-		
-		return template.queryForObject(sql, param, String.class);
-		
+
 	}
 	
 	//ユーザー情報を削除する
