@@ -137,8 +137,8 @@ public class OrderController {
 
     		mailMessage.setTo(destinationEmail);
     		mailMessage.setReplyTo("test.bayashi.dev@gmail.com");
-    		mailMessage.setSubject("テストメール");
-    		mailMessage.setText("テストメールです、\nここから次の行\nおわりです\n");
+    		mailMessage.setSubject("神茶 -God Tea- ==注文確定しました");
+    		mailMessage.setText("注文が確定しましたので連絡いたします。\n下記URLから確認をお願いします。\n");
 
     		javaMailSender.send(mailMessage);
 

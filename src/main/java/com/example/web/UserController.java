@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
@@ -31,6 +32,11 @@ public class UserController {
 	@RequestMapping(value = "form")
 	public String form() {
 		return "newAccount";
+	}
+	// ログイン画面を表示します。
+	@RequestMapping(value="viewDelete")
+	public String viewDelete() {
+		return "Unsubscribe";
 	}
 
 	// メンバー情報を登録します。
@@ -63,6 +69,32 @@ public class UserController {
 		BeanUtils.copyProperties(form, user);
 		user=userService.save(user);
 		return "redirect:/tea/";
+	}
+	// ユーザー情報を削除します。
+	@RequestMapping(value = "delete")
+	public String delete(@Validated LoginForm form, BindingResult result) {
+		if(result.hasErrors()) {
+			return viewDelete();
+		}
+		String email = form.getEmail();
+		String password = form.getPassword();
+		//エンコード用にインスタンス化
+		BCryptPasswordEncoder enco = new BCryptPasswordEncoder();
+		boolean answer = false;
+
+		if(enco.matches(password, userService.findPassword(email))) {
+			answer = true;
+		} 
+
+		if(answer) {
+			userService.deleteUserInfo(email);
+			return "redirect:/logout/";
+		} else {
+			ObjectError error = new ObjectError("loginerror", "メールアドレスまたはパスワードが違います。");
+			result.addError(error);
+			return viewDelete();
+
+		}
 	}
 }
 
