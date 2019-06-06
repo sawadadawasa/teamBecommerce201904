@@ -1,5 +1,8 @@
 package com.example.web;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -11,6 +14,7 @@ import com.example.domain.User;
 @Controller
 @RequestMapping(value="/logout")
 @SessionAttributes("user")
+
 public class LogoutController {
 
 	@RequestMapping(value="/")
@@ -22,6 +26,7 @@ public class LogoutController {
 	public String logout(User user
 			, SessionStatus sessionStatus) {
 		sessionStatus.setComplete();
+	
 		return "redirect:/logout/";
 	}
 
