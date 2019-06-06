@@ -64,7 +64,7 @@ public class UserRepository {
 			//パスワードを暗号化
 			String encoPassword = enco.encode(user.getPassword());
 			user.setPassword(encoPassword);
-			String insertSql="INSERT INTO users(name,email,password,address,telephone) VALUES(:name,:email,:password,:address,:telephone)";
+			String insertSql="INSERT INTO users(name,email,password,address,telephone,postal_code) VALUES(:name,:email,:password,:address,:telephone,:postalCode)";
 			template.update(insertSql, param);
 		} else {
 			String updateSql=
