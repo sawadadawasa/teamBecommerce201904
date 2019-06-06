@@ -1,6 +1,10 @@
 package com.example.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +26,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private HttpSession session;
 
 	//フォームを初期化します。
 	@ModelAttribute
@@ -42,7 +49,10 @@ public class UserController {
 	// メンバー情報を登録します。
 	@RequestMapping(value = "create")
 	public String create(@Validated UserForm form, BindingResult result) {
-
+		//ログイン画面にとび、成功したらアラートを出す。
+		//Mapに値が入っていたらアラートをだす
+		boolean str = false;
+		
 		if (result.hasErrors()) {
 			return form();
 		}
@@ -68,8 +78,12 @@ public class UserController {
 		User user = new User();
 		BeanUtils.copyProperties(form, user);
 		user=userService.save(user);
+		
+		str = true;
+		session.setAttribute("registerMessage", str);
 		return "redirect:/tea/";
 	}
+	
 	// ユーザー情報を削除します。
 	@RequestMapping(value = "delete")
 	public String delete(@Validated LoginForm form, BindingResult result) {
