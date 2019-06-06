@@ -6,9 +6,31 @@
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
 <title>新規登録</title>
 </head>
 <body>
+<div class="container">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+						aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					</div>
+
+					<a class="navbar-brand"
+						href="${pageContext.request.contextPath}/godtea/"> <!-- 企業ロゴ -->
+						<img alt="main log" src="../img/header_logo.png" height="35">
+					</a>
+				</div>
+				</nav>
+				</div>
 <div id="form">
 	<p class="form-title">会員登録</p>
 		<form:errors path ="userForm" cssStyle="color:red" />

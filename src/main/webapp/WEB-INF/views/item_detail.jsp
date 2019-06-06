@@ -6,13 +6,14 @@
 
 <!DOCTYPE html>
 <html lang="ja">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/piza.css"/>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Insert title here</title>
-  <link href="../css/bootstrap.css" rel="stylesheet">
-  <link href="../css/piza.css" rel="stylesheet"> </head>
+   </head>
 <body>
   <div class="container">
     <nav class="navbar navbar-default">
@@ -25,15 +26,18 @@
                 <span class="icon-bar"></span>
             	<span class="icon-bar"></span>
 			</button>
-          <a class="navbar-brand" href="item_list.html">
-            <!-- 企業ロゴ --><img alt="main log" src="../img/header_logo.png" height="35"> </a>
+			
+          <a class="navbar-brand"
+						href="${pageContext.request.contextPath}/godtea/"> <!-- 企業ロゴ -->
+						<img alt="main log" src="../img/header_logo.png" height="35">
+					</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
 						<a href="${pageContext.request.contextPath}/orderItem/cart"
-							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a
+							class="navbar-link">ショッピングカート🛒</a>&nbsp;&nbsp; <a
 							href="${pageContext.request.contextPath}/order/searchOrderHistory"
 							class="navbar-link">注文履歴</a>&nbsp;&nbsp;
 

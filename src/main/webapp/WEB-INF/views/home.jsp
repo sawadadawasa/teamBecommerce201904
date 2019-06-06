@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css"/>
@@ -31,13 +34,31 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
-						<a href="${pageContext.request.contextPath}/tea/"
-							class="navbar-link">ログイン</a>&nbsp;&nbsp; <a
-							href="${pageContext.request.contextPath}/user/form"
+						<a href="${pageContext.request.contextPath}/user/form"
 							class="navbar-link">新規登録</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath}/item/"
+							class="navbar-link">商品一覧</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath}/orderItem/cart"
 							class="navbar-link">ショッピングカート🛒</a>&nbsp;&nbsp;
-						
+							
+						<c:if test="${user == null}">
+							<a href="${pageContext.request.contextPath}/tea/"
+								class="navbar-link">ログイン</a>&nbsp;&nbsp;
+						</c:if>
+						<c:if test="${user != null}">
+							<a
+								href="${pageContext.request.contextPath}/logout/sessionInvalidate"
+								class="navbar-link">ログアウト</a>&nbsp;&nbsp;
+						</c:if>
+					</p>
+				</div>
+
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<p class="navbar-text navbar-right">
+						<c:if test="${user != null}">
+							<c:out value="${user.name}さんでログイン中" />
+						</c:if>
 					</p>
 				</div>
 

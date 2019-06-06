@@ -26,7 +26,7 @@
 							class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand"
-						href="${pageContext.request.contextPath}/logout/sessionInvalidate">
+						href="${pageContext.request.contextPath}/godtea/">
 						<!-- 企業ロゴ --> <img alt="main log" src="../img/header_logo.png"
 						height="35">
 					</a>
