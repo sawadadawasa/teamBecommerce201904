@@ -28,9 +28,10 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					
-					<a class="navbar-brand" href="${pageContext.request.contextPath}/item/"> <!-- 企業ロゴ --> <img
-						alt="main log" src="img/header_logo.png" height="35">
+
+					<a class="navbar-brand"
+						href="${pageContext.request.contextPath}/item/"> <!-- 企業ロゴ -->
+						<img alt="main log" src="img/header_logo.png" height="35">
 					</a>
 				</div>
 
@@ -38,16 +39,40 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
-						<a href="${pageContext.request.contextPath}/orderItem/cart" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath}/order/searchOrderHistory" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath}/tea/login" class="navbar-link">ログイン</a>&nbsp;&nbsp; 
-						<a href="${pageContext.request.contextPath}/logout/sessionInvalidate" class="navbar-link">ログアウト</a>
+						<a href="${pageContext.request.contextPath}/orderItem/cart"
+							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a
+							href="${pageContext.request.contextPath}/order/searchOrderHistory"
+							class="navbar-link">注文履歴</a>&nbsp;&nbsp;
+
+						<c:if test="${user == null}">
+							<a href="${pageContext.request.contextPath}/tea/"
+								class="navbar-link">ログイン</a>
+						</c:if>
+						<c:if test="${user != null}">
+							<a
+								href="${pageContext.request.contextPath}/logout/sessionInvalidate"
+								class="navbar-link">ログアウト</a>
+						</c:if>
 					</p>
 				</div>
-				<!-- /.navbar-collapse -->
-			</div>
+
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<p class="navbar-text navbar-right">
+						<c:if test="${user != null}">
+							<c:out value="${user.name}さんでログイン中" />
+						</c:if>
+						<p>
+				
+				</div>
+
+				<!-- /.navbar-collapse --></div>
 			<!-- /.container-fluid -->
-		</nav>
+	
+
+				
+				</nav>
+		
 		<div class="row">
 			<div
 				class="table-responsive col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
@@ -96,16 +121,19 @@
 		<div class="row">
 			<div class="col-xs-offset-2 col-xs-8">
 				<div class="form-group text-center">
-					<span id="total-price">消費税：<c:out value="${viewTaxOfTotalPrice}" />円</span><br> 
-					<span id="total-price">ご注文金額合計：<c:out value="${viewTotalPrice}" />円(税込)</span>
+					<span id="total-price">消費税：<c:out
+							value="${viewTaxOfTotalPrice}" />円</span><br> 
+					<span id="total-price">ご注文金額合計：<c:out
+							value="${viewTotalPrice}" />円(税込)</span>
 				</div>
 			</div>
 		</div>
-<c:out value="${orderId }"/>
 		<div class="row">
 			<div class="col-xs-offset-5 col-xs-3">
 				<div class="form-group">
-					<form action="${pageContext.request.contextPath}/order/view?orderId =${orderId}" method="post">
+					<form
+						action="${pageContext.request.contextPath}/order/view?orderId =${orderId}"
+						method="post">
 						<input type="hidden" name="orderId" value="${orderId}">
 						<input class="form-control btn btn-warning btn-block"
 							type="submit" value="注文に進む">

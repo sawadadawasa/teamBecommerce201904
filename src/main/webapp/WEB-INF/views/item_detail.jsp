@@ -29,9 +29,34 @@
             <!-- 企業ロゴ --><img alt="main log" src="../img/header_logo.png" height="35"> </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <p class="navbar-text navbar-right"> <a href="orderItem/cart" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a href="order_history.jsp" class="navbar-link">注文履歴</a>&nbsp;&nbsp; <a href="login.jsp" class="navbar-link">ログイン</a>&nbsp;&nbsp; <a href="item_list.jsp" class="navbar-link">ログアウト</a> </p>
-        </div>
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<p class="navbar-text navbar-right">
+						<a href="${pageContext.request.contextPath}/orderItem/cart"
+							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a
+							href="${pageContext.request.contextPath}/order/searchOrderHistory"
+							class="navbar-link">注文履歴</a>&nbsp;&nbsp;
+
+						<c:if test="${user == null}">
+							<a href="${pageContext.request.contextPath}/tea/"
+								class="navbar-link">ログイン</a>
+						</c:if>
+						<c:if test="${user != null}">
+							<a
+								href="${pageContext.request.contextPath}/logout/sessionInvalidate"
+								class="navbar-link">ログアウト</a>
+						</c:if>
+					</p>
+				</div>
+
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<p class="navbar-text navbar-right">
+						<c:if test="${user != null}">
+							<c:out value="${user.name}さんでログイン中" />
+						</c:if>
+					<p>
+				</div>
         <!-- /.navbar-collapse -->
       </div>
       <!-- /.container-fluid -->
