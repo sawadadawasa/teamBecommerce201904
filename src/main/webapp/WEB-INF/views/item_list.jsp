@@ -96,13 +96,13 @@
 							</div>
 						</div>
 						<div>
-							原産地 :<select name="origin">
-								<option value="0">原産地</option>
+							お茶の種類 :<select name="origin">
+								<option value="0">お茶の種類</option>
 								<c:forEach var="originList" items="${originList}">
 									<option value="${originList}">${originList}</option>
 								</c:forEach>
-							</select> パック数 :<select name="piece">
-								<option value="0">パック数</option>
+							</select> グラム数 :<select name="piece">
+								<option value="0">グラム数</option>
 								<c:forEach var="pieceList" items="${pieceList}">
 									<option value="${pieceList}">${pieceList}</option>
 								</c:forEach>
