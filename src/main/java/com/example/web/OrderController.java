@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.domain.Order;
 import com.example.domain.OrderItem;
+import com.example.domain.OrderedItem;
 import com.example.domain.User;
 import com.example.service.OrderItemService;
 import com.example.service.OrderService;
@@ -63,8 +64,8 @@ public class OrderController {
         //注文を確定する.Orders DB更新
         @RequestMapping("/fix")
         public String order(OrderForm orderForm,RedirectAttributes redirectAttributes) throws ParseException {
-        	orderService.saveFix(orderForm);
-        	session.removeAttribute("orderItemList");
+        	orderService.saveFix(orderForm);        	
+        	
             redirectAttributes.addFlashAttribute("destinationEmail",orderForm.getDestinationEmail());
             session.removeAttribute("orderItemList");
 
@@ -74,7 +75,7 @@ public class OrderController {
      
         @RequestMapping("/view")
         public String view(@RequestParam Integer orderId,Model model,RedirectAttributes redirectAttributes) {
-    		
+    		System.out.println(orderId);
         	List<OrderItem> orderItemList	= orderItemService.findAll(orderId);
     		
 
@@ -83,6 +84,9 @@ public class OrderController {
     		
     		//合計金額(税込み)
     		Integer totalPrice = (int)(totalPriceNonTax * 1.08);
+    		for(OrderItem orderItem: orderItemList) {
+    			orderItem.getName();
+    		}
     		
     		//消費税
     		Integer taxOfTotalPrice = (int)(totalPriceNonTax * 0.08);
@@ -96,6 +100,7 @@ public class OrderController {
     		session.setAttribute("viewTaxOfTotalPrice", viewTaxOfTotalPrice);
     		session.setAttribute("orderItemList",orderItemList);
     		session.setAttribute("orderId",orderId);
+    		
         	
         	
             User user = (User)session.getAttribute("user");
@@ -147,5 +152,5 @@ public class OrderController {
 
     		return "orderCompletion";
     	}
-
+    	
 }

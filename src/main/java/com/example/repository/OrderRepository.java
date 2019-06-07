@@ -54,9 +54,9 @@ public class OrderRepository {
     }
     public void saveFix(Order order) {
         SqlParameterSource param = new BeanPropertySqlParameterSource(order);
-        String sql = "insert into orders (user_id,total_price,order_date,destination_name,destination_email,"+
+        String sql = "insert into orders(id,user_id,total_price,order_date,destination_name,destination_email,"+
                        "destination_address,destination_tel,delivery_time,payment_method,postal_code)"+
-                      "values(:userId,:totalPrice,:orderDate,:destinationName,:destinationEmail,"+
+                      "values(:id,:userId,:totalPrice,:orderDate,:destinationName,:destinationEmail,"+
                           ":destinationAddress,:destinationTel,:deliveryTime,:paymentMethod,:postalCode)";
         
         jdbcTemplate.update(sql,param);        
