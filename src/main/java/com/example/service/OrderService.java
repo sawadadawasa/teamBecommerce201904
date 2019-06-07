@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.domain.Order;
+import com.example.domain.OrderItem;
 import com.example.repository.OrderRepository;
 import com.example.web.OrderForm;
 
@@ -56,6 +57,6 @@ public class OrderService {
 	public void deleteOrder(int orderId) {
 		orderRepository.deleteOrder(orderId);
 	}
-	
+
 
 }

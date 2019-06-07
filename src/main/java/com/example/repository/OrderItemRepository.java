@@ -24,6 +24,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.domain.OrderItem;
+import com.example.domain.OrderedItem;
 import com.example.service.OrderItemService;
 
 @Repository
@@ -114,6 +115,18 @@ public class OrderItemRepository {
 		return orderId;
 
 	}
+	
+	public void saveOrdered(List<OrderItem> orderedItemList) {
+		for(OrderItem orderItem: orderedItemList) {
+			SqlParameterSource param = new BeanPropertySqlParameterSource(orderItem);
+			String sql = "insert into ordered (id,item_id,order_id,quantity)values(:id,:itemId,:orderId,:quantity)";
+			jdbcTemplate.update(sql,param);
+		}
+	}
+	
+	
+	
+	
 
 	public void saveOnly (int itemId, int quantity) {
 

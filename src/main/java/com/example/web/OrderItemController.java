@@ -84,6 +84,7 @@ public class OrderItemController {
 	//orderHistoryからの遷移
 	@RequestMapping("/showHistoryDetail")
 	public String showHistoryDetail(@RequestParam int orderId,RedirectAttributes redirectAttributes) {
+		System.out.println(orderId);
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		
 		orderItemList	= orderItemService.findAll(orderId);
@@ -103,6 +104,10 @@ public class OrderItemController {
 		redirectAttributes.addFlashAttribute("viewTaxOfTotalPrice", viewTaxOfTotalPrice);
 		redirectAttributes.addFlashAttribute("orderItemList",orderItemList);
 		redirectAttributes.addFlashAttribute("orderId",orderId);
+		for(OrderItem orderItem : orderItemList) {
+			System.out.println(orderItem.getName());
+		}
+		System.out.println(viewTotalPrice);
 		
 		return "redirect:/order/booleanDeleteOrNot";//注文を削除するボタンを出力するかどうか決めるためのリダイレクト
 	}
