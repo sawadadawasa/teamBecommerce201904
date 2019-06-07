@@ -80,6 +80,7 @@ public class OrderItemController {
 		orderItemService.addItem(itemId, quantity);
 		
 		return "redirect:/orderItem";
+		
 	}
 	//orderHistoryからの遷移
 	@RequestMapping("/showHistoryDetail")
