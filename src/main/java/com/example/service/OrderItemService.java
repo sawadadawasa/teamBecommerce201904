@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.domain.OrderItem;
+import com.example.domain.OrderedItem;
 import com.example.repository.OrderItemRepository;
 
 @Service
@@ -98,6 +99,8 @@ public class OrderItemService {
 		return totalPrice;
 
 	}
-
+	public void saveOrdered(List<OrderItem> orderedItemList){
+		orderItemRepository.saveOrdered(orderedItemList);
+	}
 
 }

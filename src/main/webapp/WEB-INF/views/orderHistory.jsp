@@ -94,7 +94,7 @@
 <c:forEach items="${orderHistoryList}" var="orderHistory">
 <tr>
 
-    
+   
     <td><fmt:formatDate value="${orderHistory.orderDate}" pattern="yyyy/MM/dd"/></td>
     <td><c:out value="${orderHistory.destinationName}"/></td>
     <td><c:out value="${orderHistory.destinationEmail}"/></td>
