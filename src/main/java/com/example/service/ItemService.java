@@ -58,42 +58,4 @@ public class ItemService {
 		itemList = itemRepository.findMatchItem(code, origin, piece);
 		model.addAttribute("itemList", itemList);
 	}
-	
-	/*
-	public void articlesSave(String articleName, String articleContent){
-		Date date= new Date();
-        long time = date.getTime();
-        Timestamp ts = new Timestamp(time);
-		ArticleBulletinBoard articleBulletinBoard = new ArticleBulletinBoard();
-		articleBulletinBoard.setName(articleName);
-		articleBulletinBoard.setContent(articleContent);
-		articleRepository.save(articleBulletinBoard);
-	}
-	*/
-	/*
-	public void commentsSave(String commentsName, String commentsContent, int articleId){
-		Date date= new Date();
-        long time = date.getTime();
-        Timestamp ts = new Timestamp(time);
-		CommentsBulletinBoard commentsBulletinBoard = new CommentsBulletinBoard();
-		commentsBulletinBoard.setName(commentsName);
-		commentsBulletinBoard.setContent(commentsContent);
-		commentsBulletinBoard.setArticleId(articleId);
-		commentsRepository.save(commentsBulletinBoard);
-	}
-	*/
-	
-	/*
-	public void acDeleteById(Integer id){
-		CommentsBulletinBoard commentsBulletinBoard = new CommentsBulletinBoard();
-		ArticleBulletinBoard articleBulletinBoard = new ArticleBulletinBoard();
-		commentsBulletinBoard.setArticleId(id);
-		articleBulletinBoard.setId(id);
-		commentsRepository.deleteById(commentsBulletinBoard);
-		articleRepository.deleteById(articleBulletinBoard);
-	}
-	*/
-
-	
-	
 }
