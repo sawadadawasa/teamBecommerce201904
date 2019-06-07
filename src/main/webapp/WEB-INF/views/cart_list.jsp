@@ -68,7 +68,7 @@
 						<c:if test="${user != null}">
 							<c:out value="${user.name}さんでログイン中" />
 						</c:if>
-						<p>
+						</p>
 				
 				</div>
 
@@ -142,7 +142,6 @@
 					</form>
 					
 				</div>
-				<a href="javascript:history.back();">詳細画面に戻る</a><br>
 				<a href="${pageContext.request.contextPath}/item/">商品一覧に戻る</a>
 			</div>
 		</div>

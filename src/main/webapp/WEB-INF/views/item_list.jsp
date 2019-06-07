@@ -33,9 +33,10 @@
 					id="bs-example-navbar-collapse-1">
 					<a class="navbar-brand"
 						href="${pageContext.request.contextPath}/godtea/"> <!-- 企業ロゴ -->
-						<img alt="main log" src="../img/tea_header_logo.png" width="100" height="100">
+						<img alt="main log" src="../img/tea_header_logo.png" width="100"
+						height="100">
 					</a>
-					
+
 					<p class="navbar-text navbar-right">
 						<a href="${pageContext.request.contextPath}/orderItem/cart"
 							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a
@@ -51,10 +52,7 @@
 								href="${pageContext.request.contextPath}/logout/sessionInvalidate"
 								class="navbar-link">ログアウト</a>
 						</c:if>
-												<br>
-						<br>
-						<br>
-						<br>
+						<br> <br> <br> <br>
 					</p>
 				</div>
 
@@ -78,10 +76,9 @@
 
 
 	<!-- /.navbar-collapse -->
-	</div>
 
 	<!-- /.container-fluid -->
-	</nav>
+	
 	<!-- search form -->
 	<div class="row">
 		<div
@@ -137,8 +134,8 @@
 							</a> <br> <a
 								href="${pageContext.request.contextPath}/item/show/${itemList.id}">
 									<c:out value="${itemList.name}" />
-							</a> <br> 数量 : <c:out value="${itemList.piece}" />パック <br>
-								原産地 : <c:out value="${itemList.origin}" /> <br></th>
+							</a> <br> 数量 : <c:out value="${itemList.piece}" />g <br>
+								お茶の種類 : <c:out value="${itemList.origin}" /> <br></th>
 						</c:forEach>
 					</tr>
 				</tbody>

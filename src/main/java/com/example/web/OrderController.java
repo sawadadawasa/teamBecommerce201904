@@ -127,7 +127,7 @@ public class OrderController {
             else deleteOrNotMessage = null;
 
             model.addAttribute("deleteOrNotMessage",deleteOrNotMessage);
-            System.out.println(orderId);
+
             return "historyDetail";
         }
     	@RequestMapping(value = "/mail/send", method = {RequestMethod.GET} )

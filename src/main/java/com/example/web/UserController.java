@@ -102,7 +102,7 @@ public class UserController {
 
 		if(answer) {
 			userService.deleteUserInfo(email);
-			return "redirect:/logout/";
+			return "redirect:/godtea/";
 		} else {
 			ObjectError error = new ObjectError("loginerror", "メールアドレスまたはパスワードが違います。");
 			result.addError(error);

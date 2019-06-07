@@ -24,11 +24,16 @@
 					</button>
 					</div>
 
-					<a class="navbar-brand"
+
+						<a class="navbar-brand"
 						href="${pageContext.request.contextPath}/godtea/"> <!-- 企業ロゴ -->
-						<img alt="main log" src="../img/header_logo.png" height="35">
+						<img alt="main log" src="../img/tea_header_logo.png" width="100" height="100">
 					</a>
 				</div>
+				<br>
+				<br>
+				<br>
+				<br>
 				</nav>
 				</div>
 <div id="form">
