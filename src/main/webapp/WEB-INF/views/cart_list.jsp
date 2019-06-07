@@ -117,37 +117,39 @@
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-xs-offset-2 col-xs-8">
-				<div class="form-group text-center">
-					<span id="total-price">消費税：<c:out
-							value="${viewTaxOfTotalPrice}" />円
-					</span><br> <span id="total-price">ご注文金額合計：<c:out
-							value="${viewTotalPrice}" />円(税込)
-					</span>
-				</div>
-			</div>
-		</div>
-		
+
+
 		<c:if test="${count != 0}">
 
-		<div class="row">
-			<div class="col-xs-offset-5 col-xs-3">
-				<div class="form-group">
-					<form
-						action="${pageContext.request.contextPath}/order/view?orderId =${orderId}"
-						method="post">
-						<input type="hidden" name="orderId" value="${orderId}"> <input
-							class="form-control btn btn-warning btn-block" type="submit"
-							value="注文に進む">
-					</form>
-
+			<div class="row">
+				<div class="col-xs-offset-2 col-xs-8">
+					<div class="form-group text-center">
+						<span id="total-price">消費税：<c:out
+								value="${viewTaxOfTotalPrice}" />円
+						</span><br> <span id="total-price">ご注文金額合計：<c:out
+								value="${viewTotalPrice}" />円(税込)
+						</span>
+					</div>
 				</div>
 			</div>
-		</div>
-		
+
+			<div class="row">
+				<div class="col-xs-offset-5 col-xs-3">
+					<div class="form-group">
+						<form
+							action="${pageContext.request.contextPath}/order/view?orderId =${orderId}"
+							method="post">
+							<input type="hidden" name="orderId" value="${orderId}"> <input
+								class="form-control btn btn-warning btn-block" type="submit"
+								value="注文に進む">
+						</form>
+
+					</div>
+				</div>
+			</div>
+
 		</c:if>
-		
+
 		<div class="row">
 			<div class="col-xs-offset-5 col-xs-3">
 				<div class="form-group">
@@ -155,7 +157,7 @@
 				</div>
 			</div>
 		</div>
-				
+
 	</div>
 
 	<!-- end container -->
