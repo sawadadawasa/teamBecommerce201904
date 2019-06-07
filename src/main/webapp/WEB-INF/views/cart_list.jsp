@@ -34,12 +34,13 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
-					
-										<a class="navbar-brand"
+
+					<a class="navbar-brand"
 						href="${pageContext.request.contextPath}/godtea/"> <!-- 企業ロゴ -->
-						<img alt="main log" src="../img/tea_header_logo.png" width="100" height="100">
+						<img alt="main log" src="../img/tea_header_logo.png" width="100"
+						height="100">
 					</a>
-					
+
 					<p class="navbar-text navbar-right">
 						<a href="${pageContext.request.contextPath}/orderItem/cart"
 							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a
@@ -55,10 +56,7 @@
 								href="${pageContext.request.contextPath}/logout/sessionInvalidate"
 								class="navbar-link">ログアウト</a>
 						</c:if>
-						<br>
-						<br>
-						<br>
-						<br>
+						<br> <br> <br> <br>
 					</p>
 				</div>
 
@@ -68,17 +66,16 @@
 						<c:if test="${user != null}">
 							<c:out value="${user.name}さんでログイン中" />
 						</c:if>
-						</p>
-				
+					</p>
+
 				</div>
 
-				<!-- /.navbar-collapse --></div>
+				<!-- /.navbar-collapse -->
+			</div>
 			<!-- /.container-fluid -->
-	
 
-				
-				</nav>
-		
+		</nav>
+
 		<div class="row">
 			<div
 				class="table-responsive col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
@@ -95,24 +92,25 @@
 					</tr>
 					<c:forEach items="${orderItemList}" var="orderItem">
 						<c:if test="${orderItemList != null}">
-						<tr>
-							<td><c:out value="${orderItem.name}" /></td>
-							<td><fmt:formatNumber value="${orderItem.price }"
-									pattern="###,###,###" /></td>
-							<td><img src="../img/<c:out value="${orderItem.imagePATH}"/>" /></td>
-							<td><c:out value="${orderItem.piece}" /></td>
-							<td><c:out value="${orderItem.quantity}" /></td>
-							<td><fmt:formatNumber value="${orderItem.subTotalPrice }"
-									pattern="###,###,###" /></td>
-							<td>
-								<form
-									action="${pageContext.request.contextPath}/orderItem/deleteId/${orderItem.itemId}/${orderItem.id}"
-									method="post">
-									<input type="submit" value="削除">
-								</form>
-							</td>
+							<tr>
+								<td><c:out value="${orderItem.name}" /></td>
+								<td><fmt:formatNumber value="${orderItem.price }"
+										pattern="###,###,###" /></td>
+								<td><img
+									src="../img/<c:out value="${orderItem.imagePATH}"/>" /></td>
+								<td><c:out value="${orderItem.piece}" /></td>
+								<td><c:out value="${orderItem.quantity}" /></td>
+								<td><fmt:formatNumber value="${orderItem.subTotalPrice }"
+										pattern="###,###,###" /></td>
+								<td>
+									<form
+										action="${pageContext.request.contextPath}/orderItem/deleteId/${orderItem.itemId}/${orderItem.id}"
+										method="post">
+										<input type="submit" value="削除">
+									</form>
+								</td>
 
-						</tr>
+							</tr>
 						</c:if>
 					</c:forEach>
 				</table>
@@ -123,9 +121,10 @@
 			<div class="col-xs-offset-2 col-xs-8">
 				<div class="form-group text-center">
 					<span id="total-price">消費税：<c:out
-							value="${viewTaxOfTotalPrice}" />円</span><br> 
-					<span id="total-price">ご注文金額合計：<c:out
-							value="${viewTotalPrice}" />円(税込)</span>
+							value="${viewTaxOfTotalPrice}" />円
+					</span><br> <span id="total-price">ご注文金額合計：<c:out
+							value="${viewTotalPrice}" />円(税込)
+					</span>
 				</div>
 			</div>
 		</div>
@@ -136,17 +135,17 @@
 					<form
 						action="${pageContext.request.contextPath}/order/view?orderId =${orderId}"
 						method="post">
-						<input type="hidden" name="orderId" value="${orderId}">
-						<input class="form-control btn btn-warning btn-block"
-							type="submit" value="注文に進む">
+						<input type="hidden" name="orderId" value="${orderId}"> <input
+							class="form-control btn btn-warning btn-block" type="submit"
+							value="注文に進む">
 					</form>
-					
+
 				</div>
 				<a href="${pageContext.request.contextPath}/item/">商品一覧に戻る</a>
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- end container -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

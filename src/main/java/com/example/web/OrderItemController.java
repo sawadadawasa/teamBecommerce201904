@@ -83,7 +83,7 @@ public class OrderItemController {
 	}
 	//orderHistoryからの遷移
 	@RequestMapping("/showHistoryDetail")
-	public String showHistoryDetail(@RequestParam int orderId,RedirectAttributes redirectAttributes) {
+	public String showHistoryDetail(@RequestParam int orderId, RedirectAttributes redirectAttributes) {
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		
 		orderItemList	= orderItemService.findAll(orderId);

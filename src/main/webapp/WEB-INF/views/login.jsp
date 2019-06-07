@@ -30,6 +30,10 @@
 						href="${pageContext.request.contextPath}/godtea/"> <!-- 企業ロゴ -->
 						<img alt="main log" src="../img/tea_header_logo.png" width="100" height="100">
 					</a>
+					<p class="navbar-text navbar-right">
+					<a href="${pageContext.request.contextPath}/godtea/"
+							class="navbar-link">TOP</a>&nbsp;&nbsp;
+							</p>
 					<br>
 					<br>
 					<br>

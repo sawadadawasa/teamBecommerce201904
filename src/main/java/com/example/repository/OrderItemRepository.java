@@ -41,7 +41,6 @@ public class OrderItemRepository {
 
 	List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 
-
 	private static final RowMapper<OrderItem> ORDERITEM_ROW_MAPPER = (rs, i) -> {
 
 		OrderItem orderItem = new OrderItem();

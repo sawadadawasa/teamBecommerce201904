@@ -125,8 +125,10 @@
 		</div>
 	</div>
 
+<div class="col-xs-offset-5 col-xs-3">
 	<a
 		href="${pageContext.request.contextPath}/order/deleteOrder?orderId=${orderId}"><c:out
 			value="${deleteOrNotMessage}" /></a>
+			</div>
 </body>
 </html>
