@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="container">
+	<div class="container">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -24,40 +24,49 @@
 							class="icon-bar"></span>
 					</button>
 
-
+					<a class="navbar-brand"
+						href="${pageContext.request.contextPath}/godtea/"> <!-- 企業ロゴ -->
+						<img alt="main log" src="../img/tea_header_logo.png" height="35">
+					</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
-					
-									<a class="navbar-brand"
-						href="${pageContext.request.contextPath}/godtea/"> <!-- 企業ロゴ -->
-						<img alt="main log" src="../img/tea_header_logo.png" width="100" height="100">
-					</a>
 					<p class="navbar-text navbar-right">
-						<a href="${pageContext.request.contextPath}/tea/"
-							class="navbar-link">ログイン</a>&nbsp;&nbsp; <a
-							href="${pageContext.request.contextPath}/user/form"
-							class="navbar-link">新規登録</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath}/orderItem/cart"
-							class="navbar-link">ショッピングカート🛒</a>&nbsp;&nbsp;
-						<br>
-						<br>
-						<br>
-						<br>
+							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a
+							href="${pageContext.request.contextPath}/order/searchOrderHistory"
+							class="navbar-link">注文履歴</a>&nbsp;&nbsp;
+
+						<c:if test="${user == null}">
+							<a href="${pageContext.request.contextPath}/tea/"
+								class="navbar-link">ログイン</a>
+						</c:if>
+						<c:if test="${user != null}">
+							<a
+								href="${pageContext.request.contextPath}/logout/sessionInvalidate"
+								class="navbar-link">ログアウト</a>
+						</c:if>
 					</p>
 				</div>
 
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
+					<p class="navbar-text navbar-right">
+						<c:if test="${user != null}">
+							<c:out value="${user.name}さんでログイン中" />
+						</c:if>
+						<p>
 				
 				</div>
 
 				<!-- /.navbar-collapse --></div>
 			<!-- /.container-fluid -->
+	
+
+				
 				</nav>
-				</div>
 ご注文が確定しました。<br>
 ありがとうございます。<br>
 <br>

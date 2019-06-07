@@ -1,10 +1,4 @@
 @charset "UTF-8";
-
-#tabble{
-	display : block;
-	width : 80%;
-	margin: 10px 450px; 
-}
 .kakusu {
     display: none;
 }

@@ -7,13 +7,14 @@
 
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/order.css"/>
 <head>
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
+<link rel="stylesheet" href="sample.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/order.css"/>
 </head>
 
 <body>
@@ -32,7 +33,7 @@
 
 					<a class="navbar-brand"
 						href="${pageContext.request.contextPath}/godtea/"> <!-- 企業ロゴ -->
-						<img alt="main log" src="img/tea_header_logo.png" height="35">
+						<img alt="main log" src="../img/tea_header_logo.png" height="35">
 					</a>
 				</div>
 
@@ -92,7 +93,7 @@
 							<td><c:out value="${orderItem.name}" /></td>
 							<td><fmt:formatNumber value="${orderItem.price }"
 									pattern="###,###,###" /></td>
-							<td><img src="img/<c:out value="${orderItem.imagePATH}"/>" /></td>
+							<td><img src="../img/<c:out value="${orderItem.imagePATH}"/>" /></td>
 							<td><c:out value="${orderItem.piece}" /></td>
 							<td><c:out value="${orderItem.quantity}" /></td>
 							<td><fmt:formatNumber value="${orderItem.subTotalPrice }"
@@ -248,11 +249,6 @@
     });
 </script>
 </div>
-
-
-
-
-
 
 
 <br>

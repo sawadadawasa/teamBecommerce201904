@@ -7,7 +7,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/order.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/orderHistory.css"/>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -27,7 +27,7 @@
 
 					<a class="navbar-brand"
 						href="${pageContext.request.contextPath}/godtea/"> <!-- 企業ロゴ -->
-						<img alt="main log" src="img/tea_header_logo.png" height="35">
+						<img alt="main log" src="../img/tea_header_logo.png" height="35">
 					</a>
 				</div>
 
@@ -71,7 +71,7 @@
 		
 <strong>注文履歴</strong>
 
-<table border="1">
+<table border="1" class="tableBorder sample01">
 <tr>
   
     <td>注文日</td>

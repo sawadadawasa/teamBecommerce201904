@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/bootstrap.css" />
 <title>Insert title here</title>
 </head>
 <body>
@@ -72,7 +74,10 @@
 				
 				</nav>
 		
-注文を取り消しました。
+注文を取り消しました。<br><br><br>
+
+<div align="center">
 <a href ="${pageContext.request.contextPath}/item/">商品一覧に戻る</a>
+</div>
 </body>
 </html>
