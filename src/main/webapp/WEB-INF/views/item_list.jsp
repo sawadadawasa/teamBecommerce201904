@@ -119,28 +119,31 @@
 		</div>
 	</div>
 	<!-- table -->
-	<div class="row">
-		<div
-			class="table-responsive col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
-			<table class="table table-striped">
-				<tbody>
-					<tr>
+		<div class="container">
+			<div class = "row">
+				<div class = "col-md-12">
 						<c:forEach var="itemList" items="${itemList}">
-							<th><a
+						<div class = "col-md-4">
+							<center><a
 								href="${pageContext.request.contextPath}/item/show/${itemList.id}">
 									<img src="../img/<c:out value="${itemList.imagePath}/"/>"
-									class="img-responsive img-rounded" width="200" height="600" />
-							</a> <br> <a
+									class="tea"/></a><br>
+							<a
 								href="${pageContext.request.contextPath}/item/show/${itemList.id}">
-									<c:out value="${itemList.name}" />
-							</a> <br> 数量 : <c:out value="${itemList.piece}" />g <br>
-								お茶の種類 : <c:out value="${itemList.origin}" /> <br></th>
+									<c:out value="${itemList.name}" /></a> 
+									<br> 数量 : <c:out value="${itemList.piece}" />g 
+								<br>お茶の種類 : <c:out value="${itemList.origin}" /></center><br><br>
+						</div>
 						</c:forEach>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
+				</div>								
+			</div>
+			</div>
+			
+				
+						
+	
+	
+	
 	<!-- end container -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
