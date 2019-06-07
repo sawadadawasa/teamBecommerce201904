@@ -192,27 +192,15 @@
 				</tr>
 				<tr>
 					<td>支払い方法</td>
-					<td><form:radiobuttons path="paymentMethod"
+					<td><form:radiobuttons path="paymentMethod" id="first_payment"
 							items="${paymentMethodList}" /></td>
 				</tr>
 				<br>
 				<input type="submit" value="注文を確定する">
 			</form:form>
 		</table>
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
-		<script>
-			$(function() {
-				console.log("debug");
-				$("#btn").on(
-						"click",
-						function() {
-							AjaxZip3.zip2addr('postalCode', '',
-									'destinationAddress', 'destinationAddress')
-						});
-			});
-		</script>
+
+
 		<br>
 	</div>
 
@@ -296,6 +284,7 @@
 									'destinationAddress', 'destinationAddress')
 						});
 				$("#payment1").attr("checked", true);
+				$("#first_payment1").attr("checked", true);
 			});
 		</script>
 	</div>
