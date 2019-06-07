@@ -31,7 +31,7 @@ public class ItemController {
 		return "item_list";
 	}
 
-	//商品詳細画面に遷移
+	//商品検索
 	@RequestMapping(value = "/search")
 	public String serch(@RequestParam String code, @RequestParam String origin, @RequestParam String piece, Model model) {
 		service.itemOriginList(model);
