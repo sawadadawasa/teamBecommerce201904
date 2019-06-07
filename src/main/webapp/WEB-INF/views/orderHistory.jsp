@@ -7,7 +7,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/order.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/orderHistory.css"/>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -79,7 +79,7 @@
 		
 <strong>注文履歴</strong>
 
-<table border="1">
+<table border="1" class="tableBorder sample01">
 <tr>
   
     <td>注文日</td>

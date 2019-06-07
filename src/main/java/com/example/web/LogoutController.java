@@ -34,10 +34,11 @@ public class LogoutController {
 	@RequestMapping(value = "sessionInvalidate")
 	public String sessionInvalidate() {
 		session = request.getSession();
+		System.out.println(session);
 		session.invalidate();
 		session = request.getSession(true);
+		System.out.println(session);
 		
 		return "redirect:/tea/";
 	}
-
 }

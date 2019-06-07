@@ -12,8 +12,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/piza.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/piza.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -99,7 +99,7 @@
 							<td><c:out value="${orderItem.name}" /></td>
 							<td><fmt:formatNumber value="${orderItem.price }"
 									pattern="###,###,###" /></td>
-							<td><img src="img/<c:out value="${orderItem.imagePATH}"/>" /></td>
+							<td><img src="../img/<c:out value="${orderItem.imagePATH}"/>" /></td>
 							<td><c:out value="${orderItem.piece}" /></td>
 							<td><c:out value="${orderItem.quantity}" /></td>
 							<td><fmt:formatNumber value="${orderItem.subTotalPrice }"

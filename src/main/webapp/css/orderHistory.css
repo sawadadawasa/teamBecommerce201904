@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+/* table基本スタイル */
+table.tableBorder{ border-right:1px solid #cccccc; border-bottom:1px solid #cccccc;  margin-top:30px; font-size: inherit; word-break: normal; word-wrap:break-word; border-collapse:separate; border-spacing: 0; }
+table.tableBorder tr th, table.tableBorder tr td { border-top: 1px solid #cccccc; border-left: 1px solid #cccccc; padding: 5px; word-break: normal; min-width:30px; text-align: center;}
+table.tableBorder tr th { background-color:#727272; color: #fff; text-align: center;}
+
+
+/*table01 交互に赤青*/
+.sample01 tr:nth-child(2n+1){ background:#FFF0F5;}
+.sample01 tr:nth-child(2n){ background:#CCFF66;}
