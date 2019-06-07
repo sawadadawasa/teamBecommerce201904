@@ -52,8 +52,6 @@
 								href="${pageContext.request.contextPath}/logout/sessionInvalidate"
 								class="navbar-link">ログアウト</a>&nbsp;&nbsp;
 						</c:if>
-					<a href="${pageContext.request.contextPath}/user/delete"
-							class="navbar-link">退会</a>&nbsp;&nbsp;
 					</p>
 				</div>
 

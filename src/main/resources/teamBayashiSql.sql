@@ -36,30 +36,18 @@ id serial primary key
 
 drop table orders;
 create table orders (
-  
-id serial primary key
-  
-, user_id integer not null
-  
-, total_price integer not null
-  
-, order_date date
-  
-, destination_name text
- 
-, destination_email text
-  
-, destination_address text
-  
-, destination_tel text
-  
-, delivery_time timestamp
-  
-, payment_method integer 
-
+  id integer primary key
+  , user_id integer not null
+  , total_price integer not null
+  , order_date date
+  , destination_name text
+  , destination_email text
+  , destination_address text
+  , destination_tel text
+  , delivery_time timestamp
+  , payment_method integer
 ,postal_code text
- 
-) ;
+  ) ;
 
 
 drop table if exists items cascade;

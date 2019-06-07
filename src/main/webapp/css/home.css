@@ -53,7 +53,7 @@
   background : rgba(0, 127, 255, 0.7);          /* 半透明の青 */
   color      : white;
   font-family: 'M PLUS Rounded 1c', sans-serif;
-  font-size  : 20;
+  font-size  : 50pt;
   top        : 50%;                               /* 中央寄せ */
   left       : 50%;
   transform  : translate(-50%,-50%);
