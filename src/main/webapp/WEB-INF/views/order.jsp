@@ -264,7 +264,7 @@
 				<tr>
 					<td>支払い方法</td>
 					<td><form:radiobuttons id="payment" path="paymentMethod"
-							items="${paymentMethodList}" value="${paymentMethodList}"/></td>
+							items="${paymentMethodList}" /></td>
 				</tr>
 
 				<br>
