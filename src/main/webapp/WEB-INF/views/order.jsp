@@ -275,8 +275,8 @@
 				</tr>
 				<tr>
 					<td>支払い方法</td>
-					<td><form:radiobuttons path="paymentMethod"
-							items="${paymentMethodList}" /></td>
+					<td><form:radiobuttons id="payment" path="paymentMethod"
+							items="${paymentMethodList}" value="${paymentMethodList}"/></td>
 				</tr>
 
 				<br>
@@ -289,13 +289,13 @@
 		<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 		<script>
 			$(function() {
-				console.log("debug");
 				$("#btn").on(
 						"click",
 						function() {
 							AjaxZip3.zip2addr('postalCode', '',
 									'destinationAddress', 'destinationAddress')
 						});
+				$("#payment1").attr("checked", true);
 			});
 		</script>
 	</div>
