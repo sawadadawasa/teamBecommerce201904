@@ -128,6 +128,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<c:if test="${count != 0}">
 
 		<div class="row">
 			<div class="col-xs-offset-5 col-xs-3">
@@ -141,9 +143,19 @@
 					</form>
 
 				</div>
-				<a href="${pageContext.request.contextPath}/item/">商品一覧に戻る</a>
 			</div>
 		</div>
+		
+		</c:if>
+		
+		<div class="row">
+			<div class="col-xs-offset-5 col-xs-3">
+				<div class="form-group">
+					<a href="${pageContext.request.contextPath}/item/">商品一覧に戻る</a>
+				</div>
+			</div>
+		</div>
+				
 	</div>
 
 	<!-- end container -->

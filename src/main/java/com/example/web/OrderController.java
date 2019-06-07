@@ -77,12 +77,16 @@ public class OrderController {
     		
         	List<OrderItem> orderItemList	= orderItemService.findAll(orderId);
     		
-    		//合計金額
-    		Integer totalPrice = orderItemService.calcTotalPrice(orderItemList);
+
+    		//合計金額(税抜き）
+    		Integer totalPriceNonTax = orderItemService.calcTotalPrice(orderItemList);
+    		
+    		//合計金額(税込み)
+    		Integer totalPrice = (int)(totalPriceNonTax * 1.08);
     		
     		//消費税
-    		Integer taxOfTotalPrice = (int)(totalPrice*0.08);
-    		    		
+    		Integer taxOfTotalPrice = (int)(totalPriceNonTax * 0.08);
+    		
     		NumberFormat nfNum = NumberFormat.getNumberInstance();
     		
     		String viewTotalPrice = nfNum.format(totalPrice);

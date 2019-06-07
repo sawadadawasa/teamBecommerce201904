@@ -31,6 +31,9 @@ public class OrderItemController {
 	@Autowired
 	private HttpSession session;
 	
+	int count = 0;
+	
+	
 	@ModelAttribute
 	public OrderItemForm setUpForm() {
 		return new OrderItemForm();
@@ -79,6 +82,9 @@ public class OrderItemController {
 		
 		orderItemService.addItem(itemId, quantity);
 		
+		count += 1;
+		session.setAttribute("count", count);
+		
 		return "redirect:/orderItem";
 		
 	}
@@ -112,6 +118,9 @@ public class OrderItemController {
 	public String deleteItem(@PathVariable("itemId") Integer itemId, @PathVariable("id") Integer id) {
 
 		orderItemService.deleteId(itemId, id);
+		
+		count -=1;
+		session.setAttribute("count", count);
 		
 		return "redirect:/orderItem";
 	}
