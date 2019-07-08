@@ -111,11 +111,24 @@ public class OrderController {
             for(int i =10;i <= 18;i++) {
                 hourList.put(i,i);
             }
+            
+            Map<Integer,Integer> monthList = new LinkedHashMap<>();
+            for(int i =01;i <= 12;i++) {
+                monthList.put(i,i);
+            }
+            
+            Map<Integer,Integer> yearList = new LinkedHashMap<>();
+            for(int i =2018;i <= 2038;i++) {
+                yearList.put(i,i);
+            }
+            
             Map<Integer,String> paymentMethodList = new LinkedHashMap<>();
             paymentMethodList.put(0,"代金引換");
             paymentMethodList.put(1,"クレジットカード");
             
             model.addAttribute("hourList",hourList);
+            model.addAttribute("monthList",monthList);
+            model.addAttribute("yearList",yearList);
             model.addAttribute("paymentMethodList",paymentMethodList);
             
             return "order";    

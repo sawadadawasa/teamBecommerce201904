@@ -63,6 +63,12 @@
 			<artifactId>spring-security-web</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>jp.co.paygent</groupId>
+			<artifactId>maneco</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

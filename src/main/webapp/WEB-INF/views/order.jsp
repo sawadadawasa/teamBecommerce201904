@@ -90,46 +90,46 @@
 
 
 
-<div class="row">
-			<div
-				class="table-responsive col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
-	<table class="table table-striped">
+	<div class="row">
+		<div
+			class="table-responsive col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+			<table class="table table-striped">
 
-		<tr>
-			<td>商品名</td>
-			<td>値段</td>
-			<td>画像</td>
-			<td>パック数</td>
-			<td>個数</td>
-			<td>小計</td>
-			<td>取消</td>
-		</tr>
+				<tr>
+					<td>商品名</td>
+					<td>値段</td>
+					<td>画像</td>
+					<td>パック数</td>
+					<td>個数</td>
+					<td>小計</td>
+					<td>取消</td>
+				</tr>
 
-		<c:forEach items="${orderItemList}" var="orderItem">
+				<c:forEach items="${orderItemList}" var="orderItem">
 
-			<tr>
+					<tr>
 
-				<td><c:out value="${orderItem.name}" /></td>
-				<td><fmt:formatNumber value="${orderItem.price }"
-						pattern="###,###,###" /></td>
-				<td><img src="img/<c:out value="${orderItem.imagePATH}"/>" /></td>
-				<td><c:out value="${orderItem.piece}" /></td>
-				<td><c:out value="${orderItem.quantity}" /></td>
-				<td><fmt:formatNumber value="${orderItem.subTotalPrice }"
-						pattern="###,###,###" /></td>
-				<td>
-					<form
-						action="${pageContext.request.contextPath}/orderItem/deleteId/${orderItem.itemId}/${orderItem.id}"
-						method="post">
-						<input type="submit" value="削除">
-					</form>
-				</td>
+						<td><c:out value="${orderItem.name}" /></td>
+						<td><fmt:formatNumber value="${orderItem.price }"
+								pattern="###,###,###" /></td>
+						<td><img src="img/<c:out value="${orderItem.imagePATH}"/>" /></td>
+						<td><c:out value="${orderItem.piece}" /></td>
+						<td><c:out value="${orderItem.quantity}" /></td>
+						<td><fmt:formatNumber value="${orderItem.subTotalPrice }"
+								pattern="###,###,###" /></td>
+						<td>
+							<form
+								action="${pageContext.request.contextPath}/orderItem/deleteId/${orderItem.itemId}/${orderItem.id}"
+								method="post">
+								<input type="submit" value="削除">
+							</form>
+						</td>
 
-			</tr>
-		</c:forEach>
-		
-	</table>
-	</div>
+					</tr>
+				</c:forEach>
+
+			</table>
+		</div>
 	</div>
 
 
@@ -195,6 +195,27 @@
 					<td><form:radiobuttons path="paymentMethod" id="first_payment"
 							items="${paymentMethodList}" /></td>
 				</tr>
+				<tr>
+					<td>クレジットカード番号</td>
+					<td><form:input path="cardNumber" /></td>
+				</tr>
+				<tr>
+					<td>有効期限</td>
+					<td><form:select path="limitOfMonth">
+							<form:options items="${monthList}" />
+						</form:select>月
+						<form:select path="limitOfYear">
+							<form:options items="${yearList}" />
+						</form:select>年</td>
+				</tr>
+				<tr>
+					<td>カード名義人</td>
+					<td><form:input path="cardName" /></td>
+				</tr>
+				<tr>
+					<td>セキュリティコード</td>
+					<td><form:input path="securityCode" /></td>
+				</tr>
 				<br>
 				<input type="submit" value="注文を確定する">
 			</form:form>
@@ -204,9 +225,9 @@
 		<br>
 	</div>
 
-	
+
 	<br>
-	
+
 
 	<div id="tabble">
 
@@ -265,6 +286,27 @@
 					<td>支払い方法</td>
 					<td><form:radiobuttons id="payment" path="paymentMethod"
 							items="${paymentMethodList}" /></td>
+				</tr>
+				<tr>
+					<td>クレジットカード番号</td>
+					<td><form:input path="cardNumber" /></td>
+				</tr>
+				<tr>
+					<td>有効期限</td>
+					<td><form:select path="limitOfMonth">
+							<form:options items="${monthList}" />
+						</form:select>月
+						<form:select path="limitOfYear">
+							<form:options items="${yearList}" />
+						</form:select>年</td>
+				</tr>
+				<tr>
+					<td>カード名義人</td>
+					<td><form:input path="cardName" /></td>
+				</tr>
+				<tr>
+					<td>セキュリティコード</td>
+					<td><form:input path="securityCode" /></td>
 				</tr>
 
 				<br>

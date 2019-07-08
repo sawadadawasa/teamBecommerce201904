@@ -147,7 +147,9 @@ public class OrderItemRepository {
 	}
 	
 	public void update(int itemId, int addQuantity) {
-		SqlParameterSource param = new MapSqlParameterSource().addValue("itemId",itemId).addValue("addQuantity", addQuantity);
+		SqlParameterSource param = new MapSqlParameterSource()
+				.addValue("itemId",itemId)
+				.addValue("addQuantity", addQuantity);
 		
 		String updateSql ="UPDATE order_items SET quantity = quantity + :addQuantity  WHERE item_id = :itemId" ;
 

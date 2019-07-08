@@ -16,8 +16,43 @@ public class OrderForm {
 	private Integer deliveryHour;//配達時間
 	private String paymentMethod;//支払い方法
 	private String postalCode;//郵便番号
+	private Integer cardNumber;//クレジットカード番号
+	private Integer limitOfMonth;//有効期限【月】
+	private Integer limitOfYear;//有効期限【年】
+	private String cardName;//カード名義人
+	private Integer securityCode;//セキュリティコード 
 
 	
+	public Integer getCardNumber() {
+		return cardNumber;
+	}
+	public void setCardNumber(Integer cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+	public Integer getLimitOfMonth() {
+		return limitOfMonth;
+	}
+	public void setLimitOfMonth(Integer limitOfMonth) {
+		this.limitOfMonth = limitOfMonth;
+	}
+	public Integer getLimitOfYear() {
+		return limitOfYear;
+	}
+	public void setLimitOfYear(Integer limitOfYear) {
+		this.limitOfYear = limitOfYear;
+	}
+	public String getCardName() {
+		return cardName;
+	}
+	public void setCardName(String cardName) {
+		this.cardName = cardName;
+	}
+	public Integer getSecurityCode() {
+		return securityCode;
+	}
+	public void setSecurityCode(Integer securityCode) {
+		this.securityCode = securityCode;
+	}
 	public Integer getId() {
 		return id;
 	}

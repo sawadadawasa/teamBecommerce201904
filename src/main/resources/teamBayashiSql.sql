@@ -34,7 +34,7 @@ id serial primary key
 ) ;
 
 
-drop table orders;
+drop table if exists orders cascade;
 create table orders (
   id integer primary key
   , user_id integer not null
