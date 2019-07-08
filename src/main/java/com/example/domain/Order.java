@@ -17,6 +17,8 @@ public class Order {
 	private Integer paymentMethod;//支払い方法
 	private String postalCode;
 	
+	//test!
+	
 	public String getPostalCode() {
 		return postalCode;
 	}
