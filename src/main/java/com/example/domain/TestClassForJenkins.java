@@ -2,8 +2,8 @@ package com.example.domain;
 
 public class TestClassForJenkins {
 	
-	private String jenkins;
-	private inpo jenkinsNum;
+	private UnkoString jenkins;
+	private int jenkinsNum;
 	
 	public String getJenkins() {
 		return jenkins;
