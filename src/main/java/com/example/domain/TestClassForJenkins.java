@@ -2,7 +2,7 @@ package com.example.domain;
 
 public class TestClassForJenkins {
 	
-	private UnkoString jenkins;
+	private UnkoStrinooog jenkins;
 	private int jenkinsNum;
 	
 	public String getJenkins() {
