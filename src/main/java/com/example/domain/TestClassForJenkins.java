@@ -3,7 +3,7 @@ package com.example.domain;
 public class TestClassForJenkins {
 	
 	private String jenkins;
-	private int jenkinsNum;
+	private in jenkinsNum;
 	
 	public String getJenkins() {
 		return jenkins;
